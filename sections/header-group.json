@@ -1,0 +1,133 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header-group.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_RQkbMP": {
+          "type": "announcement",
+          "settings": {
+            "text": "Receive a complimentary Travel Kit with each order over $200. Offers cannot be combined.",
+            "text_on_mobile": "Receive a complimentary Travel Kit with each order over $200. Offers cannot be combined.",
+            "text_size": 13,
+            "link": "shopify://collections/all"
+          }
+        },
+        "announcement_ci4UtW": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping on all domestic and select international orders.",
+            "text_on_mobile": "Free shipping on all domestic and select international orders.",
+            "text_size": 13,
+            "link": "/collections/shop?gf_590335=category_Kit%2F+Collection"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_RQkbMP",
+        "announcement_ci4UtW"
+      ],
+      "settings": {
+        "only_homepage": false,
+        "layout": "default",
+        "mobile_layout": "marquee",
+        "autorotate": false,
+        "autorotate_speed": 3,
+        "show_navigation": true,
+        "direction": "left",
+        "speed": 1.6,
+        "colors_text": "#ffffff",
+        "colors_background": "#6a6868",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_Mz6btp": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_title": "Shop",
+            "narrow": true,
+            "show_menu_image": true,
+            "promo_image_1": "shopify://shop_images/LI_DropDown_H_A-02.jpg",
+            "promo_image_ratio_1": "adapt",
+            "promo_image_position_1": "center center",
+            "promo_heading_1": "TRENDING",
+            "promo_text_1": "Amrutini® Radiance Home & Away Set",
+            "promo_overlay_content_1": false,
+            "promo_link_1": "shopify://products/amrutini-radiance-home-and-away-set",
+            "promo_image_2": "shopify://shop_images/Asset_1_bcd86d84-b2c2-4aa3-995d-6a5a6e7b86b8.jpg",
+            "promo_image_ratio_2": "adapt",
+            "promo_image_position_2": "center center",
+            "promo_heading_2": "Press Spotlight",
+            "promo_text_2": "Freedom of Expression Dual-Purpose Line Limiter",
+            "promo_overlay_content_2": false,
+            "promo_link_2": "shopify://collections/stocking-stuffers"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_Mz6btp"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/AILOGO-_1.png",
+        "logo_height": 80,
+        "mobile_logo_height": 44,
+        "logo_position": "center-split",
+        "menu": "website-new-main-menu",
+        "menu_mobile": "website-new-main-menu",
+        "enable_dropdown_menu": true,
+        "show_line_separator": true,
+        "uppercase_menu_items": true,
+        "cart_icon": "cart",
+        "icon_weight": "1.1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_sticky_header": true,
+        "show_sticky_header_scroll_up": true,
+        "transparent_logo": "shopify://shop_images/lilogo.png",
+        "enable_transparent_header": true,
+        "enable_transparent_header_collection": true,
+        "enable_transparent_header_custom": "",
+        "show_transparent_header_border": false,
+        "transparent_text_color": "#3f464b",
+        "enable_highlight": false,
+        "highlight_labels": "",
+        "highlight_style": "marker",
+        "mobile_logo_position": "center",
+        "colors_text": "#3f464b",
+        "colors_border": "#00199f",
+        "colors_background": "#faf9f8",
+        "gradient_background": "",
+        "colors_highlight": "#bbff00",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "empty_space_taxEBx": {
+      "type": "empty-space",
+      "settings": {
+        "desktop_height": 128,
+        "mobile_height": 80
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "empty_space_taxEBx"
+  ]
+}

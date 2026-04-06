@@ -1,0 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "narrow": true,
+        "padding_top": 60,
+        "padding_bottom": 8
+      }
+    },
+    "collapsible_content_EqJYyc": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_fzQfnf": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where we ship",
+            "row_content": "<p>We currently ship to the United States, India, Canada, the United Kingdom, Hong Kong and select other countries. We are working to make our products available in other markets as well. If you're outside these markets and would like to purchase our products, email us at <a href=\"mailto:info@loveindus.com\" title=\"mailto:info@loveindus.com\">info@loveindus.com</a></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_cpFidb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Shipping Options (incl. Free Shipping)",
+            "row_content": "<p><strong>Costs for the USA -</strong> free shipping on all domestic orders and $10 charge for priority shipping</p><p><strong>Costs for India -</strong> $15 on orders under $50 or free shipping on all orders above $50. Delivery times will vary</p><p><strong>Costs for Zone 1 -</strong>  $30 on orders under $200 or free shipping on all orders over $200. Zone 1 includes Austria, Belgium, Denmark, Finland, France, Germany, Greece, Hong Kong SAR, Ireland, Italy, Japan, Luxembourg, Malaysia, Netherlands, Portugal, Singapore, Spain, Sweden, United Kingdom. Delivery times will vary</p><p><strong>Costs for Zone 2 -</strong>  $50 on orders under $300 or free shipping on all orders over $300. Zone 2 includes Australia, Canada, Switzerland and the United Arab Emirates. Delivery times will vary</p><p>Please note that (a) free shipping thresholds are after all discounts & promotions have been deducted, but before taxes have been applied and (b) customer will be responsible for all import duties and taxes (if any) on their orders</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_eAwEdY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Returns Policy",
+            "row_content": "<p>We’ve worked hard to create products we want people to fall in love with. But, if, for any reason, you didn’t, we will take it back (with the exception of sample size products). Returns will be accepted within 30 days from date of purchase.</p><p>Only full size items and collections that have been purchased on our official Love, Indus website (<a href=\"https://loveindus.com\" title=\"https://loveindus.com\">www.loveindus.com</a>) that are accompanied with a confirmed proof of purchase, are eligible for returns or store credit. If an item has been opened and minimally used, we will provide you with store credit for the purchase price (including taxes but excluding shipping costs). If the item you’re returning is unopened and unused, we will credit the original form of payment for the purchase price (including taxes but excluding shipping costs).  NOTE: if you received a promotional or free item along with your order, you must return the free/promotional item as well.</p><p>We monitor return activity for abuse and reserve the right to refuse or limit returns or credits.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_DRf9GF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Process for Returns",
+            "row_content": "<p>Please send an email explaining the situation with the word “Return” in the subject line to our customer service team at <a href=\"mailto:care@loveindus.com\" title=\"mailto:care@loveindus.com\">care@loveindus.com</a>. Do not ship any return without first contacting customer service. We will provide you with a form to fill out along with the mailing address for returns we determine to be eligible as per our stated policy.</p><p>Please ship the unopened/ unused portion of the item you’d like to return, along with a copy of the invoice and the return form to the address provided. You are responsible for the shipping costs of the item returned. To ensure the return package is not lost or misplaced, we suggest using a courier/ shipping service that allows you to track the status of your package, as we will not be responsible for items lost in transit. Please retain the shipping receipt/ tracking information for your records.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Lb7xB8": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is non-refundable?",
+            "row_content": "<ul><li>Any product that has been significantly used/ consumed</li><li>Sample sizes of our products (e.g. our <a href=\"https://loveindus.com/collections/shop/products/precious-potion-velvet-08-samples\" title=\"https://loveindus.com/collections/shop/products/precious-potion-velvet-08-samples\">Travel Kit/Sample Set</a> and <a href=\"https://loveindus.com/collections/shop/products/amrutini%C2%AE-luminosity-dewdrops-sample\" title=\"https://loveindus.com/collections/shop/products/amrutini%C2%AE-luminosity-dewdrops-sample\">5ml Luminosity Dewdrops</a></li><li>Individual parts of a larger set</li><li>Items that have not been purchased on <a href=\"https://loveindus.com\" title=\"https://loveindus.com\">www.loveindus.com</a></li><li>Original shipping fee paid to receive your purchase</li><li>International shipping fees, customs fees/ duties etc.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_9rjaVE": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Timing for refunds",
+            "row_content": "<p>We will process returns within 14 days of receipt of the item.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_CWcMkN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Exchanges",
+            "row_content": "<p>Unfortunately, we do not offer exchanges on any items.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_NdV3hr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Damages",
+            "row_content": "<p>We pack every order with care, however, please check your order immediately after arrival to ensure no damage has occurred to the item (apart from normal wear expected to the outer packaging during shipment). If you believe the product has been tampered with or damaged, email us at <a href=\"mailto:care@loveindus.com\" title=\"mailto:care@loveindus.com\">care@loveindus.com</a> promptly with the issue and supporting photographs and order/ product details. Please retain the original shipping box, packaging materials (carton etc.) so these can be referenced during inspection by the shipping company/ courier service.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_fzQfnf",
+        "collapsible_row_cpFidb",
+        "collapsible_row_eAwEdY",
+        "collapsible_row_DRf9GF",
+        "collapsible_row_Lb7xB8",
+        "collapsible_row_9rjaVE",
+        "collapsible_row_CWcMkN",
+        "collapsible_row_NdV3hr"
+      ],
+      "settings": {
+        "open_first_collapsible_row": false,
+        "narrow": true,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_EqJYyc"
+  ]
+}

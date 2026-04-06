@@ -1,0 +1,1051 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_qMgxaH": {
+      "type": "slideshow",
+      "blocks": {
+        "image_WVigkf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_TKEaster_Banner-02_desktop.jpg",
+            "image_mobile": "shopify://shop_images/LI_TKEaster_Banner-01_mobile.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Receive a complimentary Travel Kit",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "text": "On all orders over $200",
+            "text_size": "typeset",
+            "button_label": "Collect your Gift",
+            "button_link": "shopify://collections/all",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        },
+        "image_DdckzR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_MainBanner_Website_QVC-03.jpg",
+            "image_mobile": "shopify://shop_images/LI_MainBanner_Website_QVC-04.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "From Sold-out to Spotlight.",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "text": "Experience the illuminating power of this cult-favorite serum",
+            "text_size": "typeset3",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/amrutini-luminosity-dewdrops",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        },
+        "image_QpV3qD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_MainBanner_Website_TS-01.jpg",
+            "image_mobile": "shopify://shop_images/LI_MainBanner_Website_TS-03.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Strength in Every Drop",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "text": "Structural repair with Golden Muga Silk & Copper",
+            "text_size": "typeset",
+            "button_label": "Shop The Serum",
+            "button_link": "shopify://products/amrutini-anti-aging-transforming-serum",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        },
+        "image_rBienm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_MainBanner_Website_FOE-desktop.jpg",
+            "image_mobile": "shopify://shop_images/LI_MainBanner_Website_FOE-mobile.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Target expression lines",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "text": "Smooth the signs of aging with Freedom of Expression Line Limiter",
+            "text_size": "typeset3",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/womens-gift-set",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        },
+        "image_3F8mNV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_1.jpg",
+            "image_mobile": "shopify://shop_images/Artboard_2.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "The two-step ritual to firm, repair, and glow.",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "text": "",
+            "text_size": "typeset",
+            "button_label": "SHOP THE DUO",
+            "button_link": "shopify://products/amrutini-essentials",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_ew4L4H": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_MainBanner_Website_V08-01.jpg",
+            "image_mobile": "shopify://shop_images/LI_MainBanner_Website_V08-02.jpg",
+            "image_position": "center center",
+            "text_box_position": "bottom-left",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Velvet :08 Broadway Bright Detox Mask",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "text": "An 8 minute polish for your skin",
+            "text_size": "typeset3",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/velvet-08-broadway-bright-detox-mask",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_WVigkf",
+        "image_DdckzR",
+        "image_QpV3qD",
+        "image_rBienm",
+        "image_3F8mNV",
+        "image_ew4L4H"
+      ],
+      "settings": {
+        "slideshow_type": "legacy",
+        "text_alignment": "left",
+        "image_ratio": "adapt_first",
+        "autorotate": true,
+        "autorotate_speed": 9,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt_first",
+        "show_text_below": false,
+        "colors_button_label": "#6a6868",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_background": "#ffffff",
+        "colors_overlay": "#ffffff",
+        "colors_overlay_opacity": 0,
+        "colors_navigation_text": "#ffffff",
+        "colors_navigation_background": "#1a1b18",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Li_HomePage_Banner_Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Li_HomePage_Banner_Mobile.jpg",
+            "image_position": "top center",
+            "text_box_position": "middle-center",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Freedom of  Expression  Line Limiter",
+            "heading_size": "h2",
+            "heading_tag": "h1",
+            "text": "The age-defying line limiter everyone’s talking about",
+            "text_size": "typeset2",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/freedom-of-expression-dual-purpose-line-limiter",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        },
+        "image_t3n36K": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_MainBanner2_Website_Sept24-02.jpg",
+            "image_mobile": "shopify://shop_images/LI_MainBanner2_Website_Sept24-Mob.jpg",
+            "image_position": "top center",
+            "text_box_position": "middle-center",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Amrutini® Luminosity Dewdrops Serum",
+            "heading_size": "h2",
+            "heading_tag": "h1",
+            "text": "Experience Radical Radiance with this Illuminating ritual",
+            "text_size": "typeset2",
+            "button_label": "Shop Now",
+            "button_link": "https://loveindus.com/collections/impaq-shop/products/amrutini%C2%AE-luminosity-dewdrops-sample",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        },
+        "image_yFanJx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_MainBanner3_Website-03.jpg",
+            "image_mobile": "shopify://shop_images/LI_MainBanner3_Website_Sept24-Mob.jpg",
+            "image_position": "top center",
+            "text_box_position": "middle-center",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "Amrutini® Precious Potion",
+            "heading_size": "h2",
+            "heading_tag": "h1",
+            "text": "Strengthens skin & reverses all signs of aging",
+            "text_size": "typeset2",
+            "button_label": "Shop Now",
+            "button_link": "shopify://products/amrutini-precious-potion-vital-cream",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "slide-0",
+        "image_t3n36K",
+        "image_yFanJx"
+      ],
+      "disabled": true,
+      "settings": {
+        "slideshow_type": "modern",
+        "text_alignment": "left",
+        "image_ratio": "adapt_first",
+        "autorotate": true,
+        "autorotate_speed": 5,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt_first",
+        "show_text_below": true,
+        "colors_button_label": "#3f464b",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_background": "#6a6868",
+        "colors_overlay": "#6a6868",
+        "colors_overlay_opacity": 100,
+        "colors_navigation_text": "#6a6868",
+        "colors_navigation_background": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "multicolumn_tY4wmB": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_AN8gHC": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group-61-_2_65063249-1eec-47a8-9939-77507af27ceb.webp",
+            "title": "",
+            "title_size": "h3",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_4qXU9J": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group-62-_1_e8469d17-958a-4c82-909a-e72da3e3b107.webp",
+            "title": "",
+            "title_size": "h3",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_pjhGPK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Group-63-_1_410c39b3-fae2-4a16-a675-0d8e116f1ebd.webp",
+            "title": "",
+            "title_size": "h3",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "column_AN8gHC",
+        "column_4qXU9J",
+        "column_pjhGPK"
+      ],
+      "custom_css": [
+        ".media-wrapper {background-color: unset !important;}",
+        "@media screen and (max-width: 750px) {.multicolumn1 {display: none; }}"
+      ],
+      "settings": {
+        "image_ratio": "adapt",
+        "image_position": "center center",
+        "text_alignment": "center",
+        "show_divider": true,
+        "image_width": "full",
+        "columns_desktop": 3,
+        "open_in_new_tab": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "mobile_text_alignment": "left",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_nCyBHz": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/LI_Press_Mobile_1821c3ba-dfca-41a4-a334-1ca9077aeb7c.gif",
+        "image_position": "center center",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "adapt",
+        "show_text_box": false,
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "auto",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "b293a6de-3003-48b1-9294-816223d66d43": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--16097864745160__b293a6de-3003-48b1-9294-816223d66d43-column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Asset_12.webp",
+            "title": "Amrutini  Luminosity Dewdrops",
+            "title_size": "h3",
+            "text": "<p>Serum for Stronger, Radiant Skin</p>",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/amrutini-luminosity-dewdrops",
+            "button_style_secondary": false
+          }
+        },
+        "319c46df-bf60-454c-aaaa-285404ca808d": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Asset_13_bdae30e8-0f12-4817-a09f-94d9172d4fbc.webp",
+            "title": "Freedom of Expression",
+            "title_size": "h3",
+            "text": "<p>Treatment for Lip/ Laugh Lines & Facial Creases</p>",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/freedom-of-expression-dual-purpose-line-limiter",
+            "button_style_secondary": false
+          }
+        },
+        "e738fb1d-e578-485f-8a26-d4e93e92ecd6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Asset_14_73433a76-bf73-4199-861f-b45f1889073b.webp",
+            "title": "Velvet :08",
+            "title_size": "h3",
+            "text": "<p>Brightening & Pore Refining Detox Mask</p>",
+            "button_label": "SHOP NOW",
+            "button_link": "shopify://products/velvet-08-broadway-bright-detox-mask",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "template--16097864745160__b293a6de-3003-48b1-9294-816223d66d43-column-1",
+        "319c46df-bf60-454c-aaaa-285404ca808d",
+        "e738fb1d-e578-485f-8a26-d4e93e92ecd6"
+      ],
+      "custom_css": [
+        ".multicolumn-card__title {text-transform: initial; font-family: Arima-regular; font-weight: 600;}",
+        ".button {background: #00199f; color: #fff; padding: 0 30px; letter-spacing: 0px; font-size: 12px; font-weight: 600; letter-spacing: 2.4px;}",
+        ".button:hover {box-shadow: unset !important; transition-delay: unset !important;}",
+        "@media only screen and (min-width: 0px) and (max-width: 575px) {.multicolumn-card__title {font-size: 18px !important; } .button {padding: 0 118px !important; }}"
+      ],
+      "settings": {
+        "image_ratio": "adapt",
+        "image_position": "center center",
+        "text_alignment": "center",
+        "show_divider": true,
+        "image_width": "full",
+        "columns_desktop": 3,
+        "open_in_new_tab": false,
+        "heading": "OUR TOP SELLERS",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "mobile_text_alignment": "center",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "slideshow_Lh6YpV": {
+      "type": "slideshow",
+      "blocks": {
+        "image_kQxNqU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_29.webp",
+            "image_mobile": "shopify://shop_images/DD_Banner_Mobile.webp",
+            "image_position": "center center",
+            "text_box_position": "middle-center",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "",
+            "text_size": "typeset",
+            "button_label": "",
+            "button_link": "shopify://products/amrutini-luminosity-dewdrops",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_kQxNqU"
+      ],
+      "settings": {
+        "slideshow_type": "modern",
+        "text_alignment": "left",
+        "image_ratio": "adapt_first",
+        "autorotate": false,
+        "autorotate_speed": 5,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt_first",
+        "show_text_below": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#1a1b18",
+        "colors_background": "#ffffff",
+        "colors_overlay": "#ffffff",
+        "colors_overlay_opacity": 92,
+        "colors_navigation_text": "#ffffff",
+        "colors_navigation_background": "#1a1b18",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "tab_collage_ezWPfX": {
+      "type": "tab-collage",
+      "blocks": {
+        "image_MXQT3p": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_62_707dff3c-16db-4ac6-8a97-9fa6e7b7af99.webp",
+            "image_position": "center center",
+            "heading": "> Muga Silk - Never seen in skincare before",
+            "description": "<p>Introducing liquified Golden Muga Silk, a pioneering innovation in skincare. Celebrated for its strength, beauty, and lustrous appearance resembling spun gold, this silk brings unprecedented qualities to skincare. It has regenerative and healing properties so profound that it’s even used in surgical procedures.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_Yf3dni": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_61_032dbb70-7130-4d26-8d05-d2f98d63853c.webp",
+            "image_position": "center center",
+            "heading": "> Origin of Golden Muga Silk",
+            "description": "<p>Originating from Northeast India, particularly Assam, Golden Muga Silk is renowned for its exceptional durability and cultural significance in weaving silk sarees. The fabric is so robust and long-lasting that it is said to outlive its wearer.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_rirt8c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_60_08030103-8f50-4230-87d8-ea905c166136.webp",
+            "image_position": "center center",
+            "heading": "> Protein Properties of Muga Silk",
+            "description": "<p>Muga Silk's 97% protein polymer composition is revered for its regenerative and healing properties. It reduces water loss, strengthens skin resilience, and diminishes the appearance of wrinkles, offering profound benefits rooted in skin science.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_jMpJqT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_59_a34fa013-4552-4787-94ee-9c10199084a6.webp",
+            "image_position": "center center",
+            "heading": "> Liquified Muga Silk in Amrutini®",
+            "description": "<p>Leveraging proprietary techniques, Muga Silk has been liquefied & integrated into our Amrutini® line. Offering skin-strengthening benefits, this represents a breakthrough - that has never-before been seen in skincare.</p>",
+            "button_label": "Shop Now",
+            "button_link": "https://loveindus.com/collections/impaq-shop/products/amrutini%C2%AE-luminosity-dewdrops",
+            "button_size": "small",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_MXQT3p",
+        "image_Yf3dni",
+        "image_rirt8c",
+        "image_jMpJqT"
+      ],
+      "custom_css": [
+        ".title-wrapper .title {display: none;}",
+        ".tab-collage__desc {font-size: 16px !important;}",
+        ".button {padding: 0 30px !important; min-width: 0rem !important;}"
+      ],
+      "settings": {
+        "layout": "text_first",
+        "text_box_position": "top",
+        "text_alignment": "left",
+        "image_ratio": "600px",
+        "make_collapsible_rows": false,
+        "full_width": true,
+        "show_divider": false,
+        "heading": "none",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "mobile_layout": "text_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt",
+        "colors_button_label": "#6a6868",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_border": "#d2d5d9",
+        "colors_background": "#6a6868",
+        "gradient_background": "",
+        "padding_top": 8,
+        "padding_bottom": 36
+      }
+    },
+    "19f29666-6d60-4e30-a1c7-3515f89d1c6b": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "4b8bfa39-2bd5-4976-a937-ac225ea1593c": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "India’s Regional Riches &amp; Rituals + New York’s Transformative Tech = Potent Potions",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "announcement_gmqJV6": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "India’s Regional Riches &amp; Rituals + New York’s Transformative Tech = Potent Potions",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "announcement_8CWFn3": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "India’s Regional Riches &amp; Rituals + New York’s Transformative Tech = Potent Potions",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "announcement_c8hDAV": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "India’s Regional Riches &amp; Rituals + New York’s Transformative Tech = Potent Potions",
+            "text_size": 18,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "4b8bfa39-2bd5-4976-a937-ac225ea1593c",
+        "announcement_gmqJV6",
+        "announcement_8CWFn3",
+        "announcement_c8hDAV"
+      ],
+      "settings": {
+        "direction": "left",
+        "speed": 1.6,
+        "show_divider": false,
+        "use_custom_colors": true,
+        "colors_icon": "#3f464b",
+        "colors_text": "#ffffff",
+        "colors_background": "#000f9f",
+        "gradient_background": "",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "custom_liquid_D3etR6": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"videodiv\">\n\n  <div class=\"videodiv1\">\n    <video src=\"https://cdn.shopify.com/videos/c/o/v/f9b248ec61b344139ea5566a63880234.mp4\" id=\"localVideoStream\" class=\"video-circle\" autoplay=\"autoplay\" muted=\"\" loop=\"loop\" playsinline=\"true\"></video>\n  </div>\n\n  <div class=\"videodiv2\">\n    <a href=\"https://loveindus.com/pages/about\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0456/7610/1786/files/Li_BrandStory_Block2_6d0c8b7e-f2c4-49a0-aaa8-19505e9d615f.webp?v=1728463781\" class=\"brand_desktop\">\n\n      <img src=\"https://cdn.shopify.com/s/files/1/0456/7610/1786/files/Group_589.webp?v=1728458968\" class=\"brand_mobile\" alt=\"Love indus\">\n    </a>\n  </div>\n\n</div>",
+        "full_width": true,
+        "show_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_fbJQNb": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8z8JxT": {
+          "type": "heading",
+          "settings": {
+            "heading": "From the # Love Indus Tribe",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8z8JxT"
+      ],
+      "custom_css": [],
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": true,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "testimonials_cRyJkN": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_cnHPdC": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5",
+            "text": "<p>“I think I just found a magic eraser for my smile lines. I have been using the Freedom of Expression Line Limiter for a while now and I am genuinely surprised to see how much it has helped my smile lines. I seriously love this stuff.”</p>",
+            "author": "Tiffany"
+          }
+        },
+        "testimonial_D7eCcD": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5",
+            "text": "<p>“They are heaven! The Amrutini Luminosity Dewdrops make my nighttime skin routine feel like a pre-bed facial. The serum is nourishing but also light, so I wake up with refreshed skin without leaving an oil slick on my pillow. Also, the silk cocoons (used for gentle exfoliation) are the cherry on top of the cake. This routine is my five minutes of luxury that helps me unwind before bed.”</p>",
+            "author": "Karen"
+          }
+        },
+        "testimonial_DPdtBK": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5",
+            "text": "<p>“I am completely enamored with the Broadway Detox Mask. In a mere 10 minutes, this remarkable mask has performed a miraculous transformation on my skin, leaving it not only exceptionally radiant but also incredibly glowy. Its one the finest detox masks I've ever came across.”</p>",
+            "author": "Natalia"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_cnHPdC",
+        "testimonial_D7eCcD",
+        "testimonial_DPdtBK"
+      ],
+      "settings": {
+        "autorotate": false,
+        "autorotate_speed": 7,
+        "hide_images": true,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "padding_top": 20,
+        "padding_bottom": 32
+      }
+    },
+    "video_hero_h8fEwC": {
+      "type": "video-hero",
+      "blocks": {
+        "heading_7zb3ab": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Ritual",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        },
+        "text_HKY8pP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>4 steps to radically radiant skin</p>",
+            "text_size": "typeset2",
+            "secondary_color": false
+          }
+        },
+        "button_rUiwMf": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "https://loveindus.com/pages/loveindus-ritual",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_7zb3ab",
+        "text_HKY8pP",
+        "button_rUiwMf"
+      ],
+      "settings": {
+        "video": "shopify://files/videos/Li_ritual1.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "adapt",
+        "show_text_box": false,
+        "full_width": true,
+        "show_divider": false,
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "500px",
+        "show_text_below": false,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "scrolling_promotion_LRQKxw": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "image_mBhkta": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_GefyeR": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "custom_icon": "",
+            "text": "CLEAN AND TOXIN-FREE",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_UdLCMD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_DhYcn3": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "NO ARTIFICIAL FRAGRANCE",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_Qbzwzr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_7nmDqr": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "NO ARTIFICIAL COLOR",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_daaNh8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_btQfga": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "LEAPING BUNNY CERTIFIED",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_pA7XRR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_zeVrkT": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "DERMATOLOGIST TESTED",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_Rkqjnw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_Uc7Bdx": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "SUSTAINABLE PACKAGING",
+            "text_size": 18,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_mBhkta",
+        "announcement_GefyeR",
+        "image_UdLCMD",
+        "announcement_DhYcn3",
+        "image_Qbzwzr",
+        "announcement_7nmDqr",
+        "image_daaNh8",
+        "announcement_btQfga",
+        "image_pA7XRR",
+        "announcement_zeVrkT",
+        "image_Rkqjnw",
+        "announcement_Uc7Bdx"
+      ],
+      "settings": {
+        "direction": "left",
+        "speed": 1.6,
+        "show_divider": true,
+        "use_custom_colors": true,
+        "colors_icon": "#3f464b",
+        "colors_text": "#212326",
+        "colors_background": "#faf9f8",
+        "gradient_background": "",
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_7zFgw4": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<hr class=\"index_hr\">",
+        "full_width": true,
+        "show_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "featured_blog_FGQi4j": {
+      "type": "featured-blog",
+      "blocks": {
+        "title_DhGXKX": {
+          "type": "title",
+          "settings": {
+            "show_date": false,
+            "show_author": false,
+            "show_comment_count": false
+          }
+        },
+        "summary_yrLGUe": {
+          "type": "summary",
+          "settings": {}
+        },
+        "read_more_bTLpAR": {
+          "type": "read_more",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_DhGXKX",
+        "summary_yrLGUe",
+        "read_more_bTLpAR"
+      ],
+      "custom_css": [
+        ".blog {background-color: #6a6868 !important;}",
+        ".title,.article-card__title,.article-card__excerpt {color: #fff;}",
+        ".title {font-weight: 400 !important;}",
+        ".article-card__link {color: #6a6868 !important; background-color: #fff !important; border: 0px !important;}",
+        "@media screen and (max-width: 750px) {.grid--2-col .grid__item {width: 100%; max-width: 100%; }}"
+      ],
+      "settings": {
+        "blog": "indus-ink",
+        "post_limit": 3,
+        "show_view_all": false,
+        "show_divider": false,
+        "heading": "WRITTEN IN (INDUS) INK",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "show_image": true,
+        "image_ratio": "landscape",
+        "image_position": "center center",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1727773822fe9771ad": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_VdPQBP": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "DISCOVER A WORLD OF RARE RICHES & RITUALS",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_VdPQBP"
+      ],
+      "settings": {
+        "include_margins": false,
+        "show_divider": false,
+        "padding_top": 16,
+        "padding_bottom": 36
+      }
+    },
+    "video_LQePrA": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "enable_video_looping": true,
+        "video_url": "https://www.youtube.com/watch?v=TwqUJK1SfYs&ab_channel=QVCtv",
+        "description": "",
+        "full_width": true,
+        "show_divider": false,
+        "heading": "Video",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "slideshow_qMgxaH",
+    "slideshow",
+    "multicolumn_tY4wmB",
+    "image_banner_nCyBHz",
+    "b293a6de-3003-48b1-9294-816223d66d43",
+    "slideshow_Lh6YpV",
+    "tab_collage_ezWPfX",
+    "19f29666-6d60-4e30-a1c7-3515f89d1c6b",
+    "custom_liquid_D3etR6",
+    "rich_text_fbJQNb",
+    "testimonials_cRyJkN",
+    "video_hero_h8fEwC",
+    "scrolling_promotion_LRQKxw",
+    "custom_liquid_7zFgw4",
+    "featured_blog_FGQi4j",
+    "1727773822fe9771ad",
+    "video_LQePrA"
+  ]
+}

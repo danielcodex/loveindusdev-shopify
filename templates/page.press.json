@@ -1,0 +1,706 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "narrow": true,
+        "padding_top": 60,
+        "padding_bottom": 24
+      }
+    },
+    "multicolumn_nB7J3e": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_APrxxt": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/FlowSpaceLogo.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.theflowspace.com/style/beauty/love-indus-line-limiter-review-3001038/\" title=\"https://www.theflowspace.com/style/beauty/love-indus-line-limiter-review-3001038/\">I Quit Botox But This Skincare Product Helped Smooth My Fine Lines in 2 Weeks - September 8, 2025</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_WtxwPM": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/InStyle-logo.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.instyle.com/best-beauty-stocking-stuffers-8406227\" target=\"_blank\" title=\"https://www.instyle.com/best-beauty-stocking-stuffers-8406227\">The 15 Best Beauty Stocking Stuffers That Give Expensive Vibes</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_A9ehcB": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/14114.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.countryandtownhouse.com/style/health-and-beauty/laugh-lines-skincare\" target=\"_blank\" title=\"https://www.countryandtownhouse.com/style/health-and-beauty/laugh-lines-skincare\">Skincare SOS: How To Combat Laugh Lines- 27th April, 2024</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_cxD43Y": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/512x512bb.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://web.archive.org/web/20240424125120/https://in.hellomagazine.com/beauty/gallery/20240324304345/best-face-masks-for-dry-skin/6/\" target=\"_blank\" title=\"https://web.archive.org/web/20240424125120/https://in.hellomagazine.com/beauty/gallery/20240324304345/best-face-masks-for-dry-skin/6/\">These Face Masks Are A Boon For Your Dry, Dehydrated Skin- March 24, 2024</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_mpmeya": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/spa_and_beauty.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://spaandbeautytoday.com/articles/behind-the-brand-love-indus-fuses-founder-surbhee-grovers-indian-heritage-and-passion-for-innovative-beauty\" target=\"_blank\" title=\"https://spaandbeautytoday.com/articles/behind-the-brand-love-indus-fuses-founder-surbhee-grovers-indian-heritage-and-passion-for-innovative-beauty\">Behind the Brand: Love, Indus Fuses Founder Surbhee Grover's Indian Heritage and Passion For Thoughtfully Crafted Innovative Beauty- February 22, 2024</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_xPiXnd": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/forbes.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.forbes.com/sites/forbes-personal-shopper/article/best-skin-tightening-creams/?sh=f95ad776384d\" target=\"_blank\" title=\"https://www.forbes.com/sites/forbes-personal-shopper/article/best-skin-tightening-creams/?sh=f95ad776384d\">15 Of The Best Skin Tightening Creams That Smooth And Firm- February 13, 2024</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_KiNpkV": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Brides_Today_In.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.bridestoday.in/weddings-and-planning/story/20-heartwarming-gift-ideas-to-surprise-your-fiancee-and-make-her-feel-special-this-holiday-season-730798-2023-12-24\" target=\"_blank\" title=\"https://www.bridestoday.in/weddings-and-planning/story/20-heartwarming-gift-ideas-to-surprise-your-fiancee-and-make-her-feel-special-this-holiday-season-730798-2023-12-24\">We’ve found the perfect winter skincare companion — it’s infused with SILK and you can get $23 off with a discount code - December 24, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_h7UDnE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Tata_Cliq_Luxury_expands_footprint_large_913770f1-3b4b-4b9e-8309-fcbb72f23b5d.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://luxury.tatacliq.com/browse/luxury/luxelife/trends/muga-silk-has-the-power-to-heal-your-skin\" target=\"_blank\" title=\"https://luxury.tatacliq.com/browse/luxury/luxelife/trends/muga-silk-has-the-power-to-heal-your-skin\">Muga Silk Has The Power To Heal Your Skin-December 24, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_ByG7Wn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/harpers.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.harpersbazaar.in/beauty/story/conscious-beauty-terms-to-know-699929-2023-10-27\" target=\"_blank\" title=\"https://www.harpersbazaar.in/beauty/story/conscious-beauty-terms-to-know-699929-2023-10-27\">Learn how to decode your beauty product label to make an informed buy - October 27, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_tWBdxt": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Brides_Today_In.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.bridestoday.in/beauty-grooming/story/get-your-fall-beauty-routine-rolling-with-these-new-launches-this-october-689835-2023-10-07\" target=\"_blank\" title=\"https://www.bridestoday.in/beauty-grooming/story/get-your-fall-beauty-routine-rolling-with-these-new-launches-this-october-689835-2023-10-07\">Get your fall beauty routine rolling with these new launches this October - October 7, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_rX8mLw": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/well_good.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.wellandgood.com/love-indus-freedom-of-expression-dual-purpose-line-limiter/\" target=\"_blank\" title=\"https://www.wellandgood.com/love-indus-freedom-of-expression-dual-purpose-line-limiter/\">A Dermatologist Says *This* Botanical Serum Is the Key a Glowing Complexion and Reducing Wrinkles - August 28, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_zDCrhA": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Cosmo_logo_square2.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.cosmopolitan.in/beauty/features/story/newest-beauty-launches-weve-got-our-eyes-month-668960-2023-08-17\" target=\"_blank\" title=\"https://www.cosmopolitan.in/beauty/features/story/newest-beauty-launches-weve-got-our-eyes-month-668960-2023-08-17\">Newest beauty launches we've got our eyes on this month - August 17, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_VHDyjy": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/harpers.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.harpersbazaar.in/beauty/story/decoding-lunar-energy-in-skincare-heres-how-the-moon-impacts-your-routine-677770-2023-09-15\" target=\"_blank\" title=\"https://www.harpersbazaar.in/beauty/story/decoding-lunar-energy-in-skincare-heres-how-the-moon-impacts-your-routine-677770-2023-09-15\">How the moon's phases impact your skincare routine and tips to make the most of each phase - August 15, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_kGw9Rw": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Cosmo_logo_square2.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://drive.google.com/file/d/11ThwnzsHEVpYyt-ZzNaYRB_zxHohZLit/view\" target=\"_blank\" title=\"https://drive.google.com/file/d/11ThwnzsHEVpYyt-ZzNaYRB_zxHohZLit/view\">Radiate Pure Bliss - August 1, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_gQGLYa": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/grazia.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://drive.google.com/file/d/1HNIrnAbSmxN8BI4ocCdUUe20RoG46Iqs/view\" target=\"_blank\" title=\"https://drive.google.com/file/d/1HNIrnAbSmxN8BI4ocCdUUe20RoG46Iqs/view\">Grazia Beauty - August 1, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_nqqgDK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/The_Established.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.theestablished.com/self/beauty/does-the-combination-of-western-actives-and-ayurvedic-ingredients-really-help-indian-skin\" target=\"_blank\" title=\"https://www.theestablished.com/self/beauty/does-the-combination-of-western-actives-and-ayurvedic-ingredients-really-help-indian-skin\">Does the combination of Western actives and Ayurvedic ingredients really help Indian skin? - July 11, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_REqA66": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Womens-Health-Logo_sq.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.womenshealthmag.com/beauty/g44347177/botox-in-a-bottle-skin-care-products/\" target=\"_blank\" title=\"https://www.womenshealthmag.com/beauty/g44347177/botox-in-a-bottle-skin-care-products/\">20 Dermatologist-Tested Skincare Products That Are Like Botox In A Bottle - June 28, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_VGDzQN": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/InStyle-logo.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.instyle.com/love-indus-dual-purpose-line-limiter-review-sale-7509795\" target=\"_blank\" title=\"https://www.instyle.com/love-indus-dual-purpose-line-limiter-review-sale-7509795\">I Watched My Laugh Lines and Forehead Creases Smooth Out After Just 2 Weeks of Using This Skin-Blurring Cream - June 9, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_kcmy9R": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/bustle6255.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.bustle.com/shopping/if-you-really-want-to-impress-your-mom-give-her-one-of-these-genius-gifts\" target=\"_blank\" title=\"https://www.bustle.com/shopping/if-you-really-want-to-impress-your-mom-give-her-one-of-these-genius-gifts\">These Genius Mother’s Day Gifts Are So Much Better Than What You Usually Give - April 24, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_XrhWpY": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Refinery29.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.refinery29.com/en-us/love-indus-indian-skincare-interview\" target=\"_blank\" title=\"https://www.refinery29.com/en-us/love-indus-indian-skincare-interview\">Love, Indus: The India-Meets-NYC Skin Care Brand To Know - March 30, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_KnMpih": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Square_VOGUE_logo.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://drive.google.com/file/d/1Nz0VvvZVHGVMLoMyu9a5dU_fWV6J7aI5/view\" target=\"_blank\" title=\"https://drive.google.com/file/d/1Nz0VvvZVHGVMLoMyu9a5dU_fWV6J7aI5/view\">Best Spring Products 2023 - Amrutini® Luminosity Dewdrops - February 21, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_R6nqcj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/InStyle-logo.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.instyle.com/eco-your-skin-facial-pilates-mask-8606703\" target=\"_blank\" title=\"https://www.instyle.com/eco-your-skin-facial-pilates-mask-8606703\">I Tried the Detox Mask Shoppers Call “Magical,” and It Brightened My Skin After 8 Minutes - February 12, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_WYYDE8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/InStyle-logo.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.instyle.com/best-hyaluronic-acid-serums-7964835\" target=\"_blank\" title=\"https://www.instyle.com/best-hyaluronic-acid-serums-7964835\">I Pair These Lightweight Yet Deeply Hydrating Serums to Give My Skin a Perfect Dose of Dewiness - February 2, 2023</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_kNyAyf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Womens-Health-Logo_sq.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.womenshealthmag.com/life/g40643892/gift-sets-for-women/\" target=\"_blank\" title=\"https://www.womenshealthmag.com/life/g40643892/gift-sets-for-women/\">52 Best Gift Sets For Women From Cosmetic Gift Sets To Beauty Essentials - December 24, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_EUm6wE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/grazia.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://drive.google.com/file/d/1BqbZNy38KGHus9ep0ooui6DRrMbwfbly/view\" target=\"_blank\" title=\"https://drive.google.com/file/d/1BqbZNy38KGHus9ep0ooui6DRrMbwfbly/view\">All Eyes on This: Meet the newest standout brands on Grazia's beauty desk - December 20, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_UnGgQn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/beautyindependent-rev.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.beautyindependent.com/challenges-indie-brand-founders-largely-optimistic-2023-beauty-businesses/\" title=\"https://www.beautyindependent.com/challenges-indie-brand-founders-largely-optimistic-2023-beauty-businesses/\">Despite Challenges, Brand Founders Are Largely Optimistic About What 2023 Holds For Beauty And Their Businesses - November 17, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_p39diN": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/beautyindependent-rev.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.beautyindependent.com/what-investors-retailers-looking-beauty-market/\" target=\"_blank\" title=\"https://www.beautyindependent.com/what-investors-retailers-looking-beauty-market/\">What Investors And Retailers Are Looking For In Today’s Beauty Market - November 10, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_y7a4x3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Cosmo_logo_square2.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://drive.google.com/file/d/1e_WwNuN6Ywx10Nu9m5SaAaApJ9yBpTQE/view\" target=\"_blank\" title=\"https://drive.google.com/file/d/1e_WwNuN6Ywx10Nu9m5SaAaApJ9yBpTQE/view\">Beauty Lust List - Freedom of Expression Dual-Purpose Line Limiter - October 1, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_fiVWY4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Womens-Health-Logo_sq.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.womenshealthmag.com/life/g19924022/best-gifts-for-parents/\" target=\"_blank\" title=\"https://www.womenshealthmag.com/life/g19924022/best-gifts-for-parents/\">55 Best Gifts For Parents That They'll Actually Want And Use This Holiday Season - July 19, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_KLibqj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Vogue_India_Logo_1600x_a00f5d3b-c555-47af-9e3c-30d05d2a1c74.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.vogue.in/beauty/content/this-is-the-unusual-skincare-ingredient-you-need-to-know-about-to-achieve-glowing-skin\" target=\"_blank\" title=\"https://www.vogue.in/beauty/content/this-is-the-unusual-skincare-ingredient-you-need-to-know-about-to-achieve-glowing-skin\">This Is The Unusual Skincare Ingredient You Need To Know About To Achieve Glowing Skin - June 6, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_b7BANk": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Refinery29.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.refinery29.com/en-us/love-indus-indian-skincare-interview?utm_source=googlenewsstand&utm_medium=rss\" target=\"_blank\" title=\"https://www.refinery29.com/en-us/love-indus-indian-skincare-interview?utm_source=googlenewsstand&utm_medium=rss\">I’m So Into This Indian Skin Care Brand That I’m Almost Out Of It - May 11, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_3xU4pL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Yahoo.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.yahoo.com/?err=404&err_url=https%3A%2F%2Fwww.yahoo.com%2Flifestyle%2Fm-indian-skin-care-brand-180044617.html%3Fguccounter%3D1%26guce_referrer%3DaHR0cHM6Ly9sb3ZlaW5kdXMuY29tLw%26guce_referrer_sig%3DAQAAAJvDO9bUE11V7aAnmdE2-RwPxNbBAmb38gyLQyd1DlXbzblTid3hluySc6vvQxJZjjgyRL6m7KGfJl7eAPvUb0pZy8SFTwg6pwbQ6cYDaGYnZ-XzgPxe6UL2cQDxPD8TMwy3k15jn2dFODxZjhB39sB7SIKiSPym-XtZ6IJvdup5\" target=\"_blank\" title=\"https://www.yahoo.com/?err=404&err_url=https%3A%2F%2Fwww.yahoo.com%2Flifestyle%2Fm-indian-skin-care-brand-180044617.html%3Fguccounter%3D1%26guce_referrer%3DaHR0cHM6Ly9sb3ZlaW5kdXMuY29tLw%26guce_referrer_sig%3DAQAAAJvDO9bUE11V7aAnmdE2-RwPxNbBAmb38gyLQyd1DlXbzblTid3hluySc6vvQxJZjjgyRL6m7KGfJl7eAPvUb0pZy8SFTwg6pwbQ6cYDaGYnZ-XzgPxe6UL2cQDxPD8TMwy3k15jn2dFODxZjhB39sB7SIKiSPym-XtZ6IJvdup5\">New Indian Skincare - May 11, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_wRq3fT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/beautyindependent-rev.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.beautyindependent.com/skincare-what-exactly-skin-health/\" target=\"_blank\" title=\"https://www.beautyindependent.com/skincare-what-exactly-skin-health/\">Forget Beauty. These Days, Skincare Is All About Health. But What Exactly Is Skin Health? - March 17, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_7A6L9N": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Femina.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.femina.in/trending/achievers/womens-day-leaders-on-aspects-that-need-to-be-celebrated-discussed-221219.html\" target=\"_blank\" title=\"https://www.femina.in/trending/achievers/womens-day-leaders-on-aspects-that-need-to-be-celebrated-discussed-221219.html\">Women’s Day: Leaders Talk On Aspects That Need To Be Celebrated & Discussed - March 8, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_hU8bYE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/grazia.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.grazia.co.in/beauty-and-health/ultimate-valentines-day-self-care-and-beauty-gift-guide-8950.amp\" target=\"_blank\" title=\"https://www.grazia.co.in/beauty-and-health/ultimate-valentines-day-self-care-and-beauty-gift-guide-8950.amp\">The Ultimate Valentine's Day Self-Care And Beauty Gift Guide - February 11, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_iUwjTJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/elle.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://elle.in/valentines-day-gifts-for-her/\" target=\"_blank\" title=\"https://elle.in/valentines-day-gifts-for-her/\">Don’t Know What To Buy Her? The Perfect Valentine’s Day Gifting Guide Is Here - February 10, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_UzpqC3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/forbes.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://loveindus.com/pages/press\" target=\"_blank\" title=\"https://loveindus.com/pages/press\">Beauty Pick - January 21, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_MeF3LT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/essence.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.essence.com/beauty/new-beauty-launches-november-2021/#1131517\" target=\"_blank\" title=\"https://www.essence.com/beauty/new-beauty-launches-november-2021/#1131517\">These New Beauty Launches Can Easily Serve As Perfect Last-Minute Gifts - January 11, 2022</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_gUQ4BW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Womens-Health-Logo_sq.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.womenshealthmag.com/life/g32320782/gifts-for-teenage-girls/\" target=\"_blank\" title=\"https://www.womenshealthmag.com/life/g32320782/gifts-for-teenage-girls/\">65 Best Gifts For Teenage Girls They'll Actually Want And Love This Holiday Season - November 23, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_j8TWty": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/harpers.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://loveindus.com/pages/press\" target=\"_blank\" title=\"https://loveindus.com/pages/press\">Conscious Beauty Terms To Know - November 21, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_JWi64T": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Womens-Health-Logo_sq.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.womenshealthmag.com/life/g32177540/best-vegan-gifts/\" target=\"_blank\" title=\"https://www.womenshealthmag.com/life/g32177540/best-vegan-gifts/\">35 Best Vegan Gifts Of 2021 For All The Plant-Based People In Your Life - November 17, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_4DjWzH": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Vogue_India_Logo_1600x_a00f5d3b-c555-47af-9e3c-30d05d2a1c74.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.vogue.in/beauty/content/all-you-need-to-know-about-your-skin-barrier-and-why-it-needs-the-extra-attention\" target=\"_blank\" title=\"https://www.vogue.in/beauty/content/all-you-need-to-know-about-your-skin-barrier-and-why-it-needs-the-extra-attention\">All you need to know about your skin barrier and why it needs the extra attention - November 15, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_qrecec": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Byrdie_white_background.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.byrdie.com/highlights-for-dark-hair-5069702\" target=\"_blank\" title=\"https://www.byrdie.com/highlights-for-dark-hair-5069702\">How To Get Liquid Gold Skin - October 29, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_qpityc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Womens-Health-Logo_sq.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.womenshealthmag.com/life/a19992662/last-minute-mothers-day-gifts/\" target=\"_blank\" title=\"https://www.womenshealthmag.com/life/a19992662/last-minute-mothers-day-gifts/\">50 Best Last-Minute Mother’s Day Gifts - May 5, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_cfAjdx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Galorev2.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://galoremag.com/spring-beauty-haul-that-will-bring-the-spa-to-your-home/\" target=\"_blank\" title=\"https://galoremag.com/spring-beauty-haul-that-will-bring-the-spa-to-your-home/\">Bring The Spa To Your Home - April 5, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_897tPE": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/InStyle-logo.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://web.archive.org/web/20210309053343/https://www.instyle.com/beauty/best-indie-beauty-brands\" target=\"_blank\" title=\"https://web.archive.org/web/20210309053343/https://www.instyle.com/beauty/best-indie-beauty-brands\">11 Women-Founded Indie Beauty Brands to Shop – March 8, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_4X3mRT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/beautyindependent-rev.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.beautyindependent.com/new-year-beauty-brand-launches-excited/\" target=\"_blank\" title=\"https://www.beautyindependent.com/new-year-beauty-brand-launches-excited/\">Seven Brand Launches We're Excited For - January 19, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_NJWXHi": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Zoe_Report_logo_rev.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.thezoereport.com/p/11-ayurvedic-beauty-brands-youll-want-to-know-try-asap-51509594\" target=\"_blank\" title=\"https://www.thezoereport.com/p/11-ayurvedic-beauty-brands-youll-want-to-know-try-asap-51509594\">Beauty Brands You'll Want To Know — And Try ASAP - January 3, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_UdaLta": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/beautynews_logo_new_2020_square.png",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.beautynewsnyc.com/beauty-the-best/love-indus-skincare-an-interview-with-its-founder-surbhee-grover/\" target=\"_blank\" title=\"https://www.beautynewsnyc.com/beauty-the-best/love-indus-skincare-an-interview-with-its-founder-surbhee-grover/\">Interview with Founder Surbhee Grover - January 8, 2021</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        },
+        "column_tRMBFa": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Byrdie_white_background.jpg",
+            "title": "",
+            "title_size": "h3",
+            "text": "<p><a href=\"https://www.byrdie.com/highlights-for-dark-hair-5069702\" target=\"_blank\" title=\"https://www.byrdie.com/highlights-for-dark-hair-5069702\">December's Best Beauty Launches - December 23, 2020</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "column_APrxxt",
+        "column_WtxwPM",
+        "column_A9ehcB",
+        "column_cxD43Y",
+        "column_mpmeya",
+        "column_xPiXnd",
+        "column_KiNpkV",
+        "column_h7UDnE",
+        "column_ByG7Wn",
+        "column_tWBdxt",
+        "column_rX8mLw",
+        "column_zDCrhA",
+        "column_VHDyjy",
+        "column_kGw9Rw",
+        "column_gQGLYa",
+        "column_nqqgDK",
+        "column_REqA66",
+        "column_VGDzQN",
+        "column_kcmy9R",
+        "column_XrhWpY",
+        "column_KnMpih",
+        "column_R6nqcj",
+        "column_WYYDE8",
+        "column_kNyAyf",
+        "column_EUm6wE",
+        "column_UnGgQn",
+        "column_p39diN",
+        "column_y7a4x3",
+        "column_fiVWY4",
+        "column_KLibqj",
+        "column_b7BANk",
+        "column_3xU4pL",
+        "column_wRq3fT",
+        "column_7A6L9N",
+        "column_hU8bYE",
+        "column_iUwjTJ",
+        "column_UzpqC3",
+        "column_MeF3LT",
+        "column_gUQ4BW",
+        "column_j8TWty",
+        "column_JWi64T",
+        "column_4DjWzH",
+        "column_qrecec",
+        "column_qpityc",
+        "column_cfAjdx",
+        "column_897tPE",
+        "column_4X3mRT",
+        "column_NJWXHi",
+        "column_UdaLta",
+        "column_tRMBFa"
+      ],
+      "custom_css": [
+        ".media-wrapper {background-color: unset !important;}",
+        ".rte a {background-image: none; color: #666;}",
+        "@media screen and (max-width: 749px) {.multicolumn-list__item {max-width: 50% !important; margin: 0 0 1rem; }}"
+      ],
+      "settings": {
+        "image_ratio": "adapt",
+        "image_position": "center center",
+        "text_alignment": "left",
+        "show_divider": false,
+        "image_width": "full",
+        "columns_desktop": 4,
+        "open_in_new_tab": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "mobile_text_alignment": "left",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multicolumn_nB7J3e"
+  ]
+}

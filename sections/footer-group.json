@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer-group.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-0": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Our Policies",
+            "menu": "new-footer-menu"
+          }
+        },
+        "footer-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Explore",
+            "menu": "explore"
+          }
+        },
+        "footer-2": {
+          "type": "link_list",
+          "disabled": true,
+          "settings": {
+            "heading": "More",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "footer-0",
+        "footer-1",
+        "footer-2"
+      ],
+      "settings": {
+        "show_divider": true,
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to our newsletter",
+        "newsletter_text": "<p>Sign up for skincare science, rare rituals, and exclusive offers.</p>",
+        "return_url": "",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "social_heading": "",
+        "enable_country_selector": false,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": false,
+        "copyright_text": "All rights reserved.",
+        "colors_text": "#6a6868",
+        "colors_heading": "#6a6868",
+        "colors_link": "#6a6868",
+        "colors_border": "#d2d5d9",
+        "colors_background": "#faf9f8",
+        "gradient_background": ""
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

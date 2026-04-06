@@ -1,0 +1,1266 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "empty-space": {
+      "type": "empty-space",
+      "settings": {
+        "desktop_height": 36,
+        "mobile_height": 16
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "title_size": "h2",
+            "show_price": false,
+            "price_size": "medium"
+          }
+        },
+        "text_WbCqRP": {
+          "type": "text",
+          "settings": {
+            "icon": "none",
+            "text": "Amrutini® Ritual Spa Set – A Luxury Skincare Ritual, Anytime, Anywhere",
+            "text_style": "subtitle"
+          }
+        },
+        "custom_liquid_M7pnHk": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ product.metafields.custom.products_subheading }}"
+          }
+        },
+        "judge_me_reviews_preview_badge_D3HB6k": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "price_size": "medium",
+            "show_badges": false,
+            "sale_badge_basis": "auto"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "enable_color_swatches": true,
+            "swatches_source": "file",
+            "swatch_type": "round",
+            "enable_swatch_cross": true,
+            "enable_swatch_unavailable_click": false,
+            "size_chart": ""
+          }
+        },
+        "custom_liquid_b6JHfQ": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<br>"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {}
+        },
+        "custom_liquid_7T6PPQ": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{% assign image_url = product.metafields.custom.product_first_image %}\n{% if image_url != blank %} \n <img src=\"{{ image_url.value | image_url }}\" class=\"sidimgwidth\">\n{% endif %}"
+          }
+        },
+        "custom_liquid_X8jdV6": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"uspsection\">\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon1 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext1 }}</p>\n    </div>\n\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon2 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext2 }}</p>\n    </div>\n\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon3 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext3 }}</p>\n    </div>\n</div>"
+          }
+        },
+        "image_Lrich4": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "{{ product.metafields.custom.product_first_image.value }}",
+            "height": 100,
+            "link": ""
+          }
+        },
+        "countdown": {
+          "type": "countdown",
+          "settings": {
+            "heading": "Hurry up ! Sale end in:",
+            "number_size": "compact",
+            "colors_heading": "#da3f3f",
+            "colors_text": "#da3f3f",
+            "colors_background": "#ffeeee"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_Tg3edf": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "Full Ingredient list",
+            "content": "<h4>Amrutini Luminosity Dewdrops Serum</h4><p>Aqua/Water/Eau, Butylene Glycol, Hexylene Glycol, Glycerin, Niacinamide, Acetyl Glucosamine, Sodium PCA, Urea, Camellia Sinensis (Makaibari Tea) Leaf Extract, Hydrolyzed (Muga) Silk, Copper Gluconate, Withania Somnifera (Ashwagandha) Root Extract, Tremella Fuciformis (Mushroom) Extract, Hibiscus Abelmoschus Extract, Clitoria Ternatea Flower Extract, Morus Alba Fruit (Mulberry) Extract, Sodium Hyaluronate, Ammonium Acryloyldimethyltaurate/VP Copolymer, Biosaccharide Gum-1, Caprylyl Glycol, Decyl Glucoside, Dipotassium Glycyrrhizate, Ferric Hexapeptide-35, Panthenol, Pentylene Glycol, Phenoxyethanol, Polyglutamic Acid, Potassium Sorbate, Propanediol, Sodium Benzoate, Trehalose, Xanthan Gum, Parfum/Fragrance (natural blend including Tuberose and Jasmine extracts).</p><h4>Amrutini Precious Potion Vital Cream</h4><p>Aqua/Water/Eau, Dimethicone, Glycerin, C12-15 Alkyl Benzoate, Octyldodecanol, Phenyl Trimethicone, Butylene Glycol, Jojoba Esters, Polysilicone-11, Glyceryl Stearate, Squalane, Butyrospermum Parkii (Shea) Butter, Cetearyl Alcohol, Cetearyl Olivate, Acetyl Glucosamine, Niacinamide, Prunus Armeniaca (Apricot) Kernel Oil, Sodium Stearoyl Glutamate, Sucrose Palmitate, Camellia Sinensis (Makaibari Tea) Leaf Extract, Hydrolyzed (Muga) Silk, Copper PCA, Withania Somnifera (Ashwagandha) Root Extract, Clitoria Ternatea Flower Extract, Cocos Nucifera (Coconut) Seed Butter, Caffeine, Sodium Hyaluronate, Ammonium Acryloyldimethyltaurate/VP Copolymer, Behenyl Alcohol, Caprylyl Glycol, Carbomer, Cholesterol, Chromium Oxide Greens, Coco-Glucoside, Dipotassium Glycyrrhizate, Hexylene Glycol, Hydrogenated Lecithin, Mica, Palmitic Acid, Palmitoyl Tetrapeptide-7, Palmitoyl Tripeptide-1, Phenoxyethanol, Silica, Sorbitan Olivate, Synthetic Sapphire, Tin Oxide, Titanium Dioxide, Xanthan Gum, Parfum/Fragrance (natural blend including Tuberose and Jasmine extracts).</p>",
+            "page": "",
+            "custom_liquid": "",
+            "keep_open": false
+          }
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "disabled": true,
+          "settings": {
+            "inventory_threshold": 20,
+            "show_inventory_transfer": true,
+            "color_scheme": "accent-3"
+          }
+        },
+        "image_UxUfi7": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "{{ product.metafields.custom.product_second_image.value }}",
+            "height": 100,
+            "link": ""
+          }
+        },
+        "custom_liquid_hCxTTU": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "{% assign image_url = product.metafields.custom.product_second_image %}\n{% if image_url != blank %} \n <img src=\"{{ image_url.value | image_url }}\" class=\"sidimgwidth\">\n{% endif %}"
+          }
+        },
+        "custom_liquid_pcmWTW": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<p class=\"product_test\">{{ product.metafields.custom.best_for_heading }}</p>\n\n<div class=\"uspsection\">\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon4 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext4 }}</p>\n    </div>\n\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon5 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext5 }}</p>\n    </div>\n\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon6 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext6 }}</p>\n    </div>\n</div>"
+          }
+        },
+        "collapsible_tab-0": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "{{ product.metafields.custom.best_for_heading.value }}",
+            "content": "",
+            "page": "",
+            "custom_liquid": "<div class=\"uspsection\">\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon4 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext4 }}</p>\n    </div>\n\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon5 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext5 }}</p>\n    </div>\n\n    <div class=\"uspcol\">\n        {% assign image_url = product.metafields.custom.icon6 %}\n        {% if image_url != blank %} \n         <img src=\"{{ image_url.value | image_url }}\">\n        {% endif %}\n        <p>{{ product.metafields.custom.icontext6 }}</p>\n    </div>\n</div>",
+            "keep_open": false
+          }
+        },
+        "collapsible_tab_VedHWz": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "Press",
+            "content": "{{ product.metafields.custom.product_press | metafield_tag }}",
+            "page": "",
+            "custom_liquid": "",
+            "keep_open": false
+          }
+        },
+        "collapsible_tab-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "How to use",
+            "content": "{{ product.metafields.custom.product_how_to_use | metafield_tag }}",
+            "page": "",
+            "custom_liquid": "",
+            "keep_open": false
+          }
+        },
+        "collapsible_tab_cKpkDf": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "FAQs",
+            "content": "<p>{{ product.metafields.custom.product_faq | metafield_tag }}</p>",
+            "page": "",
+            "custom_liquid": "",
+            "keep_open": false
+          }
+        },
+        "collapsible_tab_8CJykT": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "heading": "Full Ingredients List",
+            "content": "{{ product.metafields.custom.product_full_ingredients_list | metafield_tag }}",
+            "page": "",
+            "custom_liquid": "",
+            "keep_open": false
+          }
+        },
+        "related_buttons": {
+          "type": "related_buttons",
+          "disabled": true,
+          "settings": {
+            "show_icons": false
+          }
+        },
+        "sticky_cart": {
+          "type": "sticky_cart",
+          "settings": {
+            "show_quantity_selector": false
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "text_WbCqRP",
+        "custom_liquid_M7pnHk",
+        "judge_me_reviews_preview_badge_D3HB6k",
+        "price",
+        "variant_picker",
+        "custom_liquid_b6JHfQ",
+        "rating",
+        "custom_liquid_7T6PPQ",
+        "custom_liquid_X8jdV6",
+        "image_Lrich4",
+        "countdown",
+        "buy_buttons",
+        "description",
+        "collapsible_tab_Tg3edf",
+        "inventory_status",
+        "image_UxUfi7",
+        "custom_liquid_hCxTTU",
+        "custom_liquid_pcmWTW",
+        "collapsible_tab-0",
+        "collapsible_tab_VedHWz",
+        "collapsible_tab-1",
+        "collapsible_tab_cKpkDf",
+        "collapsible_tab_8CJykT",
+        "related_buttons",
+        "sticky_cart"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_position": "left",
+        "media_size": "medium",
+        "gallery_layout": "thumbnail_slider",
+        "image_ratio": "adapt",
+        "show_featured_media": false,
+        "show_thumbnails": true,
+        "hide_variants": true,
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "mobile_image_ratio": "adapt_first",
+        "show_mobile_thumbnails": true,
+        "padding_top": 0,
+        "padding_bottom": 72
+      }
+    },
+    "rich_text_X7RmJF": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_T6tczb": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.proven_results_heading.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_T6tczb"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "image_banner_NYaniq": {
+      "type": "image-banner",
+      "disabled": true,
+      "settings": {
+        "image": "{{ product.metafields.custom.product_proven_results_desktop_image.value }}",
+        "image_position": "center center",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "adapt",
+        "show_text_box": false,
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_image": "{{ product.metafields.custom.product_proven_results_mobile_image.value }}",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "adapt",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_irkekr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_EcmQVY": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.key_ingredients_heading.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EcmQVY"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "tab_collage_yJHxrr": {
+      "type": "tab-collage",
+      "blocks": {
+        "image_UqYpdA": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_key_ingredient_image_1.value }}",
+            "image_position": "center center",
+            "heading": "{{ product.metafields.custom.product_key_ingredient_heading_1.value }}",
+            "description": "{{ product.metafields.custom.product_key_ingredient_description_1 | metafield_tag }}",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_Q6fJxq": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_key_ingredient_image_2.value }}",
+            "image_position": "center center",
+            "heading": "{{ product.metafields.custom.product_key_ingredient_heading_2.value }}",
+            "description": "{{ product.metafields.custom.product_key_ingredient_description_2 | metafield_tag }}",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_XAkPfc": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_key_ingredient_image_3.value }}",
+            "image_position": "center center",
+            "heading": "{{ product.metafields.custom.product_key_ingredient_heading_3.value }}",
+            "description": "{{ product.metafields.custom.product_key_ingredient_description_3 | metafield_tag }}",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_atbz7t": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_key_ingredient_image_4.value }}",
+            "image_position": "center center",
+            "heading": "{{ product.metafields.custom.product_key_ingredient_heading_4.value }}",
+            "description": "{{ product.metafields.custom.product_key_ingredient_description_4 | metafield_tag }}",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_QzQmTy": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_key_ingredient_image_5.value }}",
+            "image_position": "center center",
+            "heading": "{{ product.metafields.custom.product_key_ingredient_heading_5.value }}",
+            "description": "{{ product.metafields.custom.product_key_ingredient_description_5 | metafield_tag }}",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_jm4jXh": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_key_ingredient_image_6.value }}",
+            "image_position": "center center",
+            "heading": "{{ product.metafields.custom.product_key_ingredient_heading_6.value }}",
+            "description": "{{ product.metafields.custom.product_key_ingredient_description_6 | metafield_tag }}",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_UqYpdA",
+        "image_Q6fJxq",
+        "image_XAkPfc",
+        "image_atbz7t",
+        "image_QzQmTy",
+        "image_jm4jXh"
+      ],
+      "custom_css": [
+        ".title-wrapper .title {display: none;}",
+        "@media screen and (min-width: 990px) {.title-wrapper {margin-bottom: 0rem; }}"
+      ],
+      "settings": {
+        "layout": "text_first",
+        "text_box_position": "top",
+        "text_alignment": "left",
+        "image_ratio": "500px",
+        "make_collapsible_rows": false,
+        "full_width": true,
+        "show_divider": false,
+        "heading": "{{ product.metafields.custom.dummyingredients.value }}",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "mobile_layout": "text_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt",
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#ffffff",
+        "colors_border": "#d2d5d9",
+        "colors_background": "#6a6868",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_hftHHz": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XCKPFH": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.before_after.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XCKPFH"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "image_comparison_rDdrbE": {
+      "type": "image-comparison",
+      "blocks": {
+        "look_Ta7U3L": {
+          "type": "look",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_before_desktop_image.value }}",
+            "image_mobile": "{{ product.metafields.custom.product_before_mobile_image.value }}",
+            "title": "",
+            "title_size": "small",
+            "title_position": "start"
+          }
+        },
+        "look_DrynnP": {
+          "type": "look",
+          "settings": {
+            "image": "{{ product.metafields.custom.product_after_desktop_image.value }}",
+            "image_mobile": "{{ product.metafields.custom.product_after_mobile_image.value }}",
+            "title": "",
+            "title_size": "small",
+            "title_position": "start"
+          }
+        }
+      },
+      "block_order": [
+        "look_Ta7U3L",
+        "look_DrynnP"
+      ],
+      "settings": {
+        "layout": "horizontal",
+        "image_ratio": "adapt",
+        "mobile_image_ratio": "adapt",
+        "full_width": true,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "colors_line": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_w4Eati": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_jLiDc7": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.the_experience.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jLiDc7"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "custom_liquid_w7eikA": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div class=\"videodiv\">\n\n  <div class=\"videodiv1\">\n  \n{{ product.metafields.custom.experience_video }}\n\n\n  </div>\n\n  <div class=\"videodiv2 videodiv3\">\n   {% assign image_url = product.metafields.custom.experience_image_desktop %}\n{% if image_url != blank %} \n <img src=\"{{ image_url.value | image_url }}\" class=\"brand_desktop\">\n{% endif %}\n\n\n{% assign image_url = product.metafields.custom.experience_image_mobile %}\n{% if image_url != blank %} \n <img src=\"{{ image_url.value | image_url }}\" class=\"brand_mobile\">\n{% endif %}\n     \n \n  </div>\n\n</div>",
+        "full_width": true,
+        "show_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_UhtGTt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LryQhT": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.the_region_heading.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LryQhT"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "tab_collage_rzWwBE": {
+      "type": "tab-collage",
+      "blocks": {
+        "image_77VrU3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_ProductPage_SpaSet-05.jpg",
+            "image_position": "center center",
+            "heading": "> Step 1 - Exfoliation with Copper Crusted Silk Cocoons",
+            "description": "<p>Soak a Copper-Crusted Silk Cocoon in warm water for about a minute. Slip it onto your forefinger and gently exfoliate your freshly cleansed face in circular motions, focusing on areas prone to buildup. Use 1–2x/week.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_VfVNKQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_ProductPage_SpaSet-06.jpg",
+            "image_position": "center center",
+            "heading": "> Step 2 - Amrutini® Luminosity Dewdrops",
+            "description": "<p>Apply 2–4 drops of Amrutini® Luminosity Dewdrops Serum to face and neck for instant, weightless hydration and radiance.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_EMty7H": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_ProductPage_SpaSet-07.jpg",
+            "image_position": "center center",
+            "heading": "> Step 3 - Amrutini® Precious Potion",
+            "description": "<p>Follow with Amrutini® Precious Potion Vital Cream to lock in moisture, deeply nourish, and strengthen your skin’s barrier.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        },
+        "image_cDEKEA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LI_ProductPage_SpaSet-08.jpg",
+            "image_position": "center center",
+            "heading": "> Step 4 - Makaibari® Silver Tips Imperial Tea",
+            "description": "<p>Sip a warm cup of Makaibari Silver Tips Imperial Tea while your skin drinks in the luxury — a sensory ritual for body and mind.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_77VrU3",
+        "image_VfVNKQ",
+        "image_EMty7H",
+        "image_cDEKEA"
+      ],
+      "name": "t:sections.tab-collage.presets.name",
+      "settings": {
+        "layout": "text_first",
+        "text_box_position": "top",
+        "text_alignment": "left",
+        "image_ratio": "adapt",
+        "make_collapsible_rows": false,
+        "full_width": true,
+        "show_divider": false,
+        "heading": "How to Use – Your At-Home Spa Ritual",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "mobile_layout": "text_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "auto",
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#ffffff",
+        "colors_border": "#d2d5d9",
+        "colors_background": "#1a1b18",
+        "gradient_background": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_JTTjmQ": {
+      "type": "rich-text",
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "faq_4CN9pT": {
+      "type": "faq",
+      "blocks": {
+        "question_rhYkEn": {
+          "type": "question",
+          "settings": {
+            "title": "What skin types is the Mini Spa Set suitable for?",
+            "text": "<p>All skin types — even sensitive. The serum absorbs instantly, and the cream nourishes deeply without feeling heavy.</p>"
+          }
+        },
+        "question_DYwHbp": {
+          "type": "question",
+          "settings": {
+            "title": "Can I layer makeup after using these products?",
+            "text": "<p>Absolutely. The fast-absorbing serum is the perfect primer, and the cream creates a smooth, hydrated base for flawless makeup application.</p>"
+          }
+        },
+        "question_MDCehx": {
+          "type": "question",
+          "settings": {
+            "title": " What are Copper-Crusted Silk Cocoons?",
+            "text": "<p>Raw silk cocoons infused with copper — prized for their antioxidant and collagen-supporting benefits. They gently exfoliate while delivering protein and copper to refine texture and support youthful skin.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_rhYkEn",
+        "question_DYwHbp",
+        "question_MDCehx"
+      ],
+      "name": "t:sections.faq.presets.name",
+      "settings": {
+        "narrow": false,
+        "secondary_background": false,
+        "show_divider": false,
+        "heading": "FAQs",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_rEnBJT": {
+      "type": "image-banner",
+      "settings": {
+        "image": "{{ product.metafields.custom.product_the_region_desktop_image.value }}",
+        "image_position": "center center",
+        "text_box_position": "middle-center",
+        "text_alignment": "center",
+        "image_ratio": "adapt",
+        "show_text_box": false,
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_image": "{{ product.metafields.custom.product_the_region_mobile_image.value }}",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "adapt",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_RbdmL4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KDiLhT": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.customer_reviews_heading.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KDiLhT"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "1726810612f1825bb8": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_w3DiEq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_w3DiEq"
+      ],
+      "settings": {
+        "include_margins": true,
+        "show_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_86HqnK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9464zG": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.written_in_heading.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9464zG"
+      ],
+      "settings": {
+        "text_alignment": "center",
+        "mobile_text_alignment": "center",
+        "horizontal_content": false,
+        "narrow": false,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 8
+      }
+    },
+    "slideshow_HMtTJX": {
+      "type": "slideshow",
+      "blocks": {
+        "image_g77F6X": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.blog_desktop_image.value }}",
+            "image_mobile": "{{ product.metafields.custom.blog_mobile_image.value }}",
+            "image_position": "center center",
+            "text_box_position": "middle-center",
+            "subheading": "",
+            "subheading_size": "h5",
+            "heading": "",
+            "heading_size": "h1",
+            "heading_tag": "h2",
+            "text": "",
+            "text_size": "typeset",
+            "button_label": "",
+            "button_link": "{{ product.metafields.custom.blognewlink.value }}",
+            "button_size": "medium",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "image_g77F6X"
+      ],
+      "disabled": true,
+      "settings": {
+        "slideshow_type": "modern",
+        "text_alignment": "left",
+        "image_ratio": "adapt_first",
+        "autorotate": false,
+        "autorotate_speed": 5,
+        "full_width": true,
+        "image_behavior": "none",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt_first",
+        "show_text_below": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#1a1b18",
+        "colors_background": "#ffffff",
+        "colors_overlay": "#ffffff",
+        "colors_overlay_opacity": 0,
+        "colors_navigation_text": "#ffffff",
+        "colors_navigation_background": "#1a1b18",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_en93cB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_bafj6w": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ product.metafields.custom.product_blog_title.value }}",
+            "heading_size": "h2",
+            "heading_tag": "h4"
+          }
+        },
+        "text_eCDgDh": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.product_blog_description | metafield_tag }}",
+            "text_size": "typeset",
+            "secondary_color": false
+          }
+        },
+        "button_nBcXaj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More",
+            "button_link": "{{ product.metafields.custom.blognewlink.value }}",
+            "button_size": "small",
+            "button_style_secondary": true
+          }
+        },
+        "text_DnMqw7": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "text_size": "typeset",
+            "secondary_color": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_bafj6w",
+        "text_eCDgDh",
+        "button_nBcXaj",
+        "text_DnMqw7"
+      ],
+      "settings": {
+        "image": "{{ product.metafields.custom.product_blog_image.value }}",
+        "image_position": "center center",
+        "layout": "text_first",
+        "text_box_position": "middle",
+        "text_alignment": "left",
+        "image_ratio": "adapt",
+        "enlarge_content": false,
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "image_mobile": "{{ product.metafields.custom.blog_new_mobile_image.value }}",
+        "mobile_layout": "text_first",
+        "mobile_text_alignment": "left",
+        "mobile_image_ratio": "adapt",
+        "enable_video_looping": false,
+        "video_url": "",
+        "use_custom_colors": true,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_background": "#6a6868",
+        "gradient_background": "",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "scrolling_promotion_DMypNb": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "image_DiYEVA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_cTzJe4": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "custom_icon": "",
+            "text": "CLEAN AND TOXIN-FREE",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_mTMVC7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_PFq9Fr": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "custom_icon": "",
+            "text": "NO ARTIFICIAL FRAGRANCE",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_Mr6YMq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_KBddmc": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "custom_icon": "",
+            "text": "NO ARTIFICIAL COLOR",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_gNzfLq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_3RyQAL": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "custom_icon": "",
+            "text": "LEAPING BUNNY CERTIFIED",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_CU7nR6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_VPMQjr": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "large",
+            "custom_icon": "",
+            "text": "DERMATOLOGIST TESTED",
+            "text_size": 18,
+            "link": ""
+          }
+        },
+        "image_DcwU6T": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AILOGO.webp",
+            "height": 52,
+            "link": ""
+          }
+        },
+        "announcement_gnPgkz": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "icon_size": "medium",
+            "custom_icon": "",
+            "text": "SUSTAINABLE PACKAGING",
+            "text_size": 20,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_DiYEVA",
+        "announcement_cTzJe4",
+        "image_mTMVC7",
+        "announcement_PFq9Fr",
+        "image_Mr6YMq",
+        "announcement_KBddmc",
+        "image_gNzfLq",
+        "announcement_3RyQAL",
+        "image_CU7nR6",
+        "announcement_VPMQjr",
+        "image_DcwU6T",
+        "announcement_gnPgkz"
+      ],
+      "settings": {
+        "direction": "left",
+        "speed": 1.6,
+        "show_divider": true,
+        "use_custom_colors": true,
+        "colors_icon": "#3f464b",
+        "colors_text": "#212326",
+        "colors_background": "#faf9f8",
+        "gradient_background": "",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_list_limit": 4,
+        "show_divider": true,
+        "heading": "RECOMMENDED RITUAL",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "adapt",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_quick_buy": true,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "recently-viewed-products": {
+      "type": "recently-viewed-products",
+      "disabled": true,
+      "settings": {
+        "show_divider": false,
+        "heading": "Recently Viewed",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "image_ratio": "adapt",
+        "image_position": "center center",
+        "enable_image_fill": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "show_quick_buy": true,
+        "enable_quick_view": true,
+        "enable_color_swatches": true,
+        "enable_countdown": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "video_PYQgmA": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "enable_video_looping": false,
+        "video_url": "",
+        "description": "",
+        "full_width": false,
+        "show_divider": false,
+        "heading": "{{ product.metafields.custom.pr_video_head.value }}",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "empty-space",
+    "main",
+    "rich_text_X7RmJF",
+    "image_banner_NYaniq",
+    "rich_text_irkekr",
+    "tab_collage_yJHxrr",
+    "rich_text_hftHHz",
+    "image_comparison_rDdrbE",
+    "rich_text_w4Eati",
+    "custom_liquid_w7eikA",
+    "rich_text_UhtGTt",
+    "tab_collage_rzWwBE",
+    "rich_text_JTTjmQ",
+    "faq_4CN9pT",
+    "image_banner_rEnBJT",
+    "rich_text_RbdmL4",
+    "1726810612f1825bb8",
+    "rich_text_86HqnK",
+    "slideshow_HMtTJX",
+    "image_with_text_en93cB",
+    "scrolling_promotion_DMypNb",
+    "product-recommendations",
+    "recently-viewed-products",
+    "video_PYQgmA"
+  ]
+}

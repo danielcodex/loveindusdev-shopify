@@ -1,0 +1,134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "narrow": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "logo_list_pHpw3C": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_Q3PJTb": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Artboard_2_1.png",
+            "link": "https://www.qvc.com/beauty/love-indus/_/N-rhtyZ14fooob/c.html"
+          }
+        },
+        "logo_RBATyf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/neiman-marcus-logo.png",
+            "link": "https://www.neimanmarcus.com/en-in/c/designers-love-indus-cat86540766"
+          }
+        },
+        "logo_7w7XX3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Vanity_Wagon_Logo.png",
+            "link": "https://vanitywagon.in/collections/love-indus"
+          }
+        },
+        "logo_cKeAcH": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/PG.jpg",
+            "link": "https://projectgaianyc.com/lander"
+          }
+        }
+      },
+      "block_order": [
+        "logo_Q3PJTb",
+        "logo_RBATyf",
+        "logo_7w7XX3",
+        "logo_cKeAcH"
+      ],
+      "custom_css": [
+        "@media screen and (max-width: 989px) {.logo-bar__item {flex: 0 1 15rem; }}",
+        "@media screen and (min-width: 990px) {.logo-bar__item {flex: 0 1 20rem; }}"
+      ],
+      "settings": {
+        "opacity": 100,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "logo_list_DNk463": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_qeEcTf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Showfields_WATERMARK_TAGLINE_LOGO_-_sq.png",
+            "link": "https://showfields.com/lander"
+          }
+        },
+        "logo_fErC8Q": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/verishop-inc-logo-vector_-_sq.png",
+            "link": "https://www.verishopgroup.com"
+          }
+        },
+        "logo_kTwrgL": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/beautyologielotuslogo.png",
+            "link": "https://beautyologie.com/pages/brands"
+          }
+        },
+        "logo_TerRL9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG-20210825-WA0001_v2.jpg",
+            "link": "https://www.kindlife.in"
+          }
+        }
+      },
+      "block_order": [
+        "logo_qeEcTf",
+        "logo_fErC8Q",
+        "logo_kTwrgL",
+        "logo_TerRL9"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media screen and (max-width: 989px) {.logo-bar__item {flex: 0 1 15rem; }}",
+        "@media screen and (min-width: 990px) {.logo-bar__item {flex: 0 1 20rem; }}"
+      ],
+      "settings": {
+        "opacity": 100,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "main",
+    "logo_list_pHpw3C",
+    "logo_list_DNk463"
+  ]
+}

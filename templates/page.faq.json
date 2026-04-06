@@ -1,0 +1,294 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "narrow": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collapsible_content_CyB6Rp": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_cah3kP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Products & Collections",
+            "row_content": "<p><strong>Product Philosophy</strong></p><p>To learn more, please visit our <a href=\"/pages/philosophy\" title=\"Philosophy\">Product Philosophy</a> page.</p><p><strong>Where are your products manufactured?</strong></p><p>In the US - at an FDA-regulated and cGMP-compliant manufacturing facility specializing in skincare and personal care products.</p><p><strong>How safe are your products</strong></p><p>Very. All our products have been through a rigorous process of testing (including for allergies, and on sensitive skin) and dermatologist approval (above and beyond anything the FDA requires).  We also tested on volunteers (humans, never on animals) and our products are free of artificial colors/ fragrances, parabens, phthalates, sulfates & formaldehyde.  We’ve also spent quite a bit of time and effort in identifying and verifying safe and sustainable sources for our ingredients.</p><p><strong>What does “clean beauty” mean?</strong></p><p>To us, “clean beauty” means products made with ingredients that are widely considered to be safe for humans.  Our products use natural and synthetic ingredients that are known to be safe and non-toxic.</p><p><strong>What does “conscious beauty” mean?</strong></p><p>To us, it means making products in a way that allows us to sleep peacefully at night.  For example, we don’t use conflict minerals or any ingredients made with child labor or environmentally destructive practices in any of our products.  And we don’t test on animals.</p><p><strong>Are your products Ayurveda based?</strong></p><p>Ayurveda is an ancient alternative medicine system focused on holistic wellbeing.  There is some intersection between the ingredients and principles incorporated in our products and those supported by Ayurveda, but we are not focused on Ayurveda.  Our collections are inspired by rich regional rituals, ingredients and minerals from the Indian sub-continent that have been made more potent using the power and precision of technology. Unlike Ayurveda, where the elements and focus is on natural ingredients, we use precious botanicals as well as lab-designed clean synthetics – and incorporate the best of both to create highly efficacious and result-oriented, safe offerings.</p><p><strong>What is Amrutini®?</strong></p><p>Amrutini® is a protein-rich blend of ingredients focused on building skin strength.  Key ingredients include – Liquified Muga Silk, Vegan Ghee, Ashwagandha (Indian Ginseng) and Copper – all of which come together to create a rich elixir that helps strengthen your skin.  Refer to <a href=\"/pages/amrutini\" title=\"Amrutini\">Our Collections</a> for more information on Amrutini® and our other offerings.</p><p><strong>Are your products vegan</strong></p><p>Depends on your definition of vegan.  Our <a href=\"/pages/amrutini\" title=\"Amrutini\">Amrutini®</a> range contains silk.  If you feel insect derived products, such as honey and silk, are vegan, then yes, our products are vegan.  If not, then our <a href=\"/pages/amrutini\" title=\"Amrutini\">Amrutini®</a> range is not vegan, but the <a href=\"/products/velvet-08-broadway-bright-detox-mask\" title=\"Velvet :08 Broadway Bright Detox Mask\">Velvet :08 Broadway Bright Detox Mask</a> and <a href=\"/products/freedom-of-expression-dual-purpose-line-limiter\" title=\"Freedom of Expression\">Freedom of Expression – Dual-Purpose Line Limiter</a> are.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_DDTqEX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Partner with us",
+            "row_content": "<p><strong>Where can I buy your products?</strong></p><p>At this time, only on our website, loveindus.com. We are exploring specialty retail partners and if you have any ideas/favorite stores please e-mail us at <a href=\"mailto:info@loveindus.com\" title=\"mailto:info@loveindus.com\">info@loveindus.com</a></p><p><strong>Does Love, Indus have a referral program?</strong></p><p>Coming soon, but in the interim, please do spread the word – there is nothing that gives us more happiness than knowing you want to share the Love, Indus experience with your friends.</p><p><strong>Work at Love, Indus or partner with us</strong></p><p>Please email <a href=\"mailto:info@loveindus.com\" title=\"mailto:info@loveindus.com\">info@loveindus.com</a> to inquire about employment or partnership opportunities.</p><p><strong>Affiliate Partners</strong></p><p>Want to share Love, Indus products with others? We're always looking for new ambassadors to help spread the word about our potent potions. Please click <a href=\"https://loveindus.com/pages/collab-1\" title=\"https://loveindus.com/pages/collab-1\">here</a> to apply for a spot in our Ambassador Program.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_3pHMB3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "General Info",
+            "row_content": "<p><strong>Shipping & Returns</strong></p><p>Please refer to our <a href=\"https://loveindus.com/pages/shippings-returns\" title=\"https://loveindus.com/pages/shippings-returns\">Shipping and Returns policy</a>.</p><p><strong>What safety measures have you taken in light of the covid-19 pandemic?</strong></p><p>All our partners have instituted stringent COVID protocols to minimize contact with the products and limit the spread of disease.  Our products are manufactured in an FDA regulated, cGMP-compliant facility with multiple microbiological controls throughout the process.  Safety is a priority and we are constantly monitoring our production to ensure safety at all times, and all touch-points.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_q8rRUc": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Giving back",
+            "row_content": "<p><strong>2023 Thanksgiving Sale</strong></p><p>Offer details:</p><ul><li>Free Amrutini® True Brew Transforming Serum worth $120 on orders over $200</li><li>Free Velvet :08 Broadway Bright Detox Mask worth $58 on orders between $100 and $200</li><li>Free Travel Kit worth $17 on orders between $100 and $200</li><li>No code required</li><li>Cannot be combined with any other codes or discounts</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_436tBq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Offers & Promotions",
+            "row_content": "<p><strong>Offers & Promotions</strong></p><p>Offer details:</p><ul><li>Discounts (including our welcome offer) are only valid on full size items and collections</li><li>Discount codes and/or offers cannot be combined on the same order </li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_cah3kP",
+        "collapsible_row_DDTqEX",
+        "collapsible_row_3pHMB3",
+        "collapsible_row_q8rRUc",
+        "collapsible_row_436tBq"
+      ],
+      "settings": {
+        "open_first_collapsible_row": false,
+        "narrow": true,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "heading_tag": "h2",
+        "padding_top": 8,
+        "padding_bottom": 40
+      }
+    },
+    "image-banner": {
+      "type": "image-banner",
+      "blocks": {
+        "image-banner-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "FAQ",
+            "heading_size": "h0",
+            "heading_tag": "h2"
+          }
+        },
+        "image-banner-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Answers to Your Questions</p>",
+            "text_size": "typeset2",
+            "secondary_color": false
+          }
+        }
+      },
+      "block_order": [
+        "image-banner-0",
+        "image-banner-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_position": "center center",
+        "text_box_position": "bottom-center",
+        "text_alignment": "center",
+        "image_ratio": "550px",
+        "show_text_box": false,
+        "full_width": true,
+        "show_divider": false,
+        "image_behavior": "none",
+        "mobile_text_alignment": "center",
+        "mobile_image_ratio": "400px",
+        "stack_images_on_mobile": false,
+        "show_text_below": false,
+        "colors_button_label": "#1a1b18",
+        "colors_button_background": "#ffffff",
+        "colors_text": "#ffffff",
+        "colors_overlay": "#000000",
+        "colors_overlay_opacity": 28,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question-0": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-0",
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5"
+      ],
+      "disabled": true,
+      "settings": {
+        "narrow": true,
+        "secondary_background": false,
+        "show_divider": false,
+        "heading": "",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "heading_tag": "h2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich-text-0": {
+      "type": "rich-text",
+      "blocks": {
+        "rich-text-0-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Can't find what you're looking for?",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        },
+        "rich-text-0-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Send us an email to tell us what's up and someone from our Customer Service team will get back to you as soon as possible. Be sure to include your order number (if you have one).<br/><br/>Please email us at <a href=\"mailto:info@yourstore.com\" title=\"info@yourstore.com\">info@yourstore.com</a></p>",
+            "text_size": "typeset",
+            "secondary_color": false,
+            "highlight_phrases": "",
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "rich-text-0-0",
+        "rich-text-0-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_alignment": "left",
+        "mobile_text_alignment": "left",
+        "horizontal_content": false,
+        "narrow": true,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich-text-1": {
+      "type": "rich-text",
+      "blocks": {
+        "rich-text-1-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Other inquiries? Let's chat.",
+            "heading_size": "h2",
+            "heading_tag": "h2"
+          }
+        },
+        "rich-text-1-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Please email us at <a href=\"mailto:info@yourstore.com\" title=\"shop@yourstore.com\">shop@yourstore.com</a></p>",
+            "text_size": "typeset",
+            "secondary_color": false,
+            "highlight_phrases": "",
+            "highlight_style": "marker"
+          }
+        }
+      },
+      "block_order": [
+        "rich-text-1-0",
+        "rich-text-1-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_alignment": "left",
+        "mobile_text_alignment": "left",
+        "horizontal_content": false,
+        "narrow": true,
+        "show_divider": false,
+        "use_custom_colors": false,
+        "colors_button_label": "#ffffff",
+        "colors_button_background": "#1a1b18",
+        "colors_text": "#212326",
+        "colors_background": "#ffffff",
+        "colors_highlight": "#bbff00",
+        "gradient_background": "",
+        "padding_top": 36,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_CyB6Rp",
+    "image-banner",
+    "faq",
+    "rich-text-0",
+    "rich-text-1"
+  ]
+}
