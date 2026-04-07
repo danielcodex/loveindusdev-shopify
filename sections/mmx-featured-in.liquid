@@ -1,0 +1,162 @@
+{% comment %}
+  Section: mmx-featured-in
+  Description: Scrolling "As Featured In" press logos bar
+{% endcomment %}
+
+<style>
+  .mmx-featured-in {
+    background-color: {{ section.settings.background_color }};
+    padding: 18px 0;
+    overflow: hidden;
+  }
+
+  .mmx-featured-in__track {
+    display: flex;
+    width: max-content;
+    animation: mmx-featured-scroll {{ section.settings.speed }}s linear infinite;
+  }
+
+  .mmx-featured-in__track:hover {
+    animation-play-state: paused;
+  }
+
+  .mmx-featured-in__items {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .mmx-featured-in__label {
+    font-family: var(--mmx-font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+    opacity: 0.7;
+    padding: 0 28px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .mmx-featured-in__item {
+    font-family: var(--mmx-font-serif);
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    color: {{ section.settings.text_color }};
+    padding: 0 28px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .mmx-featured-in__separator {
+    color: {{ section.settings.text_color }};
+    opacity: 0.4;
+    font-size: 8px;
+    flex-shrink: 0;
+  }
+
+  @keyframes mmx-featured-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .mmx-featured-in__item {
+      font-size: 14px;
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<div class="mmx-featured-in" role="region" aria-label="As featured in">
+  <div class="mmx-featured-in__track">
+    <div class="mmx-featured-in__items">
+      <span class="mmx-featured-in__label">
+        <span aria-hidden="true">✦</span>
+        AS FEATURED IN
+      </span>
+      {% for block in section.blocks %}
+        {% if block.type == 'publication' %}
+          <span class="mmx-featured-in__item" {{ block.shopify_attributes }}>{{ block.settings.name }}</span>
+          <span class="mmx-featured-in__separator" aria-hidden="true">◆</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="mmx-featured-in__items" aria-hidden="true">
+      <span class="mmx-featured-in__label">
+        <span>✦</span>
+        AS FEATURED IN
+      </span>
+      {% for block in section.blocks %}
+        {% if block.type == 'publication' %}
+          <span class="mmx-featured-in__item">{{ block.settings.name }}</span>
+          <span class="mmx-featured-in__separator">◆</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MMX Featured In Bar",
+  "tag": "div",
+  "class": "mmx-section-featured-in",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#2B2FD9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll Speed (seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 25
+    }
+  ],
+  "blocks": [
+    {
+      "type": "publication",
+      "name": "Publication",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Publication Name",
+          "default": "Vogue"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Featured In Bar",
+      "blocks": [
+        { "type": "publication", "settings": { "name": "Vogue" } },
+        { "type": "publication", "settings": { "name": "InStyle" } },
+        { "type": "publication", "settings": { "name": "Cosmopolitan" } },
+        { "type": "publication", "settings": { "name": "Refinery29" } },
+        { "type": "publication", "settings": { "name": "StyleCaster" } },
+        { "type": "publication", "settings": { "name": "Beauty Independent" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

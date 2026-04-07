@@ -1,0 +1,156 @@
+{% comment %}
+  Snippet: mmx-review-card
+  Description: Reusable review/testimonial card component
+
+  Usage:
+    {% render 'mmx-review-card',
+      stars: 5,
+      quote: 'Amazing product...',
+      reviewer_name: 'Julie O.',
+      reviewer_label: 'Verified Buyer',
+      review_date: 'Feb 2026',
+      card_bg: '#FFFFFF',
+      text_color: '#1B1F8A'
+    %}
+
+  Parameters:
+    - stars: Integer 1–5 (default: 5)
+    - quote: String — review text
+    - reviewer_name: String — reviewer's name
+    - reviewer_label: String — e.g. "Verified Buyer" (default: 'Verified Buyer')
+    - review_date: String — date string
+    - card_bg: String — card background color (default: '#FFFFFF')
+    - text_color: String — text color (default: '#1B1F8A')
+    - compact: Boolean — smaller inline card style (default: false)
+{% endcomment %}
+
+{% assign card_stars = stars | default: 5 %}
+{% assign card_label = reviewer_label | default: 'Verified Buyer' %}
+{% assign card_bg_color = card_bg | default: '#FFFFFF' %}
+{% assign card_text_color = text_color | default: '#1B1F8A' %}
+{% assign card_compact = compact | default: false %}
+
+<div
+  class="mmx-review-card{% if card_compact %} mmx-review-card--compact{% endif %}"
+  style="background-color: {{ card_bg_color }}; color: {{ card_text_color }};"
+>
+  <div class="mmx-review-card__stars" aria-label="{{ card_stars }} out of 5 stars">
+    {% for i in (1..5) %}
+      <span style="color: {% if i <= card_stars %}#F5A623{% else %}#D1CCC4{% endif %};">★</span>
+    {% endfor %}
+  </div>
+
+  {% if quote != blank %}
+    <blockquote class="mmx-review-card__quote">
+      <p>"{{ quote }}"</p>
+    </blockquote>
+  {% endif %}
+
+  <footer class="mmx-review-card__footer">
+    <div class="mmx-review-card__avatar" aria-hidden="true">
+      {{ reviewer_name | slice: 0 }}
+    </div>
+    <div class="mmx-review-card__meta">
+      <span class="mmx-review-card__name">{{ reviewer_name }}</span>
+      <span class="mmx-review-card__label">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        {{ card_label }}
+        {% if review_date != blank %} · {{ review_date }}{% endif %}
+      </span>
+    </div>
+  </footer>
+</div>
+
+<style>
+  .mmx-review-card {
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 2px 16px rgba(27, 31, 138, 0.06);
+  }
+
+  .mmx-review-card--compact {
+    padding: 20px;
+    gap: 10px;
+    border-radius: 8px;
+  }
+
+  .mmx-review-card__stars {
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .mmx-review-card--compact .mmx-review-card__stars {
+    font-size: 12px;
+  }
+
+  .mmx-review-card__quote {
+    margin: 0;
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    line-height: 1.65;
+    opacity: 0.85;
+  }
+
+  .mmx-review-card--compact .mmx-review-card__quote {
+    font-size: 13px;
+  }
+
+  .mmx-review-card__quote p {
+    margin: 0;
+  }
+
+  .mmx-review-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid rgba(27, 31, 138, 0.08);
+  }
+
+  .mmx-review-card__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1B1F8A;
+    color: #FFFFFF;
+    font-family: var(--mmx-font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .mmx-review-card--compact .mmx-review-card__avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .mmx-review-card__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mmx-review-card__name {
+    font-family: var(--mmx-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .mmx-review-card__label {
+    font-family: var(--mmx-font-sans);
+    font-size: 11px;
+    opacity: 0.55;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+</style>

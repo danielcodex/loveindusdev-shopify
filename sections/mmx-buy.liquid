@@ -1,0 +1,2400 @@
+{% comment %}
+  Section: mmx-buy
+  Description: Product purchase section with dynamic selling plans, gallery from product, and block-based details
+{% endcomment %}
+
+{%- assign product = section.settings.product -%}
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- assign product_form_id = 'mmx-product-form-' | append: section.id -%}
+
+{%- comment -%} Selling plan setup {%- endcomment -%}
+{%- assign has_selling_plans = false -%}
+{%- assign selling_plan_group = product.selling_plan_groups.first -%}
+{%- if selling_plan_group and selling_plan_group.selling_plans.size > 0 -%}
+  {%- assign has_selling_plans = true -%}
+  {%- assign default_selling_plan = selling_plan_group.selling_plans.first -%}
+  {%- for allocation in variant.selling_plan_allocations -%}
+    {%- if allocation.selling_plan.id == default_selling_plan.id -%}
+      {%- assign default_allocation = allocation -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if default_allocation -%}
+    {%- assign sub_price = default_allocation.per_delivery_price -%}
+    {%- assign compare_price = variant.price -%}
+    {%- assign savings = compare_price | minus: sub_price -%}
+    {%- assign savings_percent = savings | times: 100 | divided_by: compare_price -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} Free gift discount code from blocks {%- endcomment -%}
+{%- assign free_gift_discount = '' -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'free_gift' and block.settings.discount_code != blank -%}
+    {%- assign free_gift_discount = block.settings.discount_code -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+  mmx-buy-section {
+    display: block;
+    max-width: 100%;
+  }
+
+  .mmx-buy {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    box-sizing: border-box;
+  }
+
+  .mmx-buy__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: minmax(0, 540px) minmax(0, 580px);
+    gap: 80px;
+    align-items: start;
+    justify-content: center;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* ── Gallery ── */
+  .mmx-buy__gallery {
+    position: sticky;
+    top: 40px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .mmx-buy__main-image-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 24px 64px 0px rgba(0, 25, 159, 0.13);
+    margin-bottom: 16px;
+    background-color: #faf9f8;
+    max-width: 100%;
+  }
+
+  .mmx-buy__gallery-nav {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none;
+  }
+
+  .mmx-buy__gallery-nav-btn {
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.96);
+    color: #00199F;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .mmx-buy__gallery-nav-btn:hover {
+    opacity: 0.95;
+    transform: scale(1.06);
+  }
+
+  .mmx-buy__gallery-nav-btn:focus-visible {
+    outline: 2px solid #00199F;
+    outline-offset: 2px;
+  }
+
+  .mmx-buy__gallery-nav-btn svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .mmx-buy__gallery-nav--hidden {
+    display: none;
+  }
+
+  .mmx-buy__main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: opacity 0.35s ease;
+  }
+
+  .mmx-buy__gallery-badge-reviews {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 100px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: #00199F;
+  }
+
+  .mmx-buy__gallery-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .mmx-buy__gallery-stars svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .mmx-buy__gallery-badge-sold {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 3;
+    background-color: #00199F;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0px 4px 16px rgba(0, 25, 159, 0.3);
+    font-family: var(--mmx-font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.25;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    max-width: calc(100% - 32px);
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .mmx-buy__gallery-badge-sold span {
+    display: block;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 12px;
+  }
+
+  .mmx-buy__thumbnails {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -4px;
+    padding: 0 4px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mmx-buy__thumbnails::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .mmx-buy__thumbnail {
+    width: 135px;
+    height: 125px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(210, 213, 217, 0.5);
+    opacity: 0.55;
+    transition: border-color 0.2s, opacity 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+  }
+
+  .mmx-buy__thumbnail--active {
+    border-color: #00199F;
+    opacity: 1;
+    box-shadow: 0px 6px 20px rgba(0, 25, 159, 0.2);
+  }
+
+  .mmx-buy__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Details blocks ── */
+  .mmx-buy__details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Eyebrow */
+  .mmx-buy__eyebrow-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .mmx-buy__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: #00199F;
+  }
+
+  .mmx-buy__eyebrow svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .mmx-buy__eyebrow-divider {
+    width: 36px;
+    height: 2px;
+    background-color: #00199F;
+  }
+
+  /* Title */
+  .mmx-buy__product-name {
+    font-family: var(--mmx-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: #00199F;
+    margin: 0 0 6px;
+    line-height: 1.2;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .mmx-buy__product-sub {
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    color: #6B6E73;
+    margin: 0 0 14px;
+    line-height: 1.3;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  /* Stock badge */
+  .mmx-buy__stock-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(0, 199, 120, 0.07);
+    border: 1px solid rgba(0, 199, 120, 0.3);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+  }
+
+  .mmx-buy__stock-badge > span:last-child {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  .mmx-buy__stock-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #00C778;
+    flex-shrink: 0;
+  }
+
+  .mmx-buy__stock-text-green {
+    color: #00A862;
+  }
+
+  .mmx-buy__stock-text-dark {
+    color: #00199F;
+  }
+
+  /* Rating */
+  .mmx-buy__rating-row {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .mmx-buy__rating-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .mmx-buy__rating-stars svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .mmx-buy__rating-value {
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: #00199F;
+    margin-left: 8px;
+  }
+
+  .mmx-buy__rating-count {
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    color: #6B6E73;
+  }
+
+  /* ── Purchase options ── */
+  .mmx-buy__purchase-options {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    margin: 16px 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mmx-buy__option {
+    border: 2px solid rgba(210, 213, 217, 0.7);
+    border-radius: 14px;
+    padding: 18px 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    background-color: #ffffff;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mmx-buy__option--selected {
+    border-color: #00199F;
+    background-color: rgba(0, 25, 159, 0.04);
+    box-shadow: 0px 4px 20px rgba(0, 25, 159, 0.12);
+  }
+
+  .mmx-buy__option-popular {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00199F;
+    color: #ffffff;
+    font-family: var(--mmx-font-sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.08px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .mmx-buy__option-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    min-width: 0;
+  }
+
+  .mmx-buy__option-radio {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #C8CBD0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mmx-buy__option-header .mmx-buy__option-radio{
+    display: block;
+  }
+
+  .mmx-buy__option--selected .mmx-buy__option-radio {
+    border-color: #00199F;
+    border-width: 5px;
+  }
+
+  .mmx-buy__option-label {
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    color: #00199F;
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .mmx-buy__option-price {
+    font-family: var(--mmx-font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: #00199F;
+    line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 8px;
+    min-width: 0;
+  }
+
+  .mmx-buy__option-price-original {
+    font-family: var(--mmx-font-sans);
+    text-decoration: line-through;
+    font-size: 15px;
+    font-weight: 400;
+    color: #9CA3AF;
+    margin-left: 0;
+  }
+
+  .mmx-buy__option-savings {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(0, 25, 159, 0.08);
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    color: #00199F;
+    letter-spacing: 0.5px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+
+  .mmx-buy__option-savings svg {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+    color: #00199f;
+  }
+
+  .mmx-buy__option-commitment {
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    color: #9CA3AF;
+    margin-top: 6px;
+    line-height: 1.1;
+  }
+
+  /* ── Subscriber benefits ── */
+  .mmx-buy__benefits {
+    background-color: rgba(0, 25, 159, 0.03);
+    border: 1px solid rgba(0, 25, 159, 0.1);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .mmx-buy__benefits-title {
+    font-family: var(--mmx-font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.32px;
+    text-transform: uppercase;
+    color: #00199F;
+    margin-bottom: 10px;
+  }
+
+  .mmx-buy__benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    color: #00199F;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .mmx-buy__benefit-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .mmx-buy__benefit-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .mmx-buy__benefit-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ── Delivery frequency ── */
+  .mmx-buy__frequency {
+    background-color: #ffffff;
+    border: 1px solid rgba(210, 213, 217, 0.7);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-top: 4px;
+    margin-bottom: 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .mmx-buy__frequency-title {
+    font-family: var(--mmx-font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.32px;
+    text-transform: uppercase;
+    color: #6B6E73;
+    margin-bottom: 12px;
+  }
+
+  .mmx-buy__frequency-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mmx-buy__freq-btn {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 140px;
+    border: 1px solid rgba(210, 213, 217, 0.7);
+    border-radius: 8px;
+    padding: 10px 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    color: #6B6E73;
+    background: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s, background-color 0.2s;
+    position: relative;
+    line-height: 1.25;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .mmx-buy__freq-btn--active {
+    border-color: #00199F;
+    background-color: rgba(0, 25, 159, 0.06);
+    color: #00199F;
+    font-weight: 700;
+  }
+
+  .mmx-buy__freq-badge {
+    position: absolute;
+    top: -10px;
+    right: -1px;
+    background-color: #FFB503;
+    color: #00199F;
+    font-family: var(--mmx-font-sans);
+    font-size: 6px;
+    font-weight: 700;
+    letter-spacing: 0.64px;
+    text-transform: uppercase;
+    padding: 3px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* ── Free gift ── */
+  .mmx-buy__gift {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: rgba(0, 25, 159, 0.02);
+    border: 1px solid rgba(0, 25, 159, 0.12);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mmx-buy__gift-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .mmx-buy__gift-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .mmx-buy__gift-badges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mmx-buy__gift-badge {
+    background-color: #00199F;
+    color: #ffffff;
+    font-family: var(--mmx-font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.08px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    display: inline-block;
+  }
+
+  .mmx-buy__gift-value {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    color: #6B6E73;
+  }
+
+  .mmx-buy__gift-name {
+    font-family: var(--mmx-font-serif);
+    font-size: 13px;
+    font-weight: 600;
+    color: #00199F;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .mmx-buy__gift-desc {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    color: #9CA3AF;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* ── Buy button ── */
+  .mmx-buy__form-wrap {
+    margin-bottom: 12px;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .mmx-buy__form-wrap .product-form {
+    max-width: 100%;
+  }
+
+  .mmx-buy__form-wrap .product-form__error-message-wrapper {
+    margin-bottom: 8px;
+    color: #EB001B;
+    font-family: var(--mmx-font-sans);
+    font-size: 13px;
+  }
+
+  .mmx-buy__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: #00199F;
+    color: #ffffff;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 18px 32px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0px 6px 24px rgba(0, 25, 159, 0.3);
+    transition: opacity 0.2s;
+  }
+
+  .mmx-buy__submit:hover {
+    opacity: 0.9;
+  }
+
+  .mmx-buy__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .mmx-buy__submit.loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .mmx-buy__submit svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ── Urgency ── */
+  .mmx-buy__urgency {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFF8EC;
+    border: 1px solid rgba(255, 181, 3, 0.35);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .mmx-buy__urgency > span:last-child {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  .mmx-buy__urgency-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: #E05C2A;
+    flex-shrink: 0;
+  }
+
+  .mmx-buy__urgency-text-orange {
+    color: #E05C2A;
+  }
+
+  .mmx-buy__urgency-text-dark {
+    color: #00199F;
+  }
+
+  /* ── Trust badges ── */
+  .mmx-buy__trust {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mmx-buy__trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    background-color: rgba(0, 25, 159, 0.03);
+    border: 1px solid rgba(210, 213, 217, 0.5);
+    border-radius: 10px;
+    padding: 10px 8px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    min-height: 60px;
+    justify-content: center;
+  }
+
+  .mmx-buy__trust-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mmx-buy__trust-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .mmx-buy__trust-label {
+    font-family: var(--mmx-font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    color: #6B6E73;
+    letter-spacing: 0.2px;
+    line-height: 1.15;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* ── Inline review ── */
+  .mmx-buy__inline-review {
+    background-color: #F8F3EE;
+    border: 1px solid rgba(210, 213, 217, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .mmx-buy__inline-review-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .mmx-buy__inline-review-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .mmx-buy__inline-review-stars svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .mmx-buy__inline-review-verified {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    color: #6B6E73;
+  }
+
+  .mmx-buy__inline-review-quote {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.53;
+    color: #212326;
+    margin: 0 0 8px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .mmx-buy__inline-review-author {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    color: #9CA3AF;
+  }
+
+  /* ── Mobile (Love Indus LP — Figma node 95:4253, ~390px) ── */
+  @media (max-width: 900px) {
+    .mmx-buy {
+      padding: {{ section.settings.mobile_padding_top }}px 0 {{ section.settings.mobile_padding_bottom }}px;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    .mmx-buy__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+      padding-left: max(16px, env(safe-area-inset-left, 0px));
+      padding-right: max(16px, env(safe-area-inset-right, 0px));
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .mmx-buy__gallery {
+      position: static;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .mmx-buy__main-image-wrap {
+      border-radius: 20px;
+      width: 100%;
+    }
+
+    .mmx-buy__gallery-badge-reviews {
+      font-size: 12px;
+      padding: 6px 12px;
+      max-width: calc(100% - 24px);
+      flex-wrap: wrap;
+      box-sizing: border-box;
+    }
+
+    .mmx-buy__gallery-badge-sold {
+      font-size: 10px;
+      padding: 8px 10px;
+      right: 8px;
+      bottom: 8px;
+      left: auto;
+      max-width: min(55%, calc(100% - 16px));
+      text-align: left;
+      line-height: 1.3;
+    }
+
+    .mmx-buy__thumbnails {
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .mmx-buy__thumbnail {
+      flex: 0 0 calc((100% - 30px) / 4);
+      width: calc((100% - 30px) / 4);
+      min-width: 0;
+      height: 78px;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    .mmx-buy__gallery-nav-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .mmx-buy__gallery-nav-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .mmx-buy__eyebrow-wrap {
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .mmx-buy__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-buy__product-name {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .mmx-buy__product-sub {
+      font-size: 14px;
+      line-height: 1.5;
+      overflow-wrap: break-word;
+      max-width: 100%;
+    }
+
+    .mmx-buy__stock-badge {
+      font-size: 12px;
+      padding: 9px 12px;
+      min-height: 38px;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+    }
+
+    .mmx-buy__rating-row {
+      margin-bottom: 12px;
+    }
+
+    .mmx-buy__rating-value,
+    .mmx-buy__rating-count {
+      font-size: 12px;
+    }
+
+    .mmx-buy__rating-value {
+      margin-left: 4px;
+      color: #212326;
+    }
+
+    .mmx-buy__purchase-options {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin: 12px 0 16px;
+    }
+
+    .mmx-buy__option-popular {
+      white-space: normal;
+      max-width: calc(100% - 8px);
+      text-align: center;
+      line-height: 1.25;
+      padding: 4px 8px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+    }
+
+    .mmx-buy__option {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 10px;
+      min-height: 125px;
+      border-radius: 14px;
+    }
+
+    .mmx-buy__option-header {
+      margin-bottom: 8px;
+      gap: 6px;
+    }
+
+    .mmx-buy__option-label {
+      font-size: 12px;
+      line-height: 1.3;
+      color: #212326;
+    }
+
+    .mmx-buy__option--selected .mmx-buy__option-label {
+      color: #212326;
+    }
+
+    .mmx-buy__option-price {
+      font-size: clamp(17px, 4.8vw, 22px);
+      line-height: 1.2;
+    }
+
+    .mmx-buy__option:not(.mmx-buy__option--selected) .mmx-buy__option-price {
+      color: #212326;
+    }
+
+    .mmx-buy__option-price-original {
+      font-size: 13px;
+      margin-left: 6px;
+    }
+
+    .mmx-buy__option-savings {
+      font-size: 10px;
+      padding: 4px 8px;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+      align-self: flex-start;
+    }
+
+    .mmx-buy__option-commitment {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .mmx-buy__benefits {
+      padding: 14px 13px 16px;
+      margin-bottom: 16px;
+      max-width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .mmx-buy__benefits-title {
+      margin-bottom: 8px;
+    }
+
+    .mmx-buy__benefit-item {
+      font-size: 12px;
+      line-height: 1.45;
+      color: #212326;
+      margin-bottom: 9px;
+      align-items: flex-start;
+      min-width: 0;
+    }
+
+    .mmx-buy__benefit-item > span:last-child {
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+
+    .mmx-buy__benefit-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .mmx-buy__frequency {
+      padding: 12px 12px 14px;
+      margin-top: 0;
+      margin-bottom: 12px;
+      max-width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .mmx-buy__frequency-title {
+      margin-bottom: 10px;
+    }
+
+    .mmx-buy__frequency-options {
+      flex-wrap: nowrap;
+      gap: 5px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 2px;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .mmx-buy__frequency-options::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    .mmx-buy__freq-btn {
+      flex: 0 0 auto;
+      width: 76px;
+      min-width: 76px;
+      min-height: 33px;
+      padding: 6px 4px;
+      font-size: 10px;
+      line-height: 1.35;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+
+    .mmx-buy__freq-btn--active {
+      font-weight: 700;
+    }
+
+    .mmx-buy__freq-badge {
+      color: #212326;
+    }
+
+    .mmx-buy__gift {
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+
+    .mmx-buy__gift-name {
+      font-size: 12px;
+    }
+
+    .mmx-buy__gift-value {
+      font-size: 12px;
+    }
+
+    .mmx-buy__gift-desc {
+      font-size: 12px;
+      line-height: 1.28;
+    }
+
+    .mmx-buy__submit {
+      min-height: 58px;
+      padding: 16px 12px;
+      font-size: 15px;
+      letter-spacing: 1.2px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+      text-align: center;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .mmx-buy__submit span {
+      min-width: 0;
+    }
+
+    .mmx-buy__urgency {
+      font-size: 12px;
+      padding: 9px 12px;
+      margin-bottom: 12px;
+    }
+
+    .mmx-buy__trust {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .mmx-buy__trust-item {
+      min-height: 75px;
+      padding: 10px 6px 8px;
+      border-radius: 10px;
+    }
+
+    .mmx-buy__trust-label {
+      font-size: 12px;
+      letter-spacing: 0.2px;
+      line-height: 1.2;
+    }
+
+    .mmx-buy__inline-review {
+      padding: 18px 20px 20px;
+    }
+
+    .mmx-buy__inline-review-header {
+      margin-bottom: 10px;
+    }
+
+    .mmx-buy__inline-review-verified {
+      font-size: 12px;
+    }
+
+    .mmx-buy__inline-review-quote {
+      font-size: 12px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .mmx-buy__inline-review-author {
+      font-size: 12px;
+    }
+  }
+</style>
+
+<section class="mmx-buy" id="mmx-buy">
+  <mmx-buy-section
+    data-discount-code="{{ free_gift_discount }}"
+    data-section-id="{{ section.id }}"
+  >
+    <div class="mmx-buy__inner">
+
+      {%- comment -%}── LEFT: Gallery (main image matches thumbnail set) ──{%- endcomment -%}
+      {%- liquid
+        assign main_gallery_src = ''
+        assign main_gallery_alt = product.title | default: 'Product image'
+        if product != blank
+          for media in product.media
+            assign probe_src = ''
+            if media.media_type == 'image'
+              assign probe_src = media | image_url: width: 800
+            elsif media.preview_image != blank
+              assign probe_src = media.preview_image | image_url: width: 800
+            endif
+            if probe_src != blank
+              assign main_gallery_src = probe_src
+              assign main_gallery_alt = media.alt | default: product.title
+              break
+            endif
+          endfor
+          if main_gallery_src == blank and product.featured_image
+            assign main_gallery_src = product.featured_image | image_url: width: 800
+            assign main_gallery_alt = product.featured_image.alt | default: product.title
+          endif
+        endif
+      -%}
+      <div class="mmx-buy__gallery">
+        <div class="mmx-buy__main-image-wrap">
+          {%- if main_gallery_src != blank -%}
+            <img
+              src="{{ main_gallery_src }}"
+              alt="{{ main_gallery_alt | escape }}"
+              class="mmx-buy__main-image"
+              data-main-image
+              loading="lazy"
+              width="540"
+              height="720"
+            >
+          {%- else -%}
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397914943/XpGfLNCLhmFpctTt.jpg"
+              alt="Product image"
+              class="mmx-buy__main-image"
+              data-main-image
+              loading="lazy"
+              width="540"
+              height="720"
+            >
+          {%- endif -%}
+
+          {%- if product != blank and product.media.size > 1 -%}
+            <div class="mmx-buy__gallery-nav" data-gallery-nav>
+              <button
+                type="button"
+                class="mmx-buy__gallery-nav-btn"
+                data-gallery-nav-prev
+                aria-label="Previous image"
+              >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button
+                type="button"
+                class="mmx-buy__gallery-nav-btn"
+                data-gallery-nav-next
+                aria-label="Next image"
+              >
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.review_badge_text != blank -%}
+            <div class="mmx-buy__gallery-badge-reviews">
+              <span class="mmx-buy__gallery-stars" aria-hidden="true">
+                {%- for i in (1..5) -%}
+                  <svg viewBox="0 0 14 14" fill="#FFB503"><path d="M7 0.5L8.77 5.17H13.73L9.64 8.13L11.09 12.96L7 10.01L2.91 12.96L4.36 8.13L0.27 5.17H5.23L7 0.5Z"/></svg>
+                {%- endfor -%}
+              </span>
+              {{ section.settings.review_badge_text }}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.sold_badge_text != blank -%}
+            <div class="mmx-buy__gallery-badge-sold">
+              {{ section.settings.sold_badge_text }}
+              {%- if section.settings.sold_badge_subtext != blank -%}
+                <span>{{ section.settings.sold_badge_subtext }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- if product != blank and product.media.size > 0 -%}
+          {%- assign first_visible_thumb = true -%}
+          <div class="mmx-buy__thumbnails" role="list" aria-label="Product images">
+            {%- for media in product.media -%}
+              {%- liquid
+                assign thumb_full_src = ''
+                assign thumb_small_src = ''
+                if media.media_type == 'image'
+                  assign thumb_full_src = media | image_url: width: 800
+                  assign thumb_small_src = media | image_url: width: 200
+                elsif media.preview_image != blank
+                  assign thumb_full_src = media.preview_image | image_url: width: 800
+                  assign thumb_small_src = media.preview_image | image_url: width: 200
+                endif
+              -%}
+              {%- if thumb_full_src == blank -%}{% continue %}{%- endif -%}
+              <div
+                class="mmx-buy__thumbnail{% if first_visible_thumb %} mmx-buy__thumbnail--active{% endif %}"
+                role="listitem"
+                data-thumbnail
+                data-media-src="{{ thumb_full_src }}"
+                data-media-alt="{{ media.alt | default: product.title | escape }}"
+                tabindex="0"
+              >
+                <img
+                  src="{{ thumb_small_src }}"
+                  alt="{{ media.alt | default: product.title | escape }}"
+                  loading="lazy"
+                  width="135"
+                  height="125"
+                >
+              </div>
+              {%- assign first_visible_thumb = false -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}── RIGHT: Details (block-driven) ──{%- endcomment -%}
+      <div class="mmx-buy__details">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+
+          {%- when '@app' -%}
+            <div {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+
+          {%- when 'eyebrow' -%}
+            <div class="mmx-buy__eyebrow-wrap" {{ block.shopify_attributes }}>
+              <div class="mmx-buy__eyebrow">
+                {%- if block.settings.icon != blank -%}
+                  <img src="{{ block.settings.icon | image_url: width: 30 }}" alt="" width="15" height="15">
+                {%- else -%}
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 1.33L9.79 5.85H14.59L10.67 8.72L12.15 13.33L8 10.51L3.85 13.33L5.33 8.72L1.41 5.85H6.21L8 1.33Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {%- endif -%}
+                {{ block.settings.text }}
+              </div>
+              <div class="mmx-buy__eyebrow-divider" aria-hidden="true"></div>
+            </div>
+
+          {%- when 'title' -%}
+            <div {{ block.shopify_attributes }}>
+              <h2 class="mmx-buy__product-name">
+                {%- if product != blank -%}{{ product.title }}{%- else -%}{{ block.settings.fallback_title }}{%- endif -%}
+              </h2>
+              {%- if block.settings.subtitle != blank -%}
+                <p class="mmx-buy__product-sub">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+            </div>
+
+          {%- when 'stock_badge' -%}
+            <div class="mmx-buy__stock-badge" {{ block.shopify_attributes }} role="status">
+              <span class="mmx-buy__stock-dot" aria-hidden="true"></span>
+              <span>
+                <span class="mmx-buy__stock-text-green">{{ block.settings.highlight_text }}</span>
+                <span class="mmx-buy__stock-text-dark">{{ block.settings.text }}</span>
+              </span>
+            </div>
+
+          {%- when 'rating' -%}
+            <div class="mmx-buy__rating-row" {{ block.shopify_attributes }}>
+              <span class="mmx-buy__rating-stars" aria-label="{{ block.settings.rating_value }} out of 5 stars">
+                {%- for i in (1..5) -%}
+                  <svg viewBox="0 0 14 14" fill="#FFB503"><path d="M7 0.5L8.77 5.17H13.73L9.64 8.13L11.09 12.96L7 10.01L2.91 12.96L4.36 8.13L0.27 5.17H5.23L7 0.5Z"/></svg>
+                {%- endfor -%}
+              </span>
+              <span class="mmx-buy__rating-value">{{ block.settings.rating_value }}</span>
+              <span class="mmx-buy__rating-count">({{ block.settings.review_count }})</span>
+            </div>
+
+          {%- when 'purchase_options' -%}
+            {%- liquid
+              assign purchase_subscribe_label = block.settings.subscribe_label | strip
+              if purchase_subscribe_label == blank and selling_plan_group
+                assign purchase_subscribe_label = selling_plan_group.name | strip
+              endif
+              if purchase_subscribe_label == blank
+                assign purchase_subscribe_label = 'Subscribe & Save'
+              endif
+              assign purchase_onetime_label = block.settings.onetime_label | strip
+              if purchase_onetime_label == blank
+                assign purchase_onetime_label = 'One-Time Purchase'
+              endif
+            -%}
+            <div class="mmx-buy__purchase-options" {{ block.shopify_attributes }} role="radiogroup" aria-label="Purchase options">
+              {%- if has_selling_plans -%}
+                <div class="mmx-buy__option mmx-buy__option--selected" data-option="subscribe" tabindex="0" role="radio" aria-checked="true" data-selling-plan-id="{{ default_selling_plan.id }}">
+                  {%- if block.settings.popular_badge != blank -%}
+                    <div class="mmx-buy__option-popular">{{ block.settings.popular_badge }}</div>
+                  {%- endif -%}
+                  <div class="mmx-buy__option-header">
+                    <div class="mmx-buy__option-radio" aria-hidden="true"></div>
+                    <span class="mmx-buy__option-label">{{ purchase_subscribe_label }}</span>
+                  </div>
+                  <div class="mmx-buy__option-price">
+                    {%- if sub_price -%}
+                      {{ sub_price | money }}
+                      <span class="mmx-buy__option-price-original">{{ variant.price | money }}</span>
+                    {%- endif -%}
+                  </div>
+                  {%- if savings > 0 -%}
+                    <div class="mmx-buy__option-savings">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                        <path d="M5 1.25V2.08333M5 7.91667V8.75M1.25 5H2.08333M7.91667 5H8.75" stroke="currentColor" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path opacity="0.6" d="M2.34814 2.34863L2.93731 2.9378M7.06231 7.0628L7.65148 7.65197M2.34814 7.65197L2.93731 7.0628M7.06231 2.9378L7.65148 2.34863" stroke="currentColor" stroke-width="0.666667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5.00016 6.66634C5.92064 6.66634 6.66683 5.92015 6.66683 4.99967C6.66683 4.0792 5.92064 3.33301 5.00016 3.33301C4.07969 3.33301 3.3335 4.0792 3.3335 4.99967C3.3335 5.92015 4.07969 6.66634 5.00016 6.66634Z" stroke="currentColor" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      SAVE {{ savings_percent }}% · {{ savings | money }}
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              <div class="mmx-buy__option{% unless has_selling_plans %} mmx-buy__option--selected{% endunless %}" data-option="one-time" tabindex="0" role="radio" aria-checked="{% if has_selling_plans %}false{% else %}true{% endif %}">
+                <div class="mmx-buy__option-header">
+                  <div class="mmx-buy__option-radio" aria-hidden="true"></div>
+                  <span class="mmx-buy__option-label">{{ purchase_onetime_label }}</span>
+                </div>
+                <div class="mmx-buy__option-price">
+                  {%- if variant -%}{{ variant.price | money }}{%- endif -%}
+                </div>
+                <div class="mmx-buy__option-commitment">No commitment</div>
+              </div>
+            </div>
+
+          {%- when 'subscriber_benefits' -%}
+            <div class="mmx-buy__benefits" {{ block.shopify_attributes }} data-subscribe-only>
+              <div class="mmx-buy__benefits-title">{{ block.settings.title }}</div>
+              {%- for i in (1..5) -%}
+                {%- assign text_key = 'benefit_' | append: i | append: '_text' -%}
+                {%- assign icon_key = 'benefit_' | append: i | append: '_icon' -%}
+                {%- assign benefit_text = block.settings[text_key] -%}
+                {%- if benefit_text != blank -%}
+                  <div class="mmx-buy__benefit-item">
+                    <span class="mmx-buy__benefit-icon">
+                      {%- if block.settings[icon_key] != blank -%}
+                        <img src="{{ block.settings[icon_key] | image_url: width: 28 }}" alt="" width="14" height="14">
+                      {%- else -%}
+                        <svg viewBox="0 0 14 14" fill="none" stroke="#00199F" stroke-width="1.5"><polyline points="11 4 5.5 10 3 7.5"/></svg>
+                      {%- endif -%}
+                    </span>
+                    <span>{{ benefit_text }}</span>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+          {%- when 'delivery_frequency' -%}
+            {%- if has_selling_plans -%}
+              <div class="mmx-buy__frequency" {{ block.shopify_attributes }} data-subscribe-only>
+                <div class="mmx-buy__frequency-title">{{ block.settings.title | default: 'Delivery Frequency' }}</div>
+                <div class="mmx-buy__frequency-options" role="radiogroup" aria-label="Delivery frequency">
+                  {%- for selling_plan in selling_plan_group.selling_plans -%}
+                    {%- assign freq_label = selling_plan.name | strip_html | strip -%}
+                    <button
+                      class="mmx-buy__freq-btn{% if forloop.first %} mmx-buy__freq-btn--active{% endif %}"
+                      data-selling-plan-id="{{ selling_plan.id }}"
+                      aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+                      type="button"
+                    >
+                      {%- if forloop.first and block.settings.popular_badge != blank -%}
+                        <span class="mmx-buy__freq-badge">{{ block.settings.popular_badge }}</span>
+                      {%- endif -%}
+                      {%- if freq_label != blank -%}{{ freq_label }}{%- else -%}Plan {{ forloop.index }}{%- endif -%}
+                    </button>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endif -%}
+
+          {%- when 'free_gift' -%}
+            <div class="mmx-buy__gift" {{ block.shopify_attributes }}>
+              {%- assign gift_product = block.settings.gift_product -%}
+              {%- if gift_product != blank and gift_product.featured_image -%}
+                <img
+                  src="{{ gift_product.featured_image | image_url: width: 128 }}"
+                  alt="{{ gift_product.title }}"
+                  class="mmx-buy__gift-image"
+                  loading="lazy"
+                  width="64"
+                  height="64"
+                >
+              {%- else -%}
+                <img
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397914943/oSCvQEjwBpMShcfk.webp"
+                  alt="Free gift"
+                  class="mmx-buy__gift-image"
+                  loading="lazy"
+                  width="64"
+                  height="64"
+                >
+              {%- endif -%}
+              <div class="mmx-buy__gift-info">
+                <div class="mmx-buy__gift-badges">
+                  <span class="mmx-buy__gift-badge">Free Gift</span>
+                  {%- if block.settings.value_text != blank -%}
+                    <span class="mmx-buy__gift-value">· {{ block.settings.value_text }}</span>
+                  {%- endif -%}
+                </div>
+                <div class="mmx-buy__gift-name">
+                  {%- if gift_product != blank -%}{{ gift_product.title }}{%- else -%}{{ block.settings.fallback_name }}{%- endif -%}
+                </div>
+                {%- if block.settings.description != blank -%}
+                  <div class="mmx-buy__gift-desc">{{ block.settings.description }}</div>
+                {%- endif -%}
+              </div>
+            </div>
+
+          {%- when 'buy_button' -%}
+            <div class="mmx-buy__form-wrap" {{ block.shopify_attributes }} data-subscribe-text="{{ block.settings.subscribe_text | default: 'Subscribe & Save' | escape }}" data-onetime-text="{{ block.settings.onetime_text | default: 'Add to Cart' | escape }}">
+              {%- if product != blank -%}
+                <product-form class="product-form">
+                  <div class="product-form__error-message-wrapper" role="alert" hidden>
+                    <span class="product-form__error-message"></span>
+                  </div>
+                  {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}
+                    <input type="hidden" name="id" value="{{ variant.id }}" disabled>
+                    <input type="hidden" name="selling_plan" value="{% if has_selling_plans %}{{ default_selling_plan.id }}{% endif %}" data-selling-plan-input>
+                    <button
+                      type="submit"
+                      name="add"
+                      class="mmx-buy__submit"
+                      {% unless variant.available %}disabled{% endunless %}
+                    >
+                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.33L9.79 5.85H14.59L10.67 8.72L12.15 13.33L8 10.51L3.85 13.33L5.33 8.72L1.41 5.85H6.21L8 1.33Z" fill="currentColor"/></svg>
+                      <span data-cta-text>
+                        {%- if variant.available -%}
+                          {%- if has_selling_plans and sub_price -%}
+                            {{ block.settings.subscribe_text | default: 'Subscribe & Save' }} — {{ sub_price | money }}
+                          {%- else -%}
+                            {{ block.settings.onetime_text | default: 'Add to Cart' }} — {{ variant.price | money }}
+                          {%- endif -%}
+                        {%- else -%}
+                          Sold Out
+                        {%- endif -%}
+                      </span>
+                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.33 8H12.67M12.67 8L8.67 4M12.67 8L8.67 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  {%- endform -%}
+                </product-form>
+              {%- else -%}
+                <button class="mmx-buy__submit" disabled>Select a product</button>
+              {%- endif -%}
+            </div>
+
+          {%- when 'urgency' -%}
+            <div class="mmx-buy__urgency" {{ block.shopify_attributes }} role="status">
+              <span class="mmx-buy__urgency-dot" aria-hidden="true"></span>
+              <span>
+                <span class="mmx-buy__urgency-text-orange">{{ block.settings.highlight_text }}</span>
+                <span class="mmx-buy__urgency-text-dark">{{ block.settings.text }}</span>
+              </span>
+            </div>
+
+          {%- when 'trust_badges' -%}
+            <div class="mmx-buy__trust" {{ block.shopify_attributes }} role="list" aria-label="Trust badges">
+              {%- for i in (1..4) -%}
+                {%- assign label_key = 'badge_' | append: i | append: '_label' -%}
+                {%- assign icon_key = 'badge_' | append: i | append: '_icon' -%}
+                {%- assign badge_label = block.settings[label_key] -%}
+                {%- if badge_label != blank -%}
+                  <div class="mmx-buy__trust-item" role="listitem">
+                    <span class="mmx-buy__trust-icon">
+                      {%- if block.settings[icon_key] != blank -%}
+                        <img src="{{ block.settings[icon_key] | image_url: width: 36 }}" alt="" width="18" height="18">
+                      {%- else -%}
+                        <svg viewBox="0 0 18 18" fill="none" stroke="#6B6E73" stroke-width="1.2"><polyline points="14 5 7 12 4 9"/></svg>
+                      {%- endif -%}
+                    </span>
+                    <span class="mmx-buy__trust-label">{{ badge_label }}</span>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+          {%- when 'review' -%}
+            <div class="mmx-buy__inline-review" {{ block.shopify_attributes }}>
+              <div class="mmx-buy__inline-review-header">
+                <span class="mmx-buy__inline-review-stars" aria-hidden="true">
+                  {%- for i in (1..5) -%}
+                    <svg viewBox="0 0 14 14" fill="#FFB503"><path d="M7 0.5L8.77 5.17H13.73L9.64 8.13L11.09 12.96L7 10.01L2.91 12.96L4.36 8.13L0.27 5.17H5.23L7 0.5Z"/></svg>
+                  {%- endfor -%}
+                </span>
+                <span class="mmx-buy__inline-review-verified">{{ block.settings.verified_label | default: 'Verified Purchase' }}</span>
+              </div>
+              {%- if block.settings.quote != blank -%}
+                <p class="mmx-buy__inline-review-quote">"{{ block.settings.quote }}"</p>
+              {%- endif -%}
+              {%- if block.settings.author != blank -%}
+                <div class="mmx-buy__inline-review-author">— {{ block.settings.author }}</div>
+              {%- endif -%}
+            </div>
+
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </mmx-buy-section>
+</section>
+
+<script>
+  (function() {
+    if (customElements.get('mmx-buy-section')) return;
+
+    class MMXBuySection extends HTMLElement {
+      connectedCallback() {
+        this._options = this.querySelectorAll('[data-option]');
+        this._subscribeEls = this.querySelectorAll('[data-subscribe-only]');
+        this._freqBtns = this.querySelectorAll('.mmx-buy__freq-btn');
+        this._sellingPlanInput = this.querySelector('[data-selling-plan-input]');
+        this._ctaText = this.querySelector('[data-cta-text]');
+
+        var formWrap = this.querySelector('.mmx-buy__form-wrap');
+        this._subscribeCtaText = formWrap ? (formWrap.dataset.subscribeText || 'Subscribe & Save') : 'Subscribe & Save';
+        this._onetimeCtaText = formWrap ? (formWrap.dataset.onetimeText || 'Add to Cart') : 'Add to Cart';
+
+        this._subPriceMoney = {{ sub_price | money | strip_html | strip | json }};
+        this._onetimePriceMoney = {{ variant.price | money | strip_html | strip | json }};
+        this._hasSellingPlans = {{ has_selling_plans | json }};
+
+        this._setupPurchaseOptions();
+        this._setupFrequency();
+        this._setupGallery();
+        this._applyDiscount();
+      }
+
+      _setupPurchaseOptions() {
+        var self = this;
+        this._options.forEach(function(opt) {
+          opt.addEventListener('click', function() {
+            self._options.forEach(function(o) {
+              o.classList.remove('mmx-buy__option--selected');
+              o.setAttribute('aria-checked', 'false');
+            });
+            opt.classList.add('mmx-buy__option--selected');
+            opt.setAttribute('aria-checked', 'true');
+
+            var isSubscribe = opt.dataset.option === 'subscribe';
+            self._subscribeEls.forEach(function(el) {
+              el.style.display = isSubscribe ? '' : 'none';
+            });
+
+            if (self._sellingPlanInput) {
+              if (isSubscribe) {
+                var activeFreq = self.querySelector('.mmx-buy__freq-btn--active');
+                self._sellingPlanInput.value = activeFreq ? activeFreq.dataset.sellingPlanId : (opt.dataset.sellingPlanId || '');
+              } else {
+                self._sellingPlanInput.value = '';
+              }
+            }
+
+            if (self._ctaText) {
+              if (isSubscribe && self._hasSellingPlans) {
+                self._ctaText.textContent = self._subscribeCtaText + ' \u2014 ' + self._subPriceMoney;
+              } else {
+                self._ctaText.textContent = self._onetimeCtaText + ' \u2014 ' + self._onetimePriceMoney;
+              }
+            }
+          });
+        });
+      }
+
+      _setupFrequency() {
+        var self = this;
+        this._freqBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            self._freqBtns.forEach(function(b) {
+              b.classList.remove('mmx-buy__freq-btn--active');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('mmx-buy__freq-btn--active');
+            btn.setAttribute('aria-pressed', 'true');
+
+            if (self._sellingPlanInput) {
+              self._sellingPlanInput.value = btn.dataset.sellingPlanId;
+            }
+          });
+        });
+      }
+
+      _setupGallery() {
+        var self = this;
+        var main = this.querySelector('[data-main-image]');
+        var nav = this.querySelector('[data-gallery-nav]');
+        var navPrev = this.querySelector('[data-gallery-nav-prev]');
+        var navNext = this.querySelector('[data-gallery-nav-next]');
+        if (!main) return;
+
+        self._gallerySwapGen = self._gallerySwapGen || 0;
+
+        function getThumbs() {
+          return self.querySelectorAll('[data-thumbnail]');
+        }
+
+        function resolveImgUrl(url) {
+          if (!url) return '';
+          try {
+            return new URL(url, window.location.href).href;
+          } catch (e) {
+            return url;
+          }
+        }
+
+        function activateThumb(thumb, scrollIntoView) {
+          if (!thumb || !thumb.hasAttribute('data-thumbnail')) return;
+          var src = thumb.getAttribute('data-media-src');
+          if (!src) return;
+          getThumbs().forEach(function(t) {
+            t.classList.remove('mmx-buy__thumbnail--active');
+          });
+          thumb.classList.add('mmx-buy__thumbnail--active');
+          if (scrollIntoView) {
+            try {
+              thumb.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+            } catch (err) {
+              thumb.scrollIntoView();
+            }
+          }
+
+          var alt = thumb.getAttribute('data-media-alt') || '';
+          if (resolveImgUrl(src) === main.src) {
+            main.alt = alt;
+            main.style.transition = '';
+            main.style.opacity = '1';
+            return;
+          }
+
+          var gen = ++self._gallerySwapGen;
+
+          main.style.transition = 'none';
+          main.style.opacity = '0';
+          void main.offsetHeight;
+
+          main.alt = alt;
+          main.src = src;
+          main.removeAttribute('srcset');
+          main.removeAttribute('sizes');
+
+          function showIfCurrent() {
+            if (gen !== self._gallerySwapGen) return;
+            main.style.transition = '';
+            void main.offsetHeight;
+            main.style.opacity = '1';
+          }
+
+          if (main.decode && typeof main.decode === 'function') {
+            main.decode().then(showIfCurrent).catch(showIfCurrent);
+          } else {
+            if (main.complete) {
+              requestAnimationFrame(showIfCurrent);
+            } else {
+              main.addEventListener('load', function onGalLoad() {
+                main.removeEventListener('load', onGalLoad);
+                showIfCurrent();
+              });
+              main.addEventListener('error', function onGalErr() {
+                main.removeEventListener('error', onGalErr);
+                showIfCurrent();
+              });
+            }
+          }
+        }
+
+        function currentIndex() {
+          var thumbs = getThumbs();
+          for (var i = 0; i < thumbs.length; i++) {
+            if (thumbs[i].classList.contains('mmx-buy__thumbnail--active')) return i;
+          }
+          return 0;
+        }
+
+        function activateIndex(index, scrollIntoView) {
+          var thumbs = getThumbs();
+          if (!thumbs.length || index < 0 || index >= thumbs.length) return;
+          activateThumb(thumbs[index], scrollIntoView !== false);
+        }
+
+        function syncNavVisibility() {
+          var n = getThumbs().length;
+          if (!nav) return;
+          if (n <= 1) {
+            nav.classList.add('mmx-buy__gallery-nav--hidden');
+          } else {
+            nav.classList.remove('mmx-buy__gallery-nav--hidden');
+          }
+        }
+
+        syncNavVisibility();
+
+        if (navPrev && navNext) {
+          navPrev.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var thumbs = getThumbs();
+            var len = thumbs.length;
+            if (len < 2) return;
+            var next = (currentIndex() - 1 + len) % len;
+            activateIndex(next, true);
+          });
+          navNext.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var thumbs = getThumbs();
+            var len = thumbs.length;
+            if (len < 2) return;
+            var next = (currentIndex() + 1) % len;
+            activateIndex(next, true);
+          });
+        }
+
+        this.addEventListener('click', function(e) {
+          var thumb = e.target.closest('[data-thumbnail]');
+          if (!thumb || !self.contains(thumb)) return;
+          e.preventDefault();
+          activateThumb(thumb, false);
+        });
+
+        this.addEventListener('keydown', function(e) {
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            var tag = (e.target && e.target.tagName) || '';
+            if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+            var gallery = e.target.closest('.mmx-buy__gallery');
+            if (!gallery || !self.contains(gallery)) return;
+            var thumbs = getThumbs();
+            if (thumbs.length < 2) return;
+            e.preventDefault();
+            var len = thumbs.length;
+            if (e.key === 'ArrowLeft') {
+              activateIndex((currentIndex() - 1 + len) % len, true);
+            } else {
+              activateIndex((currentIndex() + 1) % len, true);
+            }
+            return;
+          }
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          var thumb = e.target.closest('[data-thumbnail]');
+          if (!thumb || !self.contains(thumb)) return;
+          e.preventDefault();
+          activateThumb(thumb, false);
+        });
+
+        var galleryRoot = this.querySelector('.mmx-buy__gallery');
+        if (galleryRoot && getThumbs().length > 1) {
+          galleryRoot.setAttribute('tabindex', '0');
+          galleryRoot.setAttribute('role', 'region');
+          galleryRoot.setAttribute('aria-label', 'Product gallery');
+        }
+      }
+
+      _applyDiscount() {
+        var code = this.getAttribute('data-discount-code');
+        if (code) {
+          fetch('/discount/' + encodeURIComponent(code), { method: 'GET' }).catch(function() {});
+        }
+      }
+    }
+
+    customElements.define('mmx-buy-section', MMXBuySection);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "MMX Buy Section",
+  "tag": "div",
+  "class": "mmx-section-buy",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF9F8"
+    },
+    {
+      "type": "text",
+      "id": "review_badge_text",
+      "label": "Gallery Review Badge Text",
+      "default": "2,400+ Reviews"
+    },
+    {
+      "type": "text",
+      "id": "sold_badge_text",
+      "label": "Gallery Sold Badge Text",
+      "default": "Sold Out in 11 Min"
+    },
+    {
+      "type": "text",
+      "id": "sold_badge_subtext",
+      "label": "Gallery Sold Badge Subtext",
+      "default": "on QVC · 400+ Waitlist"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Eyebrow Text",
+          "default": "THE OFFER"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Product Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "fallback_title",
+          "label": "Fallback Title",
+          "default": "Amrutini® Luminosity Dewdrops",
+          "info": "Used when no product is selected"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "High-Performance Luminosity Serum · 30ml"
+        }
+      ]
+    },
+    {
+      "type": "stock_badge",
+      "name": "Stock Badge",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "highlight_text",
+          "label": "Highlight Text (green)",
+          "default": "Back in stock"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "— limited quantities available"
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "rating_value",
+          "label": "Rating Value",
+          "default": "4.9"
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review Count",
+          "default": "2,400+ reviews"
+        }
+      ]
+    },
+    {
+      "type": "purchase_options",
+      "name": "Purchase Options",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subscribe_label",
+          "label": "Subscription option label",
+          "default": "Subscribe & Save",
+          "info": "Shown on the subscription card. Leave blank to use your Shopify selling plan group name instead."
+        },
+        {
+          "type": "text",
+          "id": "onetime_label",
+          "label": "One-time purchase label",
+          "default": "One-Time Purchase"
+        },
+        {
+          "type": "text",
+          "id": "popular_badge",
+          "label": "Popular Badge Text",
+          "default": "Most Popular"
+        }
+      ]
+    },
+    {
+      "type": "subscriber_benefits",
+      "name": "Subscriber Benefits",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Subscriber Benefits"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_1_icon",
+          "label": "Benefit 1 Icon"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1_text",
+          "label": "Benefit 1",
+          "default": "15% off every order — forever"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_2_icon",
+          "label": "Benefit 2 Icon"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2_text",
+          "label": "Benefit 2",
+          "default": "Free US shipping on every delivery"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_3_icon",
+          "label": "Benefit 3 Icon"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3_text",
+          "label": "Benefit 3",
+          "default": "Complimentary Silk Cocoons with every delivery — a $16 value"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_4_icon",
+          "label": "Benefit 4 Icon"
+        },
+        {
+          "type": "text",
+          "id": "benefit_4_text",
+          "label": "Benefit 4",
+          "default": "Cancel, pause or skip anytime — no questions"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_5_icon",
+          "label": "Benefit 5 Icon"
+        },
+        {
+          "type": "text",
+          "id": "benefit_5_text",
+          "label": "Benefit 5",
+          "default": "Early access to new launches & limited editions"
+        }
+      ]
+    },
+    {
+      "type": "delivery_frequency",
+      "name": "Delivery Frequency",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Delivery Frequency"
+        },
+        {
+          "type": "text",
+          "id": "popular_badge",
+          "label": "Popular Badge Text",
+          "default": "Most Popular"
+        }
+      ]
+    },
+    {
+      "type": "free_gift",
+      "name": "Free Gift",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "Gift Product"
+        },
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount Code",
+          "info": "Applied automatically when adding to cart with the free gift."
+        },
+        {
+          "type": "text",
+          "id": "value_text",
+          "label": "Value Text",
+          "default": "a $16 value"
+        },
+        {
+          "type": "text",
+          "id": "fallback_name",
+          "label": "Fallback Product Name",
+          "default": "4 Copper-Crusted Silk Cocoons"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Included with every order — precision micro-exfoliation for 3–4 months"
+        }
+      ]
+    },
+    {
+      "type": "buy_button",
+      "name": "Buy Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subscribe_text",
+          "label": "Subscribe CTA Text",
+          "default": "Subscribe & Save"
+        },
+        {
+          "type": "text",
+          "id": "onetime_text",
+          "label": "One-Time CTA Text",
+          "default": "Add to Cart"
+        }
+      ]
+    },
+    {
+      "type": "urgency",
+      "name": "Urgency Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "highlight_text",
+          "label": "Highlight Text (orange)",
+          "default": "Only 12 left in stock"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "— restocks sell out within hours"
+        }
+      ]
+    },
+    {
+      "type": "trust_badges",
+      "name": "Trust Badges",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "badge_1_icon",
+          "label": "Badge 1 Icon"
+        },
+        {
+          "type": "text",
+          "id": "badge_1_label",
+          "label": "Badge 1 Label",
+          "default": "30-Day Guarantee"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_2_icon",
+          "label": "Badge 2 Icon"
+        },
+        {
+          "type": "text",
+          "id": "badge_2_label",
+          "label": "Badge 2 Label",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_3_icon",
+          "label": "Badge 3 Icon"
+        },
+        {
+          "type": "text",
+          "id": "badge_3_label",
+          "label": "Badge 3 Label",
+          "default": "Easy Returns"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_4_icon",
+          "label": "Badge 4 Icon"
+        },
+        {
+          "type": "text",
+          "id": "badge_4_label",
+          "label": "Badge 4 Label",
+          "default": "Clean Formula"
+        }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Inline Review",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "verified_label",
+          "label": "Verified Label",
+          "default": "Verified Purchase"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "I was skeptical at $135 but after two weeks my skin has that dewy, glass-like luminosity I'd only seen in editorial shoots. The Silk Cocoons are precision skincare unlike anything else. Worth every penny."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Priya M., Verified Subscriber"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Buy Section",
+      "blocks": [
+        { "type": "eyebrow" },
+        { "type": "title" },
+        { "type": "stock_badge" },
+        { "type": "rating" },
+        { "type": "purchase_options" },
+        { "type": "subscriber_benefits" },
+        { "type": "delivery_frequency" },
+        { "type": "free_gift" },
+        { "type": "buy_button" },
+        { "type": "urgency" },
+        { "type": "trust_badges" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

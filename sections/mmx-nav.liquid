@@ -1,0 +1,154 @@
+{% comment %}
+  Section: mmx-nav
+  Description: Minimal navigation with logo centered and links on sides
+{% endcomment %}
+
+<style>
+  .mmx-nav {
+    background-color: {{ section.settings.background_color }};
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    border-bottom: 1px solid rgba(27, 31, 138, 0.08);
+  }
+
+  .mmx-nav__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .mmx-nav__link {
+    font-family: var(--mmx-font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: {{ section.settings.link_color }};
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .mmx-nav__link:hover {
+    opacity: 0.65;
+  }
+
+  .mmx-nav__logo {
+    font-family: var(--mmx-font-script);
+    font-size: 28px;
+    color: {{ section.settings.logo_color }};
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .mmx-nav__logo img {
+    height: 36px;
+    width: auto;
+  }
+
+  @media (max-width: 768px) {
+    .mmx-nav__inner {
+      padding: 0 20px;
+      height: 56px;
+    }
+
+    .mmx-nav__logo {
+      font-size: 22px;
+    }
+
+    .mmx-nav__link {
+      font-size: 10px;
+    }
+  }
+</style>
+
+<nav class="mmx-nav" role="navigation" aria-label="Main navigation">
+  <div class="mmx-nav__inner">
+    <a href="{{ section.settings.shop_url }}" class="mmx-nav__link" aria-label="Shop">
+      {{ section.settings.left_link_text }}
+    </a>
+
+    <a href="{{ routes.root_url }}" class="mmx-nav__logo" aria-label="{{ shop.name }} - Home">
+      {% if section.settings.logo != blank %}
+        <img
+          src="{{ section.settings.logo | image_url: width: 200 }}"
+          alt="{{ shop.name }}"
+          width="120"
+          height="36"
+          loading="eager"
+        >
+      {% else %}
+        LOVE, <em>Indus</em>
+      {% endif %}
+    </a>
+
+    <a href="{{ section.settings.discover_url }}" class="mmx-nav__link" aria-label="Discover">
+      {{ section.settings.right_link_text }}
+    </a>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "MMX Navigation",
+  "tag": "div",
+  "class": "mmx-section-nav",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#1B1F8A"
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "Logo Color",
+      "default": "#1B1F8A"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image (optional)"
+    },
+    {
+      "type": "text",
+      "id": "left_link_text",
+      "label": "Left Link Text",
+      "default": "SHOP"
+    },
+    {
+      "type": "url",
+      "id": "shop_url",
+      "label": "Left Link URL"
+    },
+    {
+      "type": "text",
+      "id": "right_link_text",
+      "label": "Right Link Text",
+      "default": "DISCOVER"
+    },
+    {
+      "type": "url",
+      "id": "discover_url",
+      "label": "Right Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Navigation"
+    }
+  ]
+}
+{% endschema %}

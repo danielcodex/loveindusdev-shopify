@@ -1,0 +1,931 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "sections": {
+    "custom_liquid_jfRnw9": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n .shopify-section-group-footer-group, .shopify-section-announcement-bar,.shopify-section-group-header-group:not(.shopify-section-header-sticky){\ndisplay: none !important;\n}\n.shopify-section-header-sticky .header-wrapper{\nposition: relative;\n    top: -20rem;\n}\n</style>",
+        "full_width": false,
+        "show_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "mmx_global_styles": {
+      "type": "mmx-global-styles",
+      "settings": {
+        "color_navy": "#1b1f8a",
+        "color_blue": "#2b2fd9",
+        "color_cream": "#f5f0ea",
+        "color_dark_navy": "#0a0e5a"
+      }
+    },
+    "mmx_announcement_bar": {
+      "type": "mmx-announcement-bar",
+      "blocks": {
+        "announcement_1": {
+          "type": "announcement",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_8.svg",
+            "text": "Complimentary Silk Cocoons With Every Order"
+          }
+        },
+        "announcement_2": {
+          "type": "announcement",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_9.svg",
+            "text": "Free US Shipping on Orders $75+"
+          }
+        },
+        "announcement_3": {
+          "type": "announcement",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_10.svg",
+            "text": "Sold Out in 11 Minutes on QVC"
+          }
+        },
+        "announcement_4": {
+          "type": "announcement",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_11.svg",
+            "text": "Featured in Vogue, InStyle & Cosmopolitan"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_1",
+        "announcement_2",
+        "announcement_3",
+        "announcement_4"
+      ],
+      "settings": {
+        "background_color": "#2b2fd9",
+        "text_color": "#ffffff",
+        "speed": 30,
+        "item_spacing": 24
+      }
+    },
+    "mmx_nav": {
+      "type": "mmx-nav",
+      "settings": {
+        "background_color": "#ffffff",
+        "link_color": "#1b1f8a",
+        "logo_color": "#1b1f8a",
+        "logo": "shopify://shop_images/LOVE_Indus.png",
+        "left_link_text": "SHOP",
+        "shop_url": "",
+        "right_link_text": "DISCOVER",
+        "discover_url": ""
+      }
+    },
+    "mmx_hero": {
+      "type": "mmx-hero",
+      "settings": {
+        "background_color": "#faf9f8",
+        "headline_color": "#00199f",
+        "subheadline_color": "#6b6e73",
+        "eyebrow_color": "#00199f",
+        "accent_color": "#00199f",
+        "cta_bg_color": "#00199f",
+        "cta_text_color": "#ffffff",
+        "stock_secondary_color": "#00199f",
+        "stock_secondary_color_mobile": "#212326",
+        "social_proof_color": "#00199f",
+        "social_proof_color_mobile": "#212326",
+        "eyebrow_text": "5 MIN READ",
+        "headline": "6 Reasons Women Who Read Ingredient Labels Are Switching to This Serum",
+        "subheadline": "Rare Regional Ingredients · NYC Precision-Formulated · Featured in Vogue",
+        "cta_text": "DISCOVER RADICAL RADIANCE",
+        "cta_url": "",
+        "show_stock_badge": true,
+        "stock_text": "Back in stock — limited quantities",
+        "show_social_proof": true,
+        "social_proof_text": "Sold Out in 11 Minutes on QVC",
+        "hero_image": "shopify://shop_images/Luminous_skin_with_Amrutini_Dewdrops.png",
+        "hero_image_alt": "Love, Indus Amrutini Luminosity Dewdrops Serum",
+        "show_vogue_badge": true,
+        "badge_label": "Vogue's Best",
+        "badge_text": "Spring Product 2025"
+      }
+    },
+    "mmx_featured_in": {
+      "type": "mmx-featured-in",
+      "blocks": {
+        "pub_1": {
+          "type": "publication",
+          "settings": {
+            "name": "Vogue"
+          }
+        },
+        "pub_2": {
+          "type": "publication",
+          "settings": {
+            "name": "InStyle"
+          }
+        },
+        "pub_3": {
+          "type": "publication",
+          "settings": {
+            "name": "Cosmopolitan"
+          }
+        },
+        "pub_4": {
+          "type": "publication",
+          "settings": {
+            "name": "Refinery29"
+          }
+        },
+        "pub_5": {
+          "type": "publication",
+          "settings": {
+            "name": "StyleCaster"
+          }
+        },
+        "pub_6": {
+          "type": "publication",
+          "settings": {
+            "name": "Beauty Independent"
+          }
+        }
+      },
+      "block_order": [
+        "pub_1",
+        "pub_2",
+        "pub_3",
+        "pub_4",
+        "pub_5",
+        "pub_6"
+      ],
+      "settings": {
+        "background_color": "#2b2fd9",
+        "text_color": "#ffffff",
+        "speed": 25
+      }
+    },
+    "mmx_stats": {
+      "type": "mmx-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "icon": "leaf",
+            "number": "5,000+",
+            "label": "Years of Undiscovered Regional Science"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "icon": "sun",
+            "number": "100%",
+            "label": "Saw Improved Radiance"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "icon": "eye",
+            "number": "400+",
+            "label": "Waitlist After QVC Sellout"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "icon": "moon",
+            "number": "11 min",
+            "label": "1,000+ Units Sold Out"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "background_color": "#f8f3ee",
+        "section_border_color": "#d2d5d9",
+        "card_background_color": "rgba(0,0,0,0)",
+        "card_border_color": "#e2e4f0",
+        "number_color": "#00199f",
+        "label_color": "#6b6e73",
+        "accent_color": "#00199f",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "mmx_the_gap": {
+      "type": "mmx-the-gap",
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow_color": "#1b1f8a",
+        "accent_color": "#2b2fd9",
+        "body_color": "#1b1f8a",
+        "body_color_mobile": "#212326",
+        "quote_color": "#2b2fd9",
+        "eyebrow_text": "THE GAP",
+        "body_text": "You've tried the hyaluronic acids, the vitamin C serums, the retinol night creams. Your shelf is full of half-used bottles that promised radiance and delivered... fine.",
+        "pull_quote": "What if the most potent ingredients for your skin have never been seen in Western skincare — sourced from the rarest corners of India, bio-engineered in New York City, and precision-formulated for clinical results?",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
+    "mmx_reasons": {
+      "type": "mmx-reasons",
+      "blocks": {
+        "reason_1": {
+          "type": "reason",
+          "settings": {
+            "background_color": "#f8f3ee",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "icon": "eye",
+            "headline": "It Contains an Ingredient So Rare, Surgeons Use It",
+            "body": "<p>Most serums hydrate. This one performs. The Dewdrops contain Liquefied Gold Muga Silk — a rarefied regenerative material used in surgical wound repair, sourced exclusively from Assam, India. It drives skin cell regeneration at a cellular level. A precision-grade, bio-tech ingredient that luxury labs are only beginning to unlock.</p>",
+            "testimonial_quote": "Shocked at the difference in just a few days. My skin absorbs it instantly — super soft and glowy.",
+            "testimonial_author": "Julie O., Verified Buyer",
+            "cta_text": "TRY THE SURGICAL-GRADE SERUM",
+            "cta_url": "",
+            "image": "shopify://shop_images/Raw_Muga_Copper-Crusted_Silk_Cocoons.png",
+            "image_alt": ""
+          }
+        },
+        "reason_2": {
+          "type": "reason",
+          "settings": {
+            "background_color": "#ffffff",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "icon": "moon",
+            "headline": "The Tea Inside Was Harvested Under a Full Moon",
+            "body": "<p>Silver Tips Imperial Tea from Darjeeling's Makaibari Estate. Plucked only on clear, full-moon nights at peak potency — one of the most expensive, undiscovered teas in the world.</p><p>Dense in polyphenols and bio-active compounds, it shields skin fromenvironmental aggressors while delivering a glass-like, luminous complexion.Love, Indus is the only skincare brand using this ingredient.</p>",
+            "testimonial_quote": "My skin has never looked this radiant. I can actually see the difference every morning.",
+            "testimonial_author": "Sarah K., Verified Buyer",
+            "cta_text": "EXPERIENCE FULL-MOON RADIANCE",
+            "cta_url": "",
+            "image": "shopify://shop_images/Silver_Tips_Imperial_Tea_leaves.png",
+            "image_alt": ""
+          }
+        },
+        "reason_3": {
+          "type": "reason",
+          "settings": {
+            "background_color": "",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "icon": "drop",
+            "headline": "It Replaced Five Steps in My Routine",
+            "body": "<p>Hydrator. Illuminator. Barrier serum. Firming Complex. Precision exfoliation. Five high-performance steps — one cutting-edge formula.</p><p>Dermatologists are moving toward fewer, more potent products. Four SilkCocoons included free. Each lasts up to 4 uses — one set carries you 3–4 months.</p>",
+            "testimonial_quote": "My routine is completely transformed. The Silk Cocoons are unlike anything I've seen in high-performance skincare.",
+            "testimonial_author": "Rachael M., Verified Buyer",
+            "cta_text": "SIMPLIFY TO ONE BOTTLE",
+            "cta_url": "",
+            "image": "shopify://shop_images/Minimalist_vanity_with_single_serum.png",
+            "image_alt": ""
+          }
+        },
+        "reason_4": {
+          "type": "reason",
+          "settings": {
+            "background_color": "#ffffff",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "icon": "award",
+            "headline": "Vogue Called It a Best Spring Product for a Reason",
+            "body": "<p>Vogue's \"Best Spring Product\" evaluates innovation and ingredient integrity. TheDewdrops combine clinical-grade Niacinamide + Sodium Hyaluronate withrarefied regional ingredients never seen in Western skincare.</p><p>Emmy-winning makeup artist Alexandra French (Euphoria S2) uses them. Whenthe artists behind the beauty looks you admire choose this product, that saysmore than any ad.</p>",
+            "testimonial_quote": "I've tried every luxury serum on the market. Nothing compares to this.",
+            "testimonial_author": "Priya D., Verified Buyer",
+            "cta_text": "AWARD-WINNING FORMULA",
+            "cta_url": "",
+            "image": "shopify://shop_images/Vogue_and_press_clippings.png",
+            "image_alt": ""
+          }
+        },
+        "reason_5": {
+          "type": "reason",
+          "settings": {
+            "background_color": "",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "icon": "leaf",
+            "headline": "Rare Regional Ingredients Your Dermatologist Has Never Heard Of",
+            "body": "<p>Liquefied Gold Muga Silk — the absolute hero — drives skin cell renewal at a cellular level. Ashwagandha Root Extract neutralizes cortisol-driven skin damage. Tremella Mushroom — a rare cloud fungus — holds 500x its weight in moisture. </p><p>The formula also includes Copper for antimicrobial and skin-strengthening benefits, Niacinamide for visible brightening, and Hyaluronic Acid for deep, lasting hydration. Finished with Tuberose — rare, aromatic, and deeply restorative.</p><p>Undiscovered by Western skincare. Precision-validated by NYC bio-tech formulation science. All, in one dropper.</p>",
+            "testimonial_quote": "The ingredient list reads like a scientific breakthrough. My skin has never looked this luminous or glass-like.",
+            "testimonial_author": "Amara J., Verified Buyer",
+            "cta_text": "DISCOVER THE RARE INGREDIENTS",
+            "cta_url": "",
+            "image": "shopify://shop_images/Rare_regional_Indian_ingredients_Ashwagandha_Tremella_Hibiscus.png",
+            "image_alt": ""
+          }
+        },
+        "reason_6": {
+          "type": "reason",
+          "settings": {
+            "background_color": "#ffffff",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "icon": "drop",
+            "headline": "It Sold Out in 11 Minutes. Then 400 People Joined the Waitlist.",
+            "body": "<p>1,250 units on QVC. Gone in 11 minutes. 400+ on the waitlist — not because of acampaign, because the clinical results speak for themselves.</p><p>After four weeks: tighter, firmer, dewy, visibly more luminous skin. Fine linesrecede. The Dewdrops are back in stock — but they won't last.</p>",
+            "testimonial_quote": "After 4 weeks, my skin is super smooth with a lovely glow. Fine lines less visible. Tighter, firmer, most luminous.",
+            "testimonial_author": "Betty B., Verified Buyer",
+            "cta_text": "CLAIM YOUR BOTTLE",
+            "cta_url": "",
+            "image": "shopify://shop_images/Close-up_luminous_radiant_skin.png",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "reason_1",
+        "reason_2",
+        "reason_3",
+        "reason_4",
+        "reason_5",
+        "reason_6"
+      ],
+      "settings": {
+        "background_color": "#f5f0ea",
+        "headline_color": "#1b1f8a",
+        "body_color": "#1b1f8a",
+        "body_color_mobile": "#212326",
+        "eyebrow_color": "#1b1f8a",
+        "accent_color": "#2b2fd9",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "mmx_testimonials": {
+      "type": "mmx-testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "I was shocked at the difference these dewdrops made in just a few days. My skin absorbs it right away and it leaves everything super soft and glowy.",
+            "name": "Julie O.",
+            "date": "Feb 2026"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "After 4 weeks using this day and night, my skin is super smooth with a lovely glow. Fine lines are less visible and my skin is tighter, firmer, and most luminous.",
+            "name": "Betty B.",
+            "date": "Jan 2026"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "My skin routine now delivers what every luxury serum promised but never delivered. The serum is potent but weightless, and the Silk Cocoons take it to another level.",
+            "name": "Rachael M.",
+            "date": "Dec 2025"
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "The ingredient list reads like a scientific breakthrough. My skin has never looked this luminous or glass-like.",
+            "name": "Amara J.",
+            "date": "Nov 2025"
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "I've tried every luxury serum on the market. Nothing compares to this. The Vogue recognition is well-deserved.",
+            "name": "Priya D.",
+            "date": "Nov 2025"
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "My skin has never looked this radiant. I can actually see the difference every morning when I wake up.",
+            "name": "Sarah K.",
+            "date": "Oct 2025"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6"
+      ],
+      "settings": {
+        "background_color": "#e8e4de",
+        "headline_color": "#1b1f8a",
+        "eyebrow_color": "#1b1f8a",
+        "accent_color": "#2b2fd9",
+        "cta_bg_color": "#1b1f8a",
+        "cta_text_color": "#ffffff",
+        "eyebrow_text": "CUSTOMER LOVE",
+        "headline": "What Women Are Saying",
+        "subtext": "2,400+ verified reviews · 4.9 ★",
+        "show_cta": true,
+        "cta_text": "JOIN 2,400+ WOMEN",
+        "cta_url": "",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "mmx_before_after": {
+      "type": "mmx-before-after",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "number": "100%",
+            "label": "Saw improved skin radiance"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "number": "94%",
+            "label": "Reported visibly smoother skin"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "number": "89%",
+            "label": "Noticed reduced dark spots"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "number": "28 days",
+            "label": "Average time to visible results"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "headline_color": "#1b1f8a",
+        "eyebrow_color": "#1b1f8a",
+        "accent_color": "#2b2fd9",
+        "slider_eyebrow": "CLINICAL+ RESULTS",
+        "slider_headline": "See the Transformation",
+        "slider_subtext": "Real results from a 28-day clinical study. Drag the slider to reveal the difference.",
+        "before_image": "shopify://shop_images/After_Amrutini_Luminosity_Dewdrops.png",
+        "after_image": "shopify://shop_images/After_Amrutini_Luminosity_Dewdrops_1.png",
+        "stats_eyebrow": "CLINICALLY PROVEN",
+        "stats_headline": "Radical Radiance, Backed by Science",
+        "stats_body": "In an independent 28-day clinical trial, women using Amrutini® Luminosity Dewdrops reported transformative results — not just in how their skin looked, but how it felt.",
+        "study_note": "Independent clinical study, n=36, 28-day trial. Results may vary.",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
+    "mmx_buy": {
+      "type": "mmx-buy",
+      "blocks": {
+        "eyebrow_8NzNPY": {
+          "type": "eyebrow",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_12.svg",
+            "text": "THE OFFER"
+          }
+        },
+        "title_6TXB7d": {
+          "type": "title",
+          "settings": {
+            "fallback_title": "",
+            "subtitle": "High-Performance Luminosity Serum · 30ml"
+          }
+        },
+        "stock_badge_txmqhG": {
+          "type": "stock_badge",
+          "settings": {
+            "highlight_text": "Back in stock",
+            "text": "— limited quantities available"
+          }
+        },
+        "judge_me_reviews_preview_badge_homepage_HVdcXb": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge_homepage/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "product": "{{ section.settings.product }}"
+          }
+        },
+        "purchase_options_Wmf7MH": {
+          "type": "purchase_options",
+          "settings": {
+            "subscribe_label": "Subscribe & Save",
+            "onetime_label": "One-Time Purchase",
+            "popular_badge": "Most Popular"
+          }
+        },
+        "subscriber_benefits_mjhTND": {
+          "type": "subscriber_benefits",
+          "settings": {
+            "title": "Subscriber Benefits",
+            "benefit_1_text": "15% off every order — forever",
+            "benefit_2_text": "Free US shipping on every delivery",
+            "benefit_3_text": "Complimentary Silk Cocoons with every delivery — a $16 value",
+            "benefit_4_text": "Cancel, pause or skip anytime — no questions",
+            "benefit_5_text": "Early access to new launches & limited editions"
+          }
+        },
+        "delivery_frequency_jXwyQE": {
+          "type": "delivery_frequency",
+          "settings": {
+            "title": "Delivery Frequency",
+            "popular_badge": "Most Popular"
+          }
+        },
+        "buy_button_Yinxg3": {
+          "type": "buy_button",
+          "settings": {
+            "subscribe_text": "Subscribe & Save",
+            "onetime_text": "Add to Cart"
+          }
+        },
+        "urgency_wXRDgB": {
+          "type": "urgency",
+          "settings": {
+            "highlight_text": "Only 12 left in stock",
+            "text": "— restocks sell out within hours"
+          }
+        },
+        "trust_badges_QaRB83": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1_icon": "shopify://shop_images/SVG_13.svg",
+            "badge_1_label": "30-Day Guarantee",
+            "badge_2_icon": "shopify://shop_images/SVG_14.svg",
+            "badge_2_label": "Free Shipping",
+            "badge_3_icon": "shopify://shop_images/SVG_15.svg",
+            "badge_3_label": "Easy Returns",
+            "badge_4_icon": "shopify://shop_images/SVG_16.svg",
+            "badge_4_label": "Clean Formula"
+          }
+        },
+        "review_NbNBwq": {
+          "type": "review",
+          "settings": {
+            "verified_label": "Verified Purchase",
+            "quote": "I was skeptical at $135 but after two weeks my skin has that dewy, glass-like luminosity I'd only seen in editorial shoots. The Silk Cocoons are precision skincare unlike anything else. Worth every penny.",
+            "author": "Priya M., Verified Subscriber"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_8NzNPY",
+        "title_6TXB7d",
+        "stock_badge_txmqhG",
+        "judge_me_reviews_preview_badge_homepage_HVdcXb",
+        "purchase_options_Wmf7MH",
+        "subscriber_benefits_mjhTND",
+        "delivery_frequency_jXwyQE",
+        "buy_button_Yinxg3",
+        "urgency_wXRDgB",
+        "trust_badges_QaRB83",
+        "review_NbNBwq"
+      ],
+      "settings": {
+        "product": "amrutini-luminosity-dewdrops",
+        "background_color": "#ffffff",
+        "review_badge_text": "2,400+ Reviews",
+        "sold_badge_text": "Sold Out in 11 Min",
+        "sold_badge_subtext": "on QVC · 400+ Waitlist",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "mmx_formula": {
+      "type": "mmx-formula",
+      "blocks": {
+        "ingredient_1": {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "gold",
+            "icon_char": "✦",
+            "origin": "Assam, India",
+            "name": "Liquefied Gold Muga Silk",
+            "badge": "Surgical-Grade Regenerative",
+            "description": "Drives skin cell regeneration at a cellular level. The same bio-material used in surgical wound repair — now precision-formulated into a serum dropper."
+          }
+        },
+        "ingredient_2": {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "blue",
+            "icon_char": "◈",
+            "origin": "Makaibari Estate, Darjeeling",
+            "name": "Silver Tips Imperial Tea",
+            "badge": "Full-Moon Harvested · Polyphenol-Dense",
+            "description": "Shields skin from environmental aggressors. Delivers a glass-like, luminous complexion. One of the most expensive, undiscovered teas in the world — used exclusively by Love, Indus."
+          }
+        },
+        "ingredient_3": {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "green",
+            "icon_char": "◉",
+            "origin": "Rare Cloud Fungus, Regional India",
+            "name": "Tremella Mushroom Extract",
+            "badge": "500x Moisture Retention",
+            "description": "Holds 500x its weight in moisture — outperforming hyaluronic acid. A rare cloud fungus delivering deep, sustained hydration and a glass-like, dewy complexion."
+          }
+        },
+        "ingredient_4": {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "purple",
+            "icon_char": "◆",
+            "origin": "Rajasthan, India",
+            "name": "Ashwagandha Root Extract",
+            "badge": "Cortisol-Neutralizing · Adaptogenic",
+            "description": "Neutralizes cortisol-driven skin damage — the stress hormone that accelerates aging. Adaptogenic. Precision-formulated for clinical-grade skin resilience."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_1",
+        "ingredient_2",
+        "ingredient_3",
+        "ingredient_4"
+      ],
+      "settings": {
+        "background_color": "#e9e5e0",
+        "eyebrow_text": "THE FORMULA",
+        "headline": "Rare Ingredients. Precision Science.",
+        "subtext": "Four undiscovered regional ingredients, bio-tech validated in New York City. No other serum uses these.",
+        "show_cta": true,
+        "cta_text": "GET THE FULL FORMULA",
+        "cta_url": "",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
+    "mmx_video": {
+      "type": "mmx-video",
+      "settings": {
+        "background_color": "#ffffff",
+        "headline_color": "#1b1f8a",
+        "eyebrow_color": "#1b1f8a",
+        "accent_color": "#2b2fd9",
+        "eyebrow_text": "THE BRAND",
+        "headline": "Amrutini® in Motion",
+        "subtext": "A glimpse into the formula, the ritual, the result.",
+        "video": "shopify://files/videos/Li_BrandVideo_Website-2.mp4",
+        "video_url": "",
+        "autoplay": false,
+        "loop": false,
+        "caption": "Amrutini® Luminosity Dewdrops — Rare Regional Ingredients · NYC Precision-Formulated",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
+    "mmx_how_it_works": {
+      "type": "mmx-how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "drop",
+            "title": "Cleanse",
+            "body": "Start with clean skin. Absorbs instantly — no waiting."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "dropper",
+            "title": "Apply 2–3 Dewdrops",
+            "body": "Pat into skin, morning and night. Immediate luminosity."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "moon",
+            "title": "Silk Cocoons (2–3×/week)",
+            "body": "Soak in water. Glide across skin in circles. Precision micro-exfoliation — no irritation, no harsh chemicals."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "background_color": "#2b2fd9",
+        "eyebrow_text": "THE PROTOCOL",
+        "headline": "How It Works",
+        "padding_top": 96,
+        "padding_bottom": 96,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
+    "mmx_faq": {
+      "type": "mmx-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is $135 worth it for a serum?",
+            "answer": "Most serums use the same 10 ingredients. Amrutini® Luminosity Dewdrops use four undiscovered regional ingredients — sourced from the rarest corners of India, bio-engineered in New York City. No other Western skincare brand uses Liquefied Gold Muga Silk or Full-Moon Silver Tips Imperial Tea. The clinical results speak for themselves: 100% of participants saw improved radiance in 28 days."
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it suitable for sensitive skin?",
+            "answer": "Yes. The formula is free from parabens, sulfates, synthetic fragrances, and harsh chemicals. It's been dermatologist-tested and is suitable for all skin types including sensitive skin. The Hibiscus-derived AHAs are gentle precision exfoliants — not harsh chemical peels."
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's different from other serums?",
+            "answer": "Four things no other Western brand uses: Liquefied Gold Muga Silk (surgical-grade regenerative), Silver Tips Imperial Tea (full-moon harvested, polyphenol-dense), Tremella Mushroom (500x moisture retention), and Ashwagandha Root Extract (cortisol-neutralizing). Combined with clinical-grade Niacinamide and Sodium Hyaluronate, this is a formula unlike anything in Western skincare."
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How fast do results show?",
+            "answer": "In our 28-day clinical trial, 100% of participants saw improved skin radiance, and 94% reported visibly smoother skin. Most customers notice a dewy, glass-like glow within the first week. Full results — firmer, tighter, more luminous skin — appear at 4 weeks."
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the Silk Cocoons?",
+            "answer": "The Silk Cocoons are precision micro-exfoliation tools made from real silk. Each cocoon is used wet to gently buff skin before applying the Dewdrops, allowing the serum to penetrate deeper. Each cocoon lasts 3–4 uses, and 4 cocoons are included free with every order — a $48 value."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "headline_color": "#00199f",
+        "accent_color": "#00199f",
+        "eyebrow_text": "COMMON QUESTIONS",
+        "headline": "Frequently Asked Questions",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "mmx_final_cta": {
+      "type": "mmx-closing-cta",
+      "blocks": {
+        "trust_2": {
+          "type": "trust_item",
+          "settings": {
+            "icon_type": "shipping",
+            "text": "Free US Shipping"
+          }
+        },
+        "trust_3": {
+          "type": "trust_item",
+          "settings": {
+            "icon_type": "clinical",
+            "text": "Clinically Tested"
+          }
+        },
+        "trust_4": {
+          "type": "trust_item",
+          "settings": {
+            "icon_type": "formulated",
+            "text": "Precision-Formulated"
+          }
+        },
+        "trust_1": {
+          "type": "trust_item",
+          "settings": {
+            "icon_type": "shipping",
+            "text": "30-Day Guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "trust_2",
+        "trust_3",
+        "trust_4",
+        "trust_1"
+      ],
+      "settings": {
+        "background_color": "#f5f0ea",
+        "accent_color": "#00199f",
+        "eyebrow_text": "30-Day Radiance Guarantee",
+        "headline": "Women Who Read Ingredient Labels Don't Take Risks. Neither Do We.",
+        "subtext": "30 days. Smoother, more radiant skin or full refund. No questions. 1,250 units. 11 minutes. 400+ waitlist. Vogue's Best Spring Product.",
+        "urgency_text": "Only 12 left in stock — restocks sell out within hours",
+        "price_text": "$135",
+        "bonus_text": "4 Copper Crusted Silk Cocoons",
+        "cta_text": "DISCOVER RADICAL RADIANCE",
+        "cta_url": "",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "mobile_padding_top": 56,
+        "mobile_padding_bottom": 56
+      }
+    },
+    "mmx_lp_footer": {
+      "type": "mmx-lp-footer",
+      "blocks": {
+        "link_3": {
+          "type": "link",
+          "settings": {
+            "label": "Shipping Policy",
+            "url": ""
+          }
+        },
+        "link_4": {
+          "type": "link",
+          "settings": {
+            "label": "Refund Policy",
+            "url": ""
+          }
+        },
+        "link_5": {
+          "type": "link",
+          "settings": {
+            "label": "Contact Us",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "link_3",
+        "link_4",
+        "link_5"
+      ],
+      "settings": {
+        "background_color": "#00199f",
+        "text_color": "#ffffff",
+        "logo_image": "shopify://shop_images/LOVE_Indus_1.png",
+        "logo_url": "/",
+        "brand_name": "Love, Indus"
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_jfRnw9",
+    "mmx_global_styles",
+    "mmx_announcement_bar",
+    "mmx_nav",
+    "mmx_hero",
+    "mmx_featured_in",
+    "mmx_stats",
+    "mmx_the_gap",
+    "mmx_reasons",
+    "mmx_testimonials",
+    "mmx_before_after",
+    "mmx_buy",
+    "mmx_formula",
+    "mmx_video",
+    "mmx_how_it_works",
+    "mmx_faq",
+    "mmx_final_cta",
+    "mmx_lp_footer"
+  ]
+}

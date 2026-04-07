@@ -1,0 +1,812 @@
+{% comment %}
+  Section: mmx-formula
+  Description: Warm beige ingredients section with 2x2 grid (desktop) and draggable slider (mobile)
+{% endcomment %}
+
+<style>
+  .mmx-formula {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .mmx-formula__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 128px;
+  }
+
+  /* ── Header ── */
+  .mmx-formula__header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 884px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+  }
+
+  .mmx-formula__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: #00199f;
+  }
+
+  .mmx-formula__eyebrow svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .mmx-formula__eyebrow-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #00199f;
+    margin: 0;
+  }
+
+  .mmx-formula__headline {
+    font-family: var(--mmx-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: #00199f;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .mmx-formula__subtext {
+    font-family: var(--mmx-font-sans);
+    font-size: 18px;
+    color: rgba(21, 21, 22, 0.55);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Carousel wrapper ── */
+  mmx-formula-carousel {
+    display: block;
+  }
+
+  .mmx-formula__carousel-viewport {
+    margin-bottom: 40px;
+  }
+
+  /* ── Desktop Grid Container ── */
+  .mmx-formula__grid-wrap {
+    border: 1px solid rgba(210, 213, 217, 0.7);
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .mmx-formula__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── Cards ── */
+  .mmx-formula__card {
+    background-color: #faf9f8;
+    padding: 32px;
+    position: relative;
+    border-right: 1px solid rgba(210, 213, 217, 0.7);
+    border-bottom: 1px solid rgba(210, 213, 217, 0.7);
+  }
+
+  .mmx-formula__card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .mmx-formula__card:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .mmx-formula__card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .mmx-formula__card-icon {
+    font-size: 28px;
+    line-height: 1;
+    font-family: 'Quattrocento Sans', sans-serif;
+  }
+
+  .mmx-formula__card-origin {
+    font-family: var(--mmx-font-sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #00199f;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .mmx-formula__card-name {
+    font-family: var(--mmx-font-serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: #00199f;
+    margin: 0 0 15px;
+    line-height: 1.17;
+  }
+
+  .mmx-formula__card-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid;
+    margin-bottom: 16px;
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+  }
+
+  .mmx-formula__card-body {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6b6e73;
+  }
+
+  /* ── Color Schemes ── */
+  .mmx-formula__card--gold .mmx-formula__card-icon { color: #e7a401; }
+  .mmx-formula__card--gold .mmx-formula__card-badge {
+    background-color: rgba(255, 181, 3, 0.09);
+    border-color: rgba(205, 145, 0, 0.25);
+    color: #c08800;
+  }
+
+  .mmx-formula__card--blue .mmx-formula__card-icon { color: #3e9ff0; }
+  .mmx-formula__card--blue .mmx-formula__card-badge {
+    background-color: rgba(200, 230, 255, 0.09);
+    border-color: rgba(0, 68, 125, 0.25);
+    color: #3e9ff0;
+  }
+
+  .mmx-formula__card--green .mmx-formula__card-icon { color: #68e2a8; }
+  .mmx-formula__card--green .mmx-formula__card-badge {
+    background-color: rgba(130, 239, 187, 0.09);
+    border-color: rgba(0, 180, 94, 0.25);
+    color: #55d297;
+  }
+
+  .mmx-formula__card--purple .mmx-formula__card-icon { color: #cb3ee9; }
+  .mmx-formula__card--purple .mmx-formula__card-badge {
+    background-color: rgba(245, 198, 255, 0.09);
+    border-color: rgba(75, 4, 91, 0.25);
+    color: #cb3ee9;
+  }
+
+  /* ── Controls (hidden on desktop) ── */
+  .mmx-formula__controls {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    margin-bottom: 24px;
+  }
+
+  .mmx-formula__arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    border: 1px solid #00199f;
+    background: transparent;
+    color: #00199f;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.3;
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+    padding: 0;
+  }
+
+  .mmx-formula__arrow--next {
+    background-color: #00199f;
+    color: #ffffff;
+    opacity: 1;
+  }
+
+  .mmx-formula__arrow:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+
+  .mmx-formula__arrow--next:disabled {
+    opacity: 0.3;
+  }
+
+  .mmx-formula__dots {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+  }
+
+  .mmx-formula__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 25, 159, 0.25);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: all 0.2s;
+  }
+
+  .mmx-formula__dot--active {
+    width: 11.2px;
+    height: 11.2px;
+    border-radius: 5.6px;
+    background-color: #00199f;
+  }
+
+  /* ── CTA ── */
+  .mmx-formula__cta-wrap {
+    text-align: center;
+  }
+
+  .mmx-formula__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #00199f;
+    color: #ffffff;
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 28px;
+    height: 48px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    border: none;
+  }
+
+  .mmx-formula__cta svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .mmx-formula__cta:hover {
+    opacity: 0.88;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .mmx-formula {
+      padding: {{ section.settings.mobile_padding_top }}px 0 {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .mmx-formula__inner {
+      padding: 0;
+    }
+
+    .mmx-formula__header {
+      padding: 0 20px;
+      gap: 14px;
+      max-width: none;
+      text-align: left;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .mmx-formula__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-formula__headline {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .mmx-formula__subtext {
+      font-size: 14px;
+      color: #6b6e73;
+    }
+
+    .mmx-formula__carousel-viewport {
+      overflow: hidden;
+      padding: 0;
+      margin-bottom: 24px;
+    }
+
+    .mmx-formula__grid-wrap {
+      border: none;
+      border-radius: 0;
+      background: none;
+    }
+
+    .mmx-formula__grid {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 14px;
+      padding: 0 20px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .mmx-formula__grid.is-dragging {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .mmx-formula__card {
+      flex: 0 0 calc(100vw - 60px);
+      border: 1px solid rgba(210, 213, 217, 0.7);
+      border-right: 1px solid rgba(210, 213, 217, 0.7) !important;
+      border-bottom: 1px solid rgba(210, 213, 217, 0.7) !important;
+      border-radius: 0;
+      padding: 29px 32px;
+    }
+
+    .mmx-formula__card-badge {
+      font-size: 12px;
+    }
+
+    .mmx-formula__card-body {
+      font-size: 12px;
+      line-height: 1.83;
+    }
+
+    .mmx-formula__controls {
+      display: flex;
+      padding: 0 20px;
+    }
+
+    .mmx-formula__cta-wrap {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<section class="mmx-formula" id="mmx-formula">
+  <div class="mmx-formula__inner">
+
+    <div class="mmx-formula__header">
+      <div class="mmx-formula__eyebrow">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 1L9.3 5.7L14 7L9.3 8.3L8 13L6.7 8.3L2 7L6.7 5.7L8 1Z" fill="currentColor"/>
+          <path d="M8 1L8.8 3.9L11.7 4.7L8.8 5.5L8 8.4L7.2 5.5L4.3 4.7L7.2 3.9L8 1Z" fill="currentColor" opacity="0.3"/>
+        </svg>
+        {{ section.settings.eyebrow_text }}
+      </div>
+      <span class="mmx-formula__eyebrow-line" aria-hidden="true"></span>
+      <h2 class="mmx-formula__headline">{{ section.settings.headline }}</h2>
+      <p class="mmx-formula__subtext">{{ section.settings.subtext }}</p>
+    </div>
+
+    <mmx-formula-carousel
+      data-per-page="2"
+      data-per-page-mobile="1"
+      role="region"
+      aria-label="Formula ingredients"
+    >
+      <div class="mmx-formula__carousel-viewport" data-carousel-viewport>
+        <div class="mmx-formula__grid-wrap">
+          <div class="mmx-formula__grid" data-carousel-track>
+            {% assign slide_index = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'ingredient' %}
+                {% assign slide_index = slide_index | plus: 1 %}
+                <div
+                  class="mmx-formula__card mmx-formula__card--{{ block.settings.color_scheme }}"
+                  data-carousel-slide="{{ slide_index }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="mmx-formula__card-header">
+                    <div class="mmx-formula__card-icon" aria-hidden="true">{{ block.settings.icon_char }}</div>
+                    <div class="mmx-formula__card-origin">{{ block.settings.origin }}</div>
+                  </div>
+                  <h3 class="mmx-formula__card-name">{{ block.settings.name }}</h3>
+                  <div class="mmx-formula__card-badge">{{ block.settings.badge }}</div>
+                  <p class="mmx-formula__card-body">{{ block.settings.description }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="mmx-formula__controls">
+        <button class="mmx-formula__arrow mmx-formula__arrow--prev" data-carousel-prev aria-label="Previous ingredient">‹</button>
+
+        <div class="mmx-formula__dots" data-carousel-dots role="tablist" aria-label="Ingredient pages">
+          {% assign total_ingredients = section.blocks | where: 'type', 'ingredient' | size %}
+          {% for i in (1..total_ingredients) %}
+            <button
+              class="mmx-formula__dot{% if i == 1 %} mmx-formula__dot--active{% endif %}"
+              data-carousel-dot="{{ i }}"
+              role="tab"
+              aria-label="Ingredient {{ i }}"
+              aria-selected="{% if i == 1 %}true{% else %}false{% endif %}"
+            ></button>
+          {% endfor %}
+        </div>
+
+        <button class="mmx-formula__arrow mmx-formula__arrow--next" data-carousel-next aria-label="Next ingredient">›</button>
+      </div>
+    </mmx-formula-carousel>
+
+    {% if section.settings.show_cta %}
+      <div class="mmx-formula__cta-wrap">
+        <a href="{{ section.settings.cta_url | default: '#mmx-buy' }}" class="mmx-formula__cta">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 1.33333V2.66667M8 13.3333V14.6667M1.33333 8H2.66667M13.3333 8H14.6667" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path opacity="0.6" d="M3.17157 3.17157L4.11421 4.11421M11.8858 11.8858L12.8284 12.8284M3.17157 12.8284L4.11421 11.8858M11.8858 4.11421L12.8284 3.17157" stroke="white" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="8" cy="8" r="2.66667" stroke="white" stroke-width="1.2"/>
+          </svg>
+          {{ section.settings.cta_text }}
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.33333 8H12.6667M12.6667 8L8.66667 4M12.6667 8L8.66667 12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    if (customElements.get('mmx-formula-carousel')) return;
+
+    class MMXFormulaCarousel extends HTMLElement {
+      connectedCallback() {
+        this._currentPage = 1;
+        this._slides      = Array.from(this.querySelectorAll('[data-carousel-slide]'));
+        this._totalSlides = this._slides.length;
+        this._track       = this.querySelector('[data-carousel-track]');
+        this._prevBtn     = this.querySelector('[data-carousel-prev]');
+        this._nextBtn     = this.querySelector('[data-carousel-next]');
+        this._dots        = this.querySelectorAll('[data-carousel-dot]');
+
+        if (this._prevBtn) this._prevBtn.addEventListener('click', () => this._go(-1));
+        if (this._nextBtn) this._nextBtn.addEventListener('click', () => this._go(1));
+        this._dots.forEach((dot, i) => dot.addEventListener('click', () => this._goToPage(i + 1)));
+
+        this._initDrag();
+        window.addEventListener('resize', () => this._render(), { passive: true });
+
+        this._render();
+      }
+
+      _isMobile() { return window.innerWidth <= 900; }
+
+      _getTotalPages() { return this._isMobile() ? this._totalSlides : 1; }
+
+      _getPageOffset(page) {
+        if (!this._isMobile()) return 0;
+        const firstCard  = this._slides[0];
+        const targetCard = this._slides[page - 1];
+        if (!firstCard || !targetCard) return 0;
+        return targetCard.offsetLeft - firstCard.offsetLeft;
+      }
+
+      _go(dir) {
+        if (!this._isMobile()) return;
+        const total = this._getTotalPages();
+        this._currentPage = Math.max(1, Math.min(total, this._currentPage + dir));
+        this._render();
+      }
+
+      _goToPage(page) {
+        if (!this._isMobile()) return;
+        this._currentPage = Math.max(1, Math.min(this._getTotalPages(), page));
+        this._render();
+      }
+
+      _render() {
+        if (!this._track) return;
+
+        if (!this._isMobile()) {
+          this._track.style.transform = '';
+          return;
+        }
+
+        const offset = this._getPageOffset(this._currentPage);
+        const total  = this._getTotalPages();
+
+        this._track.style.transform = `translateX(-${offset}px)`;
+
+        this._dots.forEach((dot, i) => {
+          const active = i + 1 === this._currentPage;
+          dot.classList.toggle('mmx-formula__dot--active', active);
+          dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        if (this._prevBtn) {
+          const atStart = this._currentPage === 1;
+          this._prevBtn.disabled = atStart;
+          this._prevBtn.style.opacity = atStart ? '0.2' : '0.3';
+        }
+        if (this._nextBtn) {
+          const atEnd = this._currentPage === total;
+          this._nextBtn.disabled = atEnd;
+          this._nextBtn.style.opacity = atEnd ? '0.3' : '1';
+        }
+      }
+
+      _initDrag() {
+        if (!this._track) return;
+
+        let startX      = 0;
+        let startOffset = 0;
+        let isDragging  = false;
+        let hasMoved    = false;
+
+        const getCurrentOffset = () => {
+          const m = new DOMMatrix(window.getComputedStyle(this._track).transform);
+          return -m.m41;
+        };
+
+        const onStart = (x) => {
+          if (!this._isMobile()) return;
+          isDragging  = true;
+          hasMoved    = false;
+          startX      = x;
+          startOffset = getCurrentOffset();
+          this._track.classList.add('is-dragging');
+          this._track.style.transition = 'none';
+        };
+
+        const onMove = (x) => {
+          if (!isDragging) return;
+          const delta = x - startX;
+          if (Math.abs(delta) > 4) hasMoved = true;
+          const newOffset = startOffset - delta;
+          this._track.style.transform = `translateX(-${newOffset}px)`;
+        };
+
+        const onEnd = (x) => {
+          if (!isDragging) return;
+          isDragging = false;
+          this._track.classList.remove('is-dragging');
+          this._track.style.transition = '';
+
+          const delta = x - startX;
+          if (Math.abs(delta) > 50) {
+            this._go(delta < 0 ? 1 : -1);
+          } else {
+            this._render();
+          }
+        };
+
+        /* Mouse */
+        this._track.addEventListener('mousedown', (e) => { e.preventDefault(); onStart(e.clientX); });
+        window.addEventListener('mousemove', (e) => onMove(e.clientX));
+        window.addEventListener('mouseup',   (e) => onEnd(e.clientX));
+
+        /* Prevent accidental link/button clicks after a drag */
+        this._track.addEventListener('click', (e) => {
+          if (hasMoved) { e.preventDefault(); e.stopPropagation(); }
+        }, true);
+
+        /* Touch */
+        this._track.addEventListener('touchstart', (e) => onStart(e.touches[0].clientX),      { passive: true });
+        this._track.addEventListener('touchmove',  (e) => onMove(e.touches[0].clientX),       { passive: true });
+        this._track.addEventListener('touchend',   (e) => onEnd(e.changedTouches[0].clientX), { passive: true });
+      }
+    }
+
+    customElements.define('mmx-formula-carousel', MMXFormulaCarousel);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "MMX Formula",
+  "tag": "div",
+  "class": "mmx-section-formula",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#E9E5E0"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "THE FORMULA"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Rare Ingredients. Precision Science."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Four undiscovered regional ingredients, bio-tech validated in New York City. No other serum uses these."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Get the Full Formula"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL (leave blank for buy section)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "select",
+          "id": "color_scheme",
+          "label": "Color Scheme",
+          "options": [
+            { "value": "gold",   "label": "Gold" },
+            { "value": "blue",   "label": "Blue" },
+            { "value": "green",  "label": "Green" },
+            { "value": "purple", "label": "Purple" }
+          ],
+          "default": "gold"
+        },
+        {
+          "type": "text",
+          "id": "icon_char",
+          "label": "Icon Character",
+          "info": "Paste a Unicode symbol, e.g. ✦ ◈ ◉ ◆",
+          "default": "✦"
+        },
+        {
+          "type": "text",
+          "id": "origin",
+          "label": "Origin / Region",
+          "default": "Assam, India"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Ingredient Name",
+          "default": "Liquefied Gold Muga Silk"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Label",
+          "default": "Surgical-Grade Regenerative"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Drives skin cell regeneration at a cellular level. The same bio-material used in surgical wound repair — now precision-formulated into a serum dropper."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Formula",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "gold",
+            "icon_char": "✦",
+            "origin": "Assam, India",
+            "name": "Liquefied Gold Muga Silk",
+            "badge": "Surgical-Grade Regenerative",
+            "description": "Drives skin cell regeneration at a cellular level. The same bio-material used in surgical wound repair — now precision-formulated into a serum dropper."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "blue",
+            "icon_char": "◈",
+            "origin": "Makaibari Estate, Darjeeling",
+            "name": "Silver Tips Imperial Tea",
+            "badge": "Full-Moon Harvested · Polyphenol-Dense",
+            "description": "Shields skin from environmental aggressors. Delivers a glass-like, luminous complexion. One of the most expensive, undiscovered teas in the world — used exclusively by Love, Indus."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "green",
+            "icon_char": "◉",
+            "origin": "Rare Cloud Fungus · Regional India",
+            "name": "Tremella Mushroom Extract",
+            "badge": "500× Moisture Retention",
+            "description": "Holds 500× its weight in moisture — outperforming hyaluronic acid. Delivers a dewy, plumped complexion that lasts. Undiscovered by Western skincare until now."
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "color_scheme": "purple",
+            "icon_char": "◆",
+            "origin": "Regional India · Bio-Tech Validated",
+            "name": "Ashwagandha Root Extract",
+            "badge": "Cortisol-Neutralizing · Precision AHA",
+            "description": "Neutralizes cortisol-driven skin damage — the root cause of stress-induced aging. Paired with Copper for antimicrobial and skin-strengthening benefits, and Niacinamide for a visibly luminous result."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,826 @@
+{% comment %}
+  Section: mmx-testimonials
+  Description: Customer testimonials carousel with 3-column grid
+{% endcomment %}
+
+<style>
+  .mmx-testimonials {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .mmx-testimonials__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ── Header ── */
+  .mmx-testimonials__header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mmx-testimonials__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  .mmx-testimonials__eyebrow svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .mmx-testimonials__eyebrow-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: {{ section.settings.accent_color }};
+    margin: 0;
+  }
+
+  .mmx-testimonials__headline {
+    font-family: var(--mmx-font-sans);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: {{ section.settings.headline_color }};
+    margin: 0;
+  }
+
+  .mmx-testimonials__subtext {
+    font-family: var(--mmx-font-sans);
+    font-size: 18px;
+    color: #6B6E73;
+    margin: 0;
+  }
+
+  /* ── Carousel ── */
+  mmx-testimonials-carousel {
+    display: block;
+  }
+
+  .mmx-testimonials__carousel-viewport {
+    overflow: hidden;
+    /* Extra padding so card box-shadows aren't clipped */
+    padding: 8px 0 16px;
+    margin: -8px 0 -16px;
+    margin-bottom: 32px;
+  }
+
+  .mmx-testimonials__grid {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .mmx-testimonials__grid.is-dragging {
+    cursor: grabbing;
+    transition: none;
+  }
+
+  /* ── Card ── */
+  .mmx-testimonials__card {
+    flex: 0 0 calc((100% - 48px) / 3);
+    background-color: #FAF9F8;
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow: 0px 4px 20px 0px rgba(0, 25, 159, 0.06);
+  }
+
+  .mmx-testimonials__card-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 16px;
+  }
+
+  .mmx-testimonials__card-stars svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .mmx-testimonials__card-quote {
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.64;
+    color: {{ section.settings.headline_color }};
+    flex: 1;
+    margin: 0 0 20px;
+  }
+
+  .mmx-testimonials__card-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mmx-testimonials__card-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 19px;
+    background-color: rgba(0, 25, 159, 0.1);
+    color: {{ section.settings.headline_color }};
+    font-family: var(--mmx-font-sans);
+    font-size: 12.8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.375px;
+    text-transform: uppercase;
+  }
+
+  .mmx-testimonials__card-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mmx-testimonials__card-name {
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: {{ section.settings.headline_color }};
+    line-height: 1.3;
+  }
+
+  .mmx-testimonials__card-meta {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: {{ section.settings.headline_color }};
+    letter-spacing: 0.44px;
+    line-height: 1;
+  }
+
+  /* ── Pagination controls ── */
+  .mmx-testimonials__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    margin-bottom: 16px;
+  }
+
+  .mmx-testimonials__arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    border: 1px solid {{ section.settings.headline_color }};
+    background: transparent;
+    color: {{ section.settings.headline_color }};
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.3;
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+    padding: 0;
+  }
+
+  .mmx-testimonials__arrow--next {
+    background-color: {{ section.settings.headline_color }};
+    color: #ffffff;
+    opacity: 1;
+  }
+
+  .mmx-testimonials__arrow:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+
+  .mmx-testimonials__arrow--next:disabled {
+    opacity: 0.3;
+  }
+
+  .mmx-testimonials__dots {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+  }
+
+  .mmx-testimonials__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: rgba(0, 25, 159, 0.25);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: all 0.2s;
+  }
+
+  .mmx-testimonials__dot--active {
+    width: 11.2px;
+    height: 11.2px;
+    border-radius: 5.6px;
+    background-color: {{ section.settings.headline_color }};
+  }
+
+  /* ── Count + CTA ── */
+  .mmx-testimonials__count {
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    color: #6B6E73;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .mmx-testimonials__cta-wrap {
+    text-align: center;
+  }
+
+  .mmx-testimonials__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: {{ section.settings.cta_bg_color }};
+    color: {{ section.settings.cta_text_color }};
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 28px;
+    height: 53px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 24px 0px rgba(0, 25, 159, 0.3);
+    transition: opacity 0.2s;
+  }
+
+  .mmx-testimonials__cta svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .mmx-testimonials__cta:hover {
+    opacity: 0.88;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .mmx-testimonials__inner {
+      padding: 0;
+    }
+
+    .mmx-testimonials__header {
+      padding: 0 20px;
+    }
+
+    .mmx-testimonials__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-testimonials__headline {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .mmx-testimonials__subtext {
+      font-size: 12px;
+    }
+
+    .mmx-testimonials__carousel-viewport {
+      padding: 8px 0 16px;
+      margin: -8px 0 -16px;
+      margin-bottom: 24px;
+    }
+
+    .mmx-testimonials__grid {
+      gap: 14px;
+      padding: 0 20px;
+    }
+
+    .mmx-testimonials__card {
+      flex: 0 0 calc(100vw - 60px);
+    }
+
+    .mmx-testimonials__card-quote {
+      font-size: 14px;
+      font-style: normal;
+      color: #212326;
+      line-height: 1.643;
+    }
+
+    .mmx-testimonials__card-name {
+      font-size: 14px;
+      color: #212326;
+    }
+
+    .mmx-testimonials__card-meta {
+      font-size: 12px;
+      color: {{ section.settings.headline_color }};
+      letter-spacing: 0.88px;
+    }
+
+    .mmx-testimonials__controls {
+      padding: 0 20px;
+    }
+
+    .mmx-testimonials__count {
+      font-size: 12px;
+      padding: 0 20px;
+    }
+
+    .mmx-testimonials__cta-wrap {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<section class="mmx-testimonials" id="mmx-testimonials">
+  <div class="mmx-testimonials__inner">
+    <div class="mmx-testimonials__header">
+      <div class="mmx-testimonials__eyebrow">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M13.8933 3.07333C13.5528 2.73267 13.1485 2.46243 12.7036 2.27806C12.2586 2.09368 11.7817 1.99878 11.3 1.99878C10.8183 1.99878 10.3414 2.09368 9.89643 2.27806C9.45146 2.46243 9.04717 2.73267 8.70667 3.07333L8 3.78L7.29333 3.07333C6.60554 2.38554 5.67269 1.99914 4.7 1.99914C3.72731 1.99914 2.79446 2.38554 2.10667 3.07333C1.41887 3.76113 1.03247 4.69398 1.03247 5.66667C1.03247 6.63936 1.41887 7.57221 2.10667 8.26L2.81333 8.96667L8 14.1533L13.1867 8.96667L13.8933 8.26C14.234 7.9195 14.5042 7.51521 14.6886 7.07024C14.873 6.62526 14.9679 6.14832 14.9679 5.66667C14.9679 5.18501 14.873 4.70807 14.6886 4.2631C14.5042 3.81812 14.234 3.41384 13.8933 3.07333Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ section.settings.eyebrow_text }}
+      </div>
+      <span class="mmx-testimonials__eyebrow-line" aria-hidden="true"></span>
+      <h2 class="mmx-testimonials__headline">{{ section.settings.headline }}</h2>
+      <p class="mmx-testimonials__subtext">{{ section.settings.subtext }}</p>
+    </div>
+
+    <mmx-testimonials-carousel
+      data-per-page="3"
+      data-per-page-mobile="1"
+      role="region"
+      aria-label="Customer testimonials"
+    >
+      <div class="mmx-testimonials__carousel-viewport" data-carousel-viewport>
+      <div class="mmx-testimonials__grid" data-carousel-track>
+        {% assign visible_count = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'review' %}
+            {% assign visible_count = visible_count | plus: 1 %}
+            <div
+              class="mmx-testimonials__card"
+              data-carousel-slide="{{ visible_count }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="mmx-testimonials__card-stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+                {% for i in (1..5) %}
+                  <svg viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M6.5 1.21875L7.75531 3.76188L10.5625 4.16975L8.53125 6.14981L9.01063 8.94481L6.5 7.62531L3.98937 8.94481L4.46875 6.14981L2.4375 4.16975L5.24469 3.76188L6.5 1.21875Z" fill="#FFB503"/>
+                  </svg>
+                {% endfor %}
+              </div>
+              <p class="mmx-testimonials__card-quote">"{{ block.settings.quote }}"</p>
+              <div class="mmx-testimonials__card-footer">
+                <div class="mmx-testimonials__card-avatar" aria-hidden="true">
+                  {{ block.settings.name | slice: 0, 1 | upcase }}
+                </div>
+                <div class="mmx-testimonials__card-author">
+                  <div class="mmx-testimonials__card-name">{{ block.settings.name }}</div>
+                  <div class="mmx-testimonials__card-meta">Verified Buyer · {{ block.settings.date }}</div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      </div>
+
+      <div class="mmx-testimonials__controls">
+        <button class="mmx-testimonials__arrow mmx-testimonials__arrow--prev" data-carousel-prev aria-label="Previous reviews">‹</button>
+
+        <div class="mmx-testimonials__dots" data-carousel-dots role="tablist" aria-label="Review pages">
+          {% assign total_reviews = section.blocks | where: 'type', 'review' | size %}
+          {% assign total_pages = total_reviews | divided_by: 3 | ceil %}
+          {% for i in (1..total_pages) %}
+            <button
+              class="mmx-testimonials__dot{% if i == 1 %} mmx-testimonials__dot--active{% endif %}"
+              data-carousel-dot="{{ i }}"
+              role="tab"
+              aria-label="Page {{ i }}"
+              aria-selected="{% if i == 1 %}true{% else %}false{% endif %}"
+            ></button>
+          {% endfor %}
+        </div>
+
+        <button class="mmx-testimonials__arrow mmx-testimonials__arrow--next" data-carousel-next aria-label="Next reviews">›</button>
+      </div>
+
+      <p class="mmx-testimonials__count" data-carousel-count>
+        Showing 1–3 of {{ total_reviews }} reviews
+      </p>
+    </mmx-testimonials-carousel>
+
+    {% if section.settings.show_cta %}
+      <div class="mmx-testimonials__cta-wrap">
+        <a href="{{ section.settings.cta_url | default: '#mmx-buy' }}" class="mmx-testimonials__cta">
+          <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M7.5 1.875V3.125M7.5 11.875V13.125M1.875 7.5H3.125M11.875 7.5H13.125" stroke="white" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+            <path opacity="0.6" d="M3.5225 3.5225L4.40625 4.40625M10.5938 10.5938L11.4775 11.4775M3.5225 11.4775L4.40625 10.5938M10.5938 4.40625L11.4775 3.5225" stroke="white" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.5 10C8.88071 10 10 8.88071 10 7.5C10 6.11929 8.88071 5 7.5 5C6.11929 5 5 6.11929 5 7.5C5 8.88071 6.11929 10 7.5 10Z" stroke="white" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {{ section.settings.cta_text }}
+          <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 7.5H12M12 7.5L8.25 3.75M12 7.5L8.25 11.25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  (function() {
+    if (customElements.get('mmx-testimonials-carousel')) return;
+
+    class MMXTestimonialsCarousel extends HTMLElement {
+      connectedCallback() {
+        this._perPage    = parseInt(this.dataset.perPage) || 3;
+        this._currentPage = 1;
+        this._slides     = Array.from(this.querySelectorAll('[data-carousel-slide]'));
+        this._totalSlides = this._slides.length;
+        this._track      = this.querySelector('[data-carousel-track]');
+        this._prevBtn    = this.querySelector('[data-carousel-prev]');
+        this._nextBtn    = this.querySelector('[data-carousel-next]');
+        this._dots       = this.querySelectorAll('[data-carousel-dot]');
+        this._countEl    = this.querySelector('[data-carousel-count]');
+
+        if (this._prevBtn) this._prevBtn.addEventListener('click', () => this._go(-1));
+        if (this._nextBtn) this._nextBtn.addEventListener('click', () => this._go(1));
+        this._dots.forEach((dot, i) => dot.addEventListener('click', () => this._goToPage(i + 1)));
+
+        this._initDrag();
+        window.addEventListener('resize', () => this._render(), { passive: true });
+
+        this._render();
+      }
+
+      _isMobile() { return window.innerWidth <= 900; }
+
+      _getPerPage() { return this._isMobile() ? 1 : this._perPage; }
+
+      _getTotalPages() { return Math.ceil(this._totalSlides / this._getPerPage()); }
+
+      /* Return the pixel offset for a given page using card.offsetLeft,
+         which is always the natural layout position regardless of transform. */
+      _getPageOffset(page) {
+        const startIndex = (page - 1) * this._getPerPage();
+        const firstCard  = this._slides[0];
+        const targetCard = this._slides[startIndex];
+        if (!firstCard || !targetCard) return 0;
+        return targetCard.offsetLeft - firstCard.offsetLeft;
+      }
+
+      _go(dir) {
+        const total = this._getTotalPages();
+        this._currentPage = Math.max(1, Math.min(total, this._currentPage + dir));
+        this._render();
+      }
+
+      _goToPage(page) {
+        this._currentPage = Math.max(1, Math.min(this._getTotalPages(), page));
+        this._render();
+      }
+
+      _render() {
+        if (!this._track) return;
+
+        const offset     = this._getPageOffset(this._currentPage);
+        const total      = this._getTotalPages();
+        const perPage    = this._getPerPage();
+        const start      = (this._currentPage - 1) * perPage;
+        const end        = Math.min(start + perPage, this._totalSlides);
+
+        this._track.style.transform = `translateX(-${offset}px)`;
+
+        this._dots.forEach((dot, i) => {
+          const active = i + 1 === this._currentPage;
+          dot.classList.toggle('mmx-testimonials__dot--active', active);
+          dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        if (this._countEl) {
+          this._countEl.textContent = `Showing ${start + 1}\u2013${end} of ${this._totalSlides} reviews`;
+        }
+
+        if (this._prevBtn) {
+          const atStart = this._currentPage === 1;
+          this._prevBtn.disabled = atStart;
+          this._prevBtn.style.opacity = atStart ? '0.2' : '0.3';
+        }
+        if (this._nextBtn) {
+          const atEnd = this._currentPage === total;
+          this._nextBtn.disabled = atEnd;
+          this._nextBtn.style.opacity = atEnd ? '0.3' : '1';
+        }
+      }
+
+      _initDrag() {
+        if (!this._track) return;
+
+        let startX       = 0;
+        let startOffset  = 0;
+        let isDragging   = false;
+        let hasMoved     = false;
+
+        const getCurrentOffset = () => {
+          const m = new DOMMatrix(window.getComputedStyle(this._track).transform);
+          return -m.m41; // translateX value (negated because we store positive offsets)
+        };
+
+        const onStart = (x) => {
+          isDragging  = true;
+          hasMoved    = false;
+          startX      = x;
+          startOffset = getCurrentOffset();
+          this._track.classList.add('is-dragging');
+          this._track.style.transition = 'none';
+        };
+
+        const onMove = (x) => {
+          if (!isDragging) return;
+          const delta = x - startX;
+          if (Math.abs(delta) > 4) hasMoved = true;
+          const newOffset = startOffset - delta;
+          this._track.style.transform = `translateX(-${newOffset}px)`;
+        };
+
+        const onEnd = (x) => {
+          if (!isDragging) return;
+          isDragging = false;
+          this._track.classList.remove('is-dragging');
+          this._track.style.transition = '';
+
+          const delta = x - startX;
+          if (Math.abs(delta) > 50) {
+            this._go(delta < 0 ? 1 : -1);
+          } else {
+            this._render(); // snap back
+          }
+        };
+
+        /* Mouse */
+        this._track.addEventListener('mousedown', (e) => { e.preventDefault(); onStart(e.clientX); });
+        window.addEventListener('mousemove',  (e) => onMove(e.clientX));
+        window.addEventListener('mouseup',    (e) => onEnd(e.clientX));
+
+        /* Prevent accidental link/button clicks after a drag */
+        this._track.addEventListener('click', (e) => {
+          if (hasMoved) { e.preventDefault(); e.stopPropagation(); }
+        }, true);
+
+        /* Touch */
+        this._track.addEventListener('touchstart', (e) => onStart(e.touches[0].clientX),      { passive: true });
+        this._track.addEventListener('touchmove',  (e) => onMove(e.touches[0].clientX),       { passive: true });
+        this._track.addEventListener('touchend',   (e) => onEnd(e.changedTouches[0].clientX), { passive: true });
+      }
+    }
+
+    customElements.define('mmx-testimonials-carousel', MMXTestimonialsCarousel);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "MMX Testimonials",
+  "tag": "div",
+  "class": "mmx-section-testimonials",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#E9E5E0"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline / Text Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Line Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA Background Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "CUSTOMER LOVE"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "What Women Are Saying"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "10,000+ Verified Reviews · 4.9 ★"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "JOIN 10,000+ OF WOMEN"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL (leave blank for buy section)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review Text",
+          "default": "I was shocked at the difference these dewdrops made in just a few days. My skin absorbs it right away and it leaves everything super soft and glowy."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer Name",
+          "default": "Julie O."
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Review Date",
+          "default": "Feb 2026"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Testimonials",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "I was shocked at the difference these dewdrops made in just a few days. My skin absorbs it right away and it leaves everything super soft and glowy.",
+            "name": "Julie O.",
+            "date": "Feb 2026"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "After 4 weeks using this day and night, my skin is super smooth with a lovely glow. Fine lines are less visible and my skin is tighter, firmer, and most luminous.",
+            "name": "Betty B.",
+            "date": "Jan 2026"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "My skin routine now delivers what every luxury serum promised but never delivered. The serum is potent but weightless, and the Silk Cocoons take it to another level.",
+            "name": "Rachael M.",
+            "date": "Dec 2025"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "The ingredient list reads like a scientific breakthrough. My skin has never looked this luminous or glass-like. Worth every penny.",
+            "name": "Ananya S.",
+            "date": "Feb 2026"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "The Silk Cocoons are a game changer. I was skeptical but after the first use my skin had that glass-skin luminosity I had only ever seen on editorial shoots. Obsessed.",
+            "name": "Claire W.",
+            "date": "Jan 2026"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Worth every single penny. I cancelled my monthly facial because this does more. My aesthetician even asked what I changed in my routine.",
+            "name": "Meera P.",
+            "date": "Dec 2025"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "I have rosacea and sensitive skin and this is the only serum that has not caused a reaction. My redness is visibly reduced after 3 weeks.",
+            "name": "Lauren T.",
+            "date": "Mar 2026"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "The glow is real. People keep asking if I have been on holiday. I have just been using these dewdrops every morning. Absolutely stunning product.",
+            "name": "Priya M.",
+            "date": "Feb 2026"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "I bought this for my mum and she called me crying happy tears after two weeks. Her skin looks 10 years younger. Buying her a subscription now.",
+            "name": "Divya K.",
+            "date": "Jan 2026"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

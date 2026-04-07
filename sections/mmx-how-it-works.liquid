@@ -1,0 +1,693 @@
+{% comment %}
+  Section: mmx-how-it-works
+  Description: 3-step protocol on dark navy background — grid (desktop) / draggable slider (mobile)
+{% endcomment %}
+
+<style>
+  .mmx-how-it-works {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .mmx-how-it-works__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 128px;
+  }
+
+  /* ── Header ── */
+  .mmx-how-it-works__header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mmx-how-it-works__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: #f0f0f4;
+  }
+
+  .mmx-how-it-works__eyebrow svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .mmx-how-it-works__eyebrow-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #f0f0f4;
+    margin: 0;
+  }
+
+  .mmx-how-it-works__headline {
+    font-family: var(--mmx-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── Step indicators ── */
+  .mmx-how-it-works__steps-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 47px;
+    margin: 0 auto 40px;
+  }
+
+  .mmx-how-it-works__step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    border: 1px solid #f0f0f4;
+    color: #f0f0f4;
+    font-family: var(--mmx-font-serif);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .mmx-how-it-works__step-line {
+    width: 282px;
+    height: 1px;
+    background-color: #f0f0f4;
+    flex-shrink: 1;
+  }
+  .mmx-how-it-works .mmx-how-it-works__step-line{
+    display: block;
+  }
+  /* ── Carousel wrapper ── */
+  mmx-hiw-carousel {
+    display: block;
+  }
+
+  /* ── Grid ── */
+  .mmx-how-it-works__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  /* ── Cards ── */
+  .mmx-how-it-works__card {
+    background-color: #f0f0f4;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 28px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mmx-how-it-works__card-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 36px;
+    background-image: linear-gradient(135deg, rgba(3, 104, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid #97a6f6;
+    box-shadow: 0px 0px 24px 0px rgba(3, 121, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-bottom: 24px;
+  }
+
+  .mmx-how-it-works__card-icon-wrap svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mmx-how-it-works__card-step {
+    font-family: var(--mmx-font-serif);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #00199f;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .mmx-how-it-works__card-title {
+    font-family: var(--mmx-font-serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: #00199f;
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+
+  .mmx-how-it-works__card-body {
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    line-height: 1.547;
+    color: #6b6e73;
+    margin: 0;
+  }
+
+  /* ── Controls (hidden on desktop) ── */
+  .mmx-how-it-works__controls {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    margin-top: 24px;
+  }
+
+  .mmx-how-it-works__arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    border: 1px solid #ffffff;
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.3;
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+    padding: 0;
+  }
+
+  .mmx-how-it-works__arrow--next {
+    background-color: #ffffff;
+    color: #00199f;
+    border-color: #ffffff;
+    opacity: 1;
+  }
+
+  .mmx-how-it-works__arrow:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+
+  .mmx-how-it-works__arrow--next:disabled {
+    opacity: 0.3;
+  }
+
+  .mmx-how-it-works__dots {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+  }
+
+  .mmx-how-it-works__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: all 0.2s;
+  }
+
+  .mmx-how-it-works__dot--active {
+    width: 11.2px;
+    height: 11.2px;
+    border-radius: 5.6px;
+    background-color: #ffffff;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .mmx-how-it-works {
+      padding: {{ section.settings.mobile_padding_top }}px 0 {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .mmx-how-it-works__inner {
+      padding: 0;
+    }
+
+    .mmx-how-it-works__header {
+      padding: 0 20px;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .mmx-how-it-works__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-how-it-works__headline {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .mmx-how-it-works__steps-nav {
+      gap: 10px;
+      margin: 0 auto 24px;
+      padding: 0 20px;
+      justify-content: center;
+    }
+
+    .mmx-how-it-works__step-line {
+      width: 32px;
+      flex: 0 0 32px;
+    }
+
+    .mmx-how-it-works__carousel-viewport {
+      overflow: hidden;
+    }
+
+    .mmx-how-it-works__grid {
+      display: flex;
+      flex-wrap: nowrap;
+      grid-template-columns: none;
+      gap: 14px;
+      padding: 0 20px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .mmx-how-it-works__grid.is-dragging {
+      cursor: grabbing;
+      transition: none;
+    }
+
+    .mmx-how-it-works__card {
+      flex: 0 0 calc(100vw - 60px);
+      padding: 30px 20px;
+    }
+
+    .mmx-how-it-works__card-body {
+      font-size: 14px;
+    }
+
+    .mmx-how-it-works__controls {
+      display: flex;
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<section class="mmx-how-it-works" id="mmx-how-it-works">
+  <div class="mmx-how-it-works__inner">
+
+    <div class="mmx-how-it-works__header">
+      <div class="mmx-how-it-works__eyebrow">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M9 15.75C9 15.75 4.5 12.375 4.5 9C4.5 5.625 6.75 3.375 9 3.375C11.25 3.375 13.5 5.625 13.5 9C13.5 12.375 9 15.75 9 15.75Z" stroke="currentColor" stroke-width="0.61875" stroke-linecap="round" stroke-linejoin="round"/>
+          <path opacity="0.6" d="M9 15.7504C9 15.7504 2.25 11.2504 2.25 7.31285C2.25 4.50035 4.5 2.81285 6.75 3.37535C5.625 5.06285 5.625 7.31285 9 10.1254" stroke="currentColor" stroke-width="0.495" stroke-linecap="round" stroke-linejoin="round"/>
+          <path opacity="0.6" d="M9 15.7504C9 15.7504 15.75 11.2504 15.75 7.31285C15.75 4.50035 13.5 2.81285 11.25 3.37535C12.375 5.06285 12.375 7.31285 9 10.1254" stroke="currentColor" stroke-width="0.495" stroke-linecap="round" stroke-linejoin="round"/>
+          <path opacity="0.4" d="M9 3.37457C9 3.37457 5.625 1.12457 3.375 2.24957C4.5 3.37457 5.625 4.49957 6.75 5.62457" stroke="currentColor" stroke-width="0.433125" stroke-linecap="round" stroke-linejoin="round"/>
+          <path opacity="0.4" d="M9 3.37457C9 3.37457 12.375 1.12457 14.625 2.24957C13.5 3.37457 12.375 4.49957 11.25 5.62457" stroke="currentColor" stroke-width="0.433125" stroke-linecap="round" stroke-linejoin="round"/>
+          <path opacity="0.3" d="M9 15.75V10.125" stroke="currentColor" stroke-width="0.37125" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ section.settings.eyebrow_text }}
+      </div>
+      <span class="mmx-how-it-works__eyebrow-line" aria-hidden="true"></span>
+      <h2 class="mmx-how-it-works__headline">{{ section.settings.headline }}</h2>
+    </div>
+
+    {% assign step_blocks = section.blocks | where: 'type', 'step' %}
+    {% assign step_count = step_blocks | size %}
+
+    {% if step_count > 0 %}
+      <div class="mmx-how-it-works__steps-nav" aria-hidden="true">
+        {% for block in section.blocks %}
+          {% if block.type == 'step' %}
+            <div class="mmx-how-it-works__step-circle">{{ forloop.index }}</div>
+            {% unless forloop.last %}
+              <div class="mmx-how-it-works__step-line"></div>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <mmx-hiw-carousel
+        data-per-page="3"
+        data-per-page-mobile="1"
+        role="region"
+        aria-label="How it works steps"
+      >
+        <div class="mmx-how-it-works__carousel-viewport" data-carousel-viewport>
+          <div class="mmx-how-it-works__grid" data-carousel-track>
+            {% assign slide_index = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'step' %}
+                {% assign slide_index = slide_index | plus: 1 %}
+                <div
+                  class="mmx-how-it-works__card"
+                  data-carousel-slide="{{ slide_index }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="mmx-how-it-works__card-icon-wrap" aria-hidden="true">
+                    {% case block.settings.icon %}
+                      {% when 'water-drop' %}
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M18 4.5C18 4.5 11.25 12.75 11.25 19.5C11.25 21.2902 11.9612 23.0071 13.227 24.273C14.4929 25.5388 16.2098 26.25 18 26.25C19.7902 26.25 21.5071 25.5388 22.773 24.273C24.0388 23.0071 24.75 21.2902 24.75 19.5C24.75 12.75 18 4.5 18 4.5Z" stroke="#00199F" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path opacity="0.65" d="M7.5 12C7.5 12 4.5 16.2 4.5 18.75C4.5 19.5456 4.81607 20.3087 5.37868 20.8713C5.94129 21.4339 6.70435 21.75 7.5 21.75C8.29565 21.75 9.05871 21.4339 9.62132 20.8713C10.1839 20.3087 10.5 19.5456 10.5 18.75C10.5 16.2 7.5 12 7.5 12Z" stroke="#00199F" stroke-width="1.6575" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path opacity="0.65" d="M28.5 12C28.5 12 25.5 16.2 25.5 18.75C25.5 19.5456 25.8161 20.3087 26.3787 20.8713C26.9413 21.4339 27.7044 21.75 28.5 21.75C29.2956 21.75 30.0587 21.4339 30.6213 20.8713C31.1839 20.3087 31.5 19.5456 31.5 18.75C31.5 16.2 28.5 12 28.5 12Z" stroke="#00199F" stroke-width="1.6575" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path opacity="0.4" d="M15.75 17.25C16.25 15.75 17 15 18 15" stroke="#00199F" stroke-width="1.17" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      {% when 'serum-drop' %}
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M18 13.5C20.8995 13.5 23.25 10.8137 23.25 7.5C23.25 4.18629 20.8995 1.5 18 1.5C15.1005 1.5 12.75 4.18629 12.75 7.5C12.75 10.8137 15.1005 13.5 18 13.5Z" stroke="#00199F" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M15 13.2002L14.25 16.5002H21.75L21 13.2002" stroke="#00199F" stroke-width="1.755" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M21 16.5H15C14.5858 16.5 14.25 16.8358 14.25 17.25V26.25C14.25 26.6642 14.5858 27 15 27H21C21.4142 27 21.75 26.6642 21.75 26.25V17.25C21.75 16.8358 21.4142 16.5 21 16.5Z" stroke="#00199F" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M14.25 27L16.8 31.5H19.2L21.75 27" stroke="#00199F" stroke-width="1.755" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path opacity="0.5" d="M18 31.5V34.5" stroke="#00199F" stroke-width="1.56" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path opacity="0.5" d="M18 36C18.4142 36 18.75 35.6642 18.75 35.25C18.75 34.8358 18.4142 34.5 18 34.5C17.5858 34.5 17.25 34.8358 17.25 35.25C17.25 35.6642 17.5858 36 18 36Z" fill="#00199F"/>
+                          <path opacity="0.35" d="M15 20.25H21" stroke="#00199F" stroke-width="1.0725" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path opacity="0.35" d="M15 23.25H21" stroke="#00199F" stroke-width="1.0725" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      {% when 'moon' %}
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M26.4898 9.50977C28.7415 11.7615 30.0064 14.8154 30.0064 17.9998C30.0064 21.1841 28.7415 24.2381 26.4898 26.4898C24.2381 28.7415 21.1841 30.0064 17.9998 30.0064C14.8154 30.0064 11.7615 28.7415 9.50977 26.4898" stroke="#00199F" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M21.75 27.75L26.49 26.49L27.75 21.75" stroke="#00199F" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      {% else %}
+                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M18 4.5C18 4.5 11.25 12.75 11.25 19.5C11.25 21.2902 11.9612 23.0071 13.227 24.273C14.4929 25.5388 16.2098 26.25 18 26.25C19.7902 26.25 21.5071 25.5388 22.773 24.273C24.0388 23.0071 24.75 21.2902 24.75 19.5C24.75 12.75 18 4.5 18 4.5Z" stroke="#00199F" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path opacity="0.4" d="M15.75 17.25C16.25 15.75 17 15 18 15" stroke="#00199F" stroke-width="1.17" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    {% endcase %}
+                  </div>
+
+                  <div class="mmx-how-it-works__card-step">
+                    {% if slide_index < 10 %}0{% endif %}{{ slide_index }}
+                  </div>
+                  <h3 class="mmx-how-it-works__card-title">{{ block.settings.title }}</h3>
+                  <p class="mmx-how-it-works__card-body">{{ block.settings.body }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="mmx-how-it-works__controls">
+          <button class="mmx-how-it-works__arrow mmx-how-it-works__arrow--prev" data-carousel-prev aria-label="Previous step">‹</button>
+
+          <div class="mmx-how-it-works__dots" data-carousel-dots role="tablist" aria-label="Step pages">
+            {% for i in (1..step_count) %}
+              <button
+                class="mmx-how-it-works__dot{% if i == 1 %} mmx-how-it-works__dot--active{% endif %}"
+                data-carousel-dot="{{ i }}"
+                role="tab"
+                aria-label="Step {{ i }}"
+                aria-selected="{% if i == 1 %}true{% else %}false{% endif %}"
+              ></button>
+            {% endfor %}
+          </div>
+
+          <button class="mmx-how-it-works__arrow mmx-how-it-works__arrow--next" data-carousel-next aria-label="Next step">›</button>
+        </div>
+      </mmx-hiw-carousel>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    if (customElements.get('mmx-hiw-carousel')) return;
+
+    class MMXHIWCarousel extends HTMLElement {
+      connectedCallback() {
+        this._currentPage = 1;
+        this._slides      = Array.from(this.querySelectorAll('[data-carousel-slide]'));
+        this._totalSlides = this._slides.length;
+        this._track       = this.querySelector('[data-carousel-track]');
+        this._prevBtn     = this.querySelector('[data-carousel-prev]');
+        this._nextBtn     = this.querySelector('[data-carousel-next]');
+        this._dots        = this.querySelectorAll('[data-carousel-dot]');
+
+        if (this._prevBtn) this._prevBtn.addEventListener('click', () => this._go(-1));
+        if (this._nextBtn) this._nextBtn.addEventListener('click', () => this._go(1));
+        this._dots.forEach((dot, i) => dot.addEventListener('click', () => this._goToPage(i + 1)));
+
+        this._initDrag();
+        window.addEventListener('resize', () => this._render(), { passive: true });
+        this._render();
+      }
+
+      _isMobile() { return window.innerWidth <= 900; }
+
+      _getTotalPages() { return this._isMobile() ? this._totalSlides : 1; }
+
+      _getPageOffset(page) {
+        if (!this._isMobile()) return 0;
+        const firstCard  = this._slides[0];
+        const targetCard = this._slides[page - 1];
+        if (!firstCard || !targetCard) return 0;
+        return targetCard.offsetLeft - firstCard.offsetLeft;
+      }
+
+      _go(dir) {
+        if (!this._isMobile()) return;
+        const total = this._getTotalPages();
+        this._currentPage = Math.max(1, Math.min(total, this._currentPage + dir));
+        this._render();
+      }
+
+      _goToPage(page) {
+        if (!this._isMobile()) return;
+        this._currentPage = Math.max(1, Math.min(this._getTotalPages(), page));
+        this._render();
+      }
+
+      _render() {
+        if (!this._track) return;
+
+        if (!this._isMobile()) {
+          this._track.style.transform = '';
+          return;
+        }
+
+        const offset = this._getPageOffset(this._currentPage);
+        const total  = this._getTotalPages();
+
+        this._track.style.transform = `translateX(-${offset}px)`;
+
+        this._dots.forEach((dot, i) => {
+          const active = i + 1 === this._currentPage;
+          dot.classList.toggle('mmx-how-it-works__dot--active', active);
+          dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        if (this._prevBtn) {
+          const atStart = this._currentPage === 1;
+          this._prevBtn.disabled = atStart;
+          this._prevBtn.style.opacity = atStart ? '0.2' : '0.3';
+        }
+        if (this._nextBtn) {
+          const atEnd = this._currentPage === total;
+          this._nextBtn.disabled = atEnd;
+          this._nextBtn.style.opacity = atEnd ? '0.3' : '1';
+        }
+      }
+
+      _initDrag() {
+        if (!this._track) return;
+
+        let startX      = 0;
+        let startOffset = 0;
+        let isDragging  = false;
+        let hasMoved    = false;
+
+        const getCurrentOffset = () => {
+          const m = new DOMMatrix(window.getComputedStyle(this._track).transform);
+          return -m.m41;
+        };
+
+        const onStart = (x) => {
+          if (!this._isMobile()) return;
+          isDragging  = true;
+          hasMoved    = false;
+          startX      = x;
+          startOffset = getCurrentOffset();
+          this._track.classList.add('is-dragging');
+          this._track.style.transition = 'none';
+        };
+
+        const onMove = (x) => {
+          if (!isDragging) return;
+          const delta = x - startX;
+          if (Math.abs(delta) > 4) hasMoved = true;
+          this._track.style.transform = `translateX(-${startOffset - delta}px)`;
+        };
+
+        const onEnd = (x) => {
+          if (!isDragging) return;
+          isDragging = false;
+          this._track.classList.remove('is-dragging');
+          this._track.style.transition = '';
+          const delta = x - startX;
+          if (Math.abs(delta) > 50) {
+            this._go(delta < 0 ? 1 : -1);
+          } else {
+            this._render();
+          }
+        };
+
+        this._track.addEventListener('mousedown', (e) => { e.preventDefault(); onStart(e.clientX); });
+        window.addEventListener('mousemove', (e) => onMove(e.clientX));
+        window.addEventListener('mouseup',   (e) => onEnd(e.clientX));
+
+        this._track.addEventListener('click', (e) => {
+          if (hasMoved) { e.preventDefault(); e.stopPropagation(); }
+        }, true);
+
+        this._track.addEventListener('touchstart', (e) => onStart(e.touches[0].clientX),      { passive: true });
+        this._track.addEventListener('touchmove',  (e) => onMove(e.touches[0].clientX),       { passive: true });
+        this._track.addEventListener('touchend',   (e) => onEnd(e.changedTouches[0].clientX), { passive: true });
+      }
+    }
+
+    customElements.define('mmx-hiw-carousel', MMXHIWCarousel);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "MMX How It Works",
+  "tag": "div",
+  "class": "mmx-section-how-it-works",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "THE PROTOCOL"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "How It Works"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "water-drop",  "label": "Water Drop" },
+            { "value": "serum-drop",  "label": "Serum Drop" },
+            { "value": "moon",        "label": "Moon" }
+          ],
+          "default": "water-drop"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Cleanse"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Step Description",
+          "default": "Start with clean skin. Remove impurities and prep for maximum absorption."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "icon": "water-drop",
+            "title": "Cleanse",
+            "body": "Start with clean skin. Remove impurities and prep for maximum absorption."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "serum-drop",
+            "title": "Exfoliate",
+            "body": "Glide the Silk Cocoons across skin in circles. Precision micro-exfoliation — no irritation, no harsh chemicals."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "moon",
+            "title": "Serum",
+            "body": "Apply 2–3 Dewdrops. Pat into skin, morning and night. Immediate luminosity."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

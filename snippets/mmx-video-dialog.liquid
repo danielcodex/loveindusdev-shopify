@@ -1,0 +1,113 @@
+{% comment %}
+  Snippet: mmx-video-dialog
+  Description: Reusable video dialog/modal web component.
+  Opens a full-screen dialog with an embedded video when triggered.
+
+  Usage:
+    {% render 'mmx-video-dialog', dialog_id: 'mmx-video-main' %}
+
+  Then trigger it with:
+    <button onclick="document.getElementById('mmx-video-main').showModal()">Play</button>
+
+  Parameters:
+    - dialog_id: String — unique ID for the dialog element (required)
+{% endcomment %}
+
+<dialog
+  id="{{ dialog_id }}"
+  class="mmx-video-dialog"
+  aria-label="Video Player"
+>
+  <div class="mmx-video-dialog__inner">
+    <button
+      class="mmx-video-dialog__close"
+      aria-label="Close video"
+      onclick="document.getElementById('{{ dialog_id }}').close()"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="mmx-video-dialog__player" id="{{ dialog_id }}-player"></div>
+  </div>
+</dialog>
+
+<style>
+  .mmx-video-dialog {
+    padding: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.95);
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 960px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .mmx-video-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+  }
+
+  .mmx-video-dialog__inner {
+    position: relative;
+    width: 100%;
+  }
+
+  .mmx-video-dialog__close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+
+  .mmx-video-dialog__close:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .mmx-video-dialog__player {
+    aspect-ratio: 16/9;
+    width: 100%;
+  }
+
+  .mmx-video-dialog__player iframe,
+  .mmx-video-dialog__player video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+  }
+</style>
+
+<script>
+  (function() {
+    // Close dialog on backdrop click
+    document.querySelectorAll('.mmx-video-dialog').forEach(function(dialog) {
+      dialog.addEventListener('click', function(e) {
+        if (e.target === dialog) {
+          dialog.close();
+        }
+      });
+
+      // Pause/clear video when dialog closes
+      dialog.addEventListener('close', function() {
+        var player = dialog.querySelector('.mmx-video-dialog__player');
+        if (player) {
+          player.innerHTML = player.getAttribute('data-original') || '';
+        }
+      });
+    });
+  })();
+</script>

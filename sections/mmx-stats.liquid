@@ -1,0 +1,296 @@
+{% comment %}
+  Section: mmx-stats
+  Description: Figma desktop 95:2679 · mobile 2×2 grid 95:3612
+{% endcomment %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Arima:wght@400;500;600;700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+  .mmx-stats {
+    --mmx-stats-serif: 'Arima', Georgia, 'Times New Roman', serif;
+    --mmx-stats-sans: 'Quattrocento Sans', var(--mmx-font-sans, system-ui, sans-serif);
+    background-color: {{ section.settings.background_color }};
+    border-bottom: 1px solid color-mix(in srgb, {{ section.settings.section_border_color }} 50%, transparent);
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .mmx-stats__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 26px;
+    align-items: stretch;
+  }
+
+  .mmx-stats__card {
+    background-color: {{ section.settings.card_background_color }};
+    border: 1px solid {{ section.settings.card_border_color }};
+    border-radius: 12px;
+    min-height: 139px;
+    padding: 20px 16px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    box-sizing: border-box;
+  }
+
+  .mmx-stats__icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    color: {{ section.settings.accent_color }};
+    margin-bottom: 12px;
+  }
+
+  .mmx-stats__icon svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .mmx-stats__number {
+    font-family: var(--mmx-stats-serif);
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 700;
+    color: {{ section.settings.number_color }};
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+
+  .mmx-stats__label {
+    font-family: var(--mmx-stats-sans);
+    font-size: 14px;
+    font-weight: 400;
+    color: {{ section.settings.label_color }};
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.48px;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  /* Mobile / tablet: Figma 95:3612 — 2×2, 28px numbers, 12px labels, 32×20 gaps */
+  @media (max-width: 900px) {
+    .mmx-stats {
+      padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    }
+
+    .mmx-stats__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 20px;
+      padding: 0 20px;
+    }
+
+    .mmx-stats__card {
+      min-height: 0;
+      padding: 20px 12px 16px;
+    }
+
+    .mmx-stats__icon {
+      margin-bottom: 10px;
+    }
+
+    .mmx-stats__number {
+      font-size: 28px;
+      line-height: 28px;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+
+    .mmx-stats__label {
+      font-size: 12px;
+      line-height: 16.8px;
+      letter-spacing: 0.48px;
+      text-wrap: balance;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mmx-stats__inner {
+      gap: 24px 16px;
+    }
+
+    .mmx-stats__card {
+      padding: 18px 10px 14px;
+    }
+  }
+</style>
+
+<section class="mmx-stats" id="mmx-stats">
+  <div class="mmx-stats__inner">
+    {% for block in section.blocks %}
+      {% if block.type == 'stat' %}
+        <div class="mmx-stats__card" {{ block.shopify_attributes }}>
+          <div class="mmx-stats__icon" aria-hidden="true">
+            {% case block.settings.icon %}
+              {% when 'leaf' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              {% when 'sun' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+              {% when 'eye' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              {% when 'moon' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              {% when 'sparkle' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/></svg>
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg>
+            {% endcase %}
+          </div>
+          <div class="mmx-stats__number">{{ block.settings.number }}</div>
+          <div class="mmx-stats__label">{{ block.settings.label }}</div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MMX Stats",
+  "tag": "div",
+  "class": "mmx-section-stats",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#F8F3EE"
+    },
+    {
+      "type": "color",
+      "id": "section_border_color",
+      "label": "Bottom border color",
+      "default": "#D2D5D9",
+      "info": "Figma uses ~50% opacity; pick a light gray or tune in theme editor."
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#E2E4F0",
+      "info": "Approximates Figma rgba(0,25,159,0.12) on white."
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Stat number color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Stat label color",
+      "default": "#6B6E73"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Icon color",
+      "default": "#00199F"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "eye", "label": "Eye" },
+            { "value": "moon", "label": "Moon" },
+            { "value": "sparkle", "label": "Star" }
+          ],
+          "default": "leaf"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Stat number",
+          "default": "5,000+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Stat label",
+          "default": "Years of Undiscovered Regional Science"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Stats",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "leaf",
+            "number": "5,000+",
+            "label": "Years of Undiscovered Regional Science"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "sun",
+            "number": "100%",
+            "label": "Saw Improved Radiance"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "eye",
+            "number": "400+",
+            "label": "Waitlist After QVC Sellout"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "moon",
+            "number": "11 min",
+            "label": "1,000+ Units Sold Out"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

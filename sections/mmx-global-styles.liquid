@@ -1,0 +1,161 @@
+{% comment %}
+  Section: mmx-global-styles
+  Description: Global CSS variables, fonts, and base styles for the Love Indus LP.
+  This section should be placed at the TOP of the page template as a custom liquid block.
+  It includes all font imports, CSS custom properties, and base resets scoped to the LP.
+{% endcomment %}
+
+<style>
+  /* ============================================================
+     MMX LOVE INDUS LP — GLOBAL STYLES
+     All styles are scoped under .mmx-lp-root to prevent
+     collision with the base Shopify theme.
+  ============================================================ */
+
+  /* Google Fonts Import */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  /* CSS Custom Properties */
+  :root {
+    /* Brand Colors */
+    --mmx-navy: {{ section.settings.color_navy }};
+    --mmx-blue: {{ section.settings.color_blue }};
+    --mmx-cream: {{ section.settings.color_cream }};
+    --mmx-white: #FFFFFF;
+    --mmx-dark-navy: {{ section.settings.color_dark_navy }};
+    --mmx-green: #00A651;
+    --mmx-gold: #F5A623;
+    --mmx-taupe: #E8E4DE;
+
+    /* Typography */
+    --mmx-font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --mmx-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mmx-font-script: 'Cormorant Garamond', Georgia, serif;
+
+    /* Spacing */
+    --mmx-max-width: 1280px;
+    --mmx-section-padding-y: 96px;
+    --mmx-section-padding-x: 40px;
+
+    /* Transitions */
+    --mmx-transition: 0.2s ease;
+  }
+
+  /* Base resets scoped to LP sections */
+  .mmx-section-announcement-bar *,
+  .mmx-section-nav *,
+  .mmx-section-hero *,
+  .mmx-section-featured-in *,
+  .mmx-section-stats *,
+  .mmx-section-the-gap *,
+  .mmx-section-reasons *,
+  .mmx-section-testimonials *,
+  .mmx-section-before-after *,
+  .mmx-section-buy *,
+  .mmx-section-formula *,
+  .mmx-section-video *,
+  .mmx-section-how-it-works *,
+    .mmx-section-faq *,
+    .mmx-section-final-cta *,
+    .mmx-section-closing-cta *,
+    .mmx-section-lp-footer * {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Anchor offset for sticky nav */
+  #mmx-buy,
+  #mmx-faq,
+  #mmx-testimonials,
+  #mmx-how-it-works,
+  #mmx-formula {
+    scroll-margin-top: 80px;
+  }
+
+  /* Focus styles for accessibility */
+  .mmx-section-announcement-bar *:focus-visible,
+  .mmx-section-nav *:focus-visible,
+  .mmx-section-hero *:focus-visible,
+  .mmx-section-featured-in *:focus-visible,
+  .mmx-section-stats *:focus-visible,
+  .mmx-section-the-gap *:focus-visible,
+  .mmx-section-reasons *:focus-visible,
+  .mmx-section-testimonials *:focus-visible,
+  .mmx-section-before-after *:focus-visible,
+  .mmx-section-buy *:focus-visible,
+  .mmx-section-formula *:focus-visible,
+  .mmx-section-video *:focus-visible,
+  .mmx-section-how-it-works *:focus-visible,
+  .mmx-section-faq *:focus-visible,
+  .mmx-section-final-cta *:focus-visible,
+  .mmx-section-lp-footer *:focus-visible {
+    outline: 2px solid var(--mmx-blue);
+    outline-offset: 2px;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .mmx-announcement-bar__track,
+    .mmx-featured-in__track {
+      animation: none !important;
+    }
+
+    * {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "MMX Global Styles",
+  "tag": "div",
+  "class": "mmx-global-styles",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Color Palette"
+    },
+    {
+      "type": "color",
+      "id": "color_navy",
+      "label": "Primary Navy",
+      "default": "#1B1F8A",
+      "info": "Used for headlines, nav, and primary text"
+    },
+    {
+      "type": "color",
+      "id": "color_blue",
+      "label": "Accent Blue",
+      "default": "#2B2FD9",
+      "info": "Used for CTA buttons, announcement bar, featured-in bar"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Background Cream",
+      "default": "#F5F0EA",
+      "info": "Used for page background, hero, stats, gap sections"
+    },
+    {
+      "type": "color",
+      "id": "color_dark_navy",
+      "label": "Dark Navy",
+      "default": "#0A0E5A",
+      "info": "Used for formula section background"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Global Styles"
+    }
+  ]
+}
+{% endschema %}

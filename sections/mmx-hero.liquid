@@ -1,0 +1,634 @@
+{% comment %}
+  Section: mmx-hero
+  Description: Hero section aligned to Love Indus LP Figma (desktop 95:2755, mobile 95:3559)
+{% endcomment %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Arima:wght@400;500;600;700&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+  .mmx-hero {
+    --mmx-hero-serif: 'Arima', Georgia, 'Times New Roman', serif;
+    --mmx-hero-sans: 'Quattrocento Sans', var(--mmx-font-sans, system-ui, sans-serif);
+    background-color: {{ section.settings.background_color }};
+    padding: 80px 0 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mmx-hero__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      'lead image'
+      'after image';
+    gap: 24px 60px;
+    align-items: start;
+    min-height: 600px;
+  }
+
+  .mmx-hero__lead {
+    grid-area: lead;
+    padding-bottom: 0;
+  }
+
+  .mmx-hero__after {
+    grid-area: after;
+    align-self: start;
+    padding-bottom: 80px;
+  }
+
+  .mmx-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mmx-hero-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+    margin-bottom: 20px;
+  }
+
+  .mmx-hero__lead .mmx-hero__eyebrow-line {
+    width: 40px;
+    height: 2px;
+    background-color: {{ section.settings.accent_color }};
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .mmx-hero__headline {
+    font-family: var(--mmx-hero-serif);
+    font-size: clamp(24px, 4.2vw, 50px);
+    font-weight: 500;
+    line-height: 1.13;
+    color: {{ section.settings.headline_color }};
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .mmx-hero__subheadline {
+    font-family: var(--mmx-hero-sans);
+    font-size: 20px;
+    line-height: 1.75;
+    color: {{ section.settings.subheadline_color }};
+    margin: 0 0 32px;
+    font-weight: 400;
+  }
+
+  .mmx-hero__cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .mmx-hero__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    min-height: 46px;
+    padding: 0 24px;
+    background-color: {{ section.settings.cta_bg_color }};
+    color: {{ section.settings.cta_text_color }};
+    font-family: var(--mmx-hero-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 25, 159, 0.2);
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .mmx-hero__cta-btn:hover {
+    background-color: transparent;
+    color: {{ section.settings.cta_bg_color }};
+    box-shadow: none;
+    outline: 2px solid {{ section.settings.cta_bg_color }};
+    outline-offset: 0;
+  }
+
+  .mmx-hero__cta-btn span{
+      display: flex;
+  }
+
+  .mmx-hero__stock-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 34px;
+    padding: 0 14px 0 12px;
+    background-color: rgba(0, 199, 120, 0.08);
+    border: 1px solid rgba(0, 199, 120, 0.3);
+    color: #00a862;
+    font-family: var(--mmx-hero-sans);
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .mmx-hero__stock-badge .mmx-hero__stock-muted {
+    color: {{ section.settings.stock_secondary_color }};
+    font-weight: 700;
+  }
+
+  .mmx-hero__stock-badge .mmx-hero__stock-strong {
+    font-weight: 700;
+  }
+
+  .mmx-hero__stock-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 3.5px;
+    background-color: #00c778;
+    flex-shrink: 0;
+  }
+
+  .mmx-hero__social-proof {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mmx-hero-sans);
+    font-size: 15px;
+    color: {{ section.settings.social_proof_color }};
+    font-weight: 400;
+  }
+
+  .mmx-hero__stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+
+  .mmx-hero__stars svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  .mmx-hero__image-wrap {
+    grid-area: image;
+    position: relative;
+    align-self: end;
+    justify-self: stretch;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .mmx-hero__image-frame {
+    border-radius: 14px 14px 0 0;
+    overflow: hidden;
+    box-shadow:
+      0 32px 80px rgba(0, 25, 159, 0.14),
+      0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .mmx-hero__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 589 / 789;
+  }
+
+  .mmx-hero__badge {
+    position: absolute;
+    bottom: 32px;
+    left: 24px;
+    width: 198px;
+    min-height: 68px;
+    padding: 12px 16px 12px 70px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: linear-gradient(134.23deg, #00199f 0%, #1a0fcc 100%);
+    color: #ffffff;
+    font-family: var(--mmx-hero-sans);
+    box-shadow:
+      0 12px 40px rgba(0, 25, 159, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    margin-left: -80px;
+  }
+
+  .mmx-hero__badge-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mmx-hero__badge-label {
+    font-family: var(--mmx-hero-serif);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    color: #ffffff;
+  }
+
+  .mmx-hero__badge-sub {
+    font-family: var(--mmx-hero-sans);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.55px;
+  }
+
+  @media (max-width: 900px) {
+    .mmx-hero__inner {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'lead'
+        'image'
+        'after';
+      gap: 28px;
+      padding: 0 20px;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .mmx-hero {
+      padding: 48px 0 0;
+    }
+
+    .mmx-hero__lead {
+      align-self: start;
+    }
+
+    .mmx-hero__image-wrap {
+      height: auto;
+      display: block;
+    }
+
+    .mmx-hero__after {
+      padding-bottom: 48px;
+    }
+
+    .mmx-hero__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-hero__eyebrow-line {
+      margin-bottom: 20px;
+    }
+
+    .mmx-hero__headline {
+      font-size: clamp(22px, 6.5vw, 24px);
+      line-height: 1.13;
+    }
+
+    .mmx-hero__subheadline {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .mmx-hero__cta-btn {
+      font-size: 12px;
+      width: 100%;
+      max-width: 320px;
+      box-sizing: border-box;
+    }
+
+    .mmx-hero__stock-badge {
+      font-size: 12px;
+    }
+
+    .mmx-hero__stock-badge .mmx-hero__stock-muted {
+      color: {{ section.settings.stock_secondary_color_mobile }};
+    }
+
+    .mmx-hero__social-proof {
+      font-size: 13px;
+      color: {{ section.settings.social_proof_color_mobile }};
+    }
+
+    .mmx-hero__badge {
+      left: auto;
+      right: -14px;
+      transform: none;
+      bottom: -20px;
+      width: min(198px, calc(100% - 32px));
+      padding-left: 68px;
+    }
+
+    .mmx-hero__badge-label {
+      font-size: 13px;
+    }
+
+    .mmx-hero__badge-sub {
+      font-size: 12px;
+    }
+
+    .mmx-hero__image-frame {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    .mmx-hero__image-frame img{
+      border-radius: 16px;
+    }
+  }
+</style>
+
+<section class="mmx-hero" id="mmx-hero">
+  <div class="mmx-hero__inner">
+    <div class="mmx-hero__lead">
+      <div class="mmx-hero__eyebrow">
+        <span aria-hidden="true">✦</span>
+        {{ section.settings.eyebrow_text }}
+      </div>
+      <div class="mmx-hero__eyebrow-line" aria-hidden="true"></div>
+
+      <h1 class="mmx-hero__headline">
+        {{ section.settings.headline }}
+      </h1>
+    </div>
+
+    <div class="mmx-hero__image-wrap">
+      <div class="mmx-hero__image-frame">
+        {% if section.settings.hero_image != blank %}
+          <img
+            src="{{ section.settings.hero_image | image_url: width: 800 }}"
+            srcset="{{ section.settings.hero_image | image_url: width: 400 }} 400w,
+                    {{ section.settings.hero_image | image_url: width: 800 }} 800w,
+                    {{ section.settings.hero_image | image_url: width: 1200 }} 1200w"
+            sizes="(max-width: 900px) 100vw, 50vw"
+            alt="{{ section.settings.hero_image_alt | default: 'Love, Indus Amrutini Luminosity Dewdrops' }}"
+            class="mmx-hero__image"
+            loading="eager"
+            fetchpriority="high"
+            width="589"
+            height="789"
+          >
+        {% else %}
+          <img
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397914943/XpGfLNCLhmFpctTt.jpg"
+            alt="Love, Indus Amrutini Luminosity Dewdrops Serum"
+            class="mmx-hero__image"
+            loading="eager"
+            fetchpriority="high"
+            width="589"
+            height="789"
+          >
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_vogue_badge %}
+        <div class="mmx-hero__badge">
+          <div class="mmx-hero__badge-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 11.6667C12.7614 11.6667 15 9.42811 15 6.66669C15 3.90526 12.7614 1.66669 10 1.66669C7.23858 1.66669 5 3.90526 5 6.66669C5 9.42811 7.23858 11.6667 10 11.6667Z" stroke="#FFB503" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12.8977 10.7416L14.1668 18.3333L10.0002 15.8333L5.8335 18.3333L7.10266 10.7416" stroke="#FFB503" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="mmx-hero__badge-label">{{ section.settings.badge_label }}</div>
+          <div class="mmx-hero__badge-sub">{{ section.settings.badge_text }}</div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="mmx-hero__after">
+      <p class="mmx-hero__subheadline">
+        {{ section.settings.subheadline }}
+      </p>
+
+      <div class="mmx-hero__cta-group">
+        <a
+          href="{{ section.settings.cta_url | default: '#mmx-buy' }}"
+          class="mmx-hero__cta-btn"
+          aria-label="{{ section.settings.cta_text }}"
+        >
+          <span aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2V3.33333M8 12.6667V14M2 8H3.33333M12.6667 8H14" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path opacity="0.6" d="M3.75781 3.75732L4.70048 4.69999M11.3005 11.3L12.2431 12.2427M3.75781 12.2427L4.70048 11.3M11.3005 4.69999L12.2431 3.75732" stroke="white" stroke-width="0.96" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7.99967 10.6666C9.47243 10.6666 10.6663 9.47274 10.6663 7.99998C10.6663 6.52722 9.47243 5.33331 7.99967 5.33331C6.52692 5.33331 5.33301 6.52722 5.33301 7.99998C5.33301 9.47274 6.52692 10.6666 7.99967 10.6666Z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          {{ section.settings.cta_text }}
+          <span aria-hidden="true">→</span>
+        </a>
+
+        {% if section.settings.show_stock_badge %}
+          <div class="mmx-hero__stock-badge" role="status">
+            <span class="mmx-hero__stock-dot" aria-hidden="true"></span>
+            {% assign stock_parts = section.settings.stock_text | split: ' — ' %}
+            {% if stock_parts.size == 2 %}
+              <span class="mmx-hero__stock-strong">{{ stock_parts[0] }}</span>
+              <span class="mmx-hero__stock-muted"> — {{ stock_parts[1] }}</span>
+            {% else %}
+              <span>{{ section.settings.stock_text }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_social_proof %}
+          <div class="mmx-hero__social-proof">
+            <span class="mmx-hero__stars" aria-label="5 out of 5 stars">
+              {%- for i in (1..5) -%}
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M7 0L8.5716 4.83688L13.6574 4.83688L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688L5.4284 4.83688L7 0Z" fill="#FFB503"/>
+                </svg>
+              {%- endfor -%}
+            </span>
+            <span>{{ section.settings.social_proof_text }}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MMX Hero",
+  "tag": "div",
+  "class": "mmx-section-hero",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF9F8"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "subheadline_color",
+      "label": "Subheadline Color",
+      "default": "#6B6E73"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow underline color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "CTA Button Background",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA Button Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "stock_secondary_color",
+      "label": "Stock badge — secondary phrase color (desktop)",
+      "info": "Applies to text after an em dash (e.g. “limited quantities”) when the stock text contains “ — ”.",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "stock_secondary_color_mobile",
+      "label": "Stock badge — secondary phrase color (mobile)",
+      "default": "#212326"
+    },
+    {
+      "type": "color",
+      "id": "social_proof_color",
+      "label": "Social proof text (desktop)",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "social_proof_color_mobile",
+      "label": "Social proof text (mobile)",
+      "default": "#212326"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "5 MIN READ"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "6 Reasons Women Who Read Ingredient Labels Are Switching to This Serum"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Rare Regional Ingredients · NYC Precision-Formulated · Featured in Vogue"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "DISCOVER RADICAL RADIANCE"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL (leave blank to link to buy section)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stock_badge",
+      "label": "Show Stock Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stock_text",
+      "label": "Stock Badge Text",
+      "default": "Back in stock — limited quantities",
+      "info": "Use an em dash (—) between the two phrases to style them differently, matching the Figma design."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_proof",
+      "label": "Show Social Proof",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "social_proof_text",
+      "label": "Social Proof Text",
+      "default": "Sold Out in 11 Minutes on QVC"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Hero Image Alt Text",
+      "default": "Love, Indus Amrutini Luminosity Dewdrops Serum"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vogue_badge",
+      "label": "Show Vogue Badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_label",
+      "label": "Badge Label",
+      "default": "Vogue's Best"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Spring Product 2025"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Hero"
+    }
+  ]
+}
+{% endschema %}

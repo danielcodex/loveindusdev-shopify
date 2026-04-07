@@ -1,0 +1,383 @@
+{% comment %}
+  Section: mmx-faq
+  Description: Accordion FAQ section with web component for interactivity
+{% endcomment %}
+
+<style>
+  .mmx-faq {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .mmx-faq__inner {
+    max-width: 652px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .mmx-faq__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .mmx-faq__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .mmx-faq__eyebrow-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .mmx-faq__eyebrow-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mmx-faq__eyebrow-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: {{ section.settings.accent_color }};
+  }
+
+  .mmx-faq__headline {
+    font-family: 'Arima', var(--mmx-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    color: {{ section.settings.accent_color }};
+    margin: 0;
+    letter-spacing: 0.6px;
+    line-height: 36px;
+  }
+
+  /* Accordion */
+  mmx-accordion {
+    display: block;
+  }
+
+  .mmx-faq__item {
+    border-bottom: 1px solid rgba(210, 213, 217, 0.7);
+  }
+
+  .mmx-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 24px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Arima', var(--mmx-font-serif);
+    font-size: 17px;
+    font-weight: 700;
+    color: {{ section.settings.headline_color }};
+    line-height: 25.5px;
+  }
+
+  .mmx-faq__icon-wrap {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background-color: rgba(0, 25, 159, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .mmx-faq__icon-wrap svg {
+    width: 16px;
+    height: 16px;
+    color: {{ section.settings.accent_color }};
+    transition: color 0.3s ease;
+  }
+
+  .mmx-faq__item--open .mmx-faq__icon-wrap {
+    background-color: {{ section.settings.accent_color }};
+  }
+
+  .mmx-faq__item--open .mmx-faq__icon-wrap svg {
+    color: #ffffff;
+  }
+
+  .mmx-faq__answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+
+  .mmx-faq__item--open .mmx-faq__answer {
+    max-height: 600px;
+  }
+
+  .mmx-faq__answer-inner {
+    padding: 0 0 24px;
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 16px;
+    line-height: 24.75px;
+    color: #6b6e73;
+  }
+
+  @media (max-width: 768px) {
+    .mmx-faq__inner {
+      padding: 0 20px;
+    }
+
+    .mmx-faq__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-faq__headline {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      line-height: 30px;
+    }
+
+    .mmx-faq__question {
+      font-size: 14px;
+      padding: 20px 0;
+      color: #212326;
+    }
+
+    .mmx-faq__answer-inner {
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+</style>
+
+<section class="mmx-faq" id="mmx-faq">
+  <div class="mmx-faq__inner">
+    <div class="mmx-faq__header">
+      <div class="mmx-faq__eyebrow">
+        <span class="mmx-faq__eyebrow-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+            <path d="M7.33316 13.333C6.16253 13.3366 5.03333 12.9 4.1695 12.11C3.30568 11.3199 2.77033 10.234 2.66965 9.06775C2.56896 7.90145 2.91028 6.73991 3.62592 5.8135C4.34156 4.88709 5.37924 4.26347 6.53316 4.06634C10.3332 3.33301 11.3332 2.98634 12.6665 1.33301C13.3332 2.66634 13.9998 4.11967 13.9998 6.66634C13.9998 10.333 10.8132 13.333 7.33316 13.333Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.3335 14C1.3335 12 2.56683 10.4267 4.72016 10C6.3335 9.68 8.00016 8.66667 8.66683 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        {{ section.settings.eyebrow_text }}
+      </div>
+      <span class="mmx-faq__eyebrow-line" aria-hidden="true"></span>
+      <h2 class="mmx-faq__headline">{{ section.settings.headline }}</h2>
+    </div>
+
+    <mmx-accordion>
+      {% for block in section.blocks %}
+        {% if block.type == 'faq_item' %}
+          <div
+            class="mmx-faq__item"
+            {{ block.shopify_attributes }}
+          >
+            <button
+              class="mmx-faq__question"
+              aria-expanded="false"
+              aria-controls="mmx-faq-answer-{{ forloop.index }}"
+            >
+              {{ block.settings.question }}
+              <span class="mmx-faq__icon-wrap">
+                <svg class="mmx-faq__icon-plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="8" y1="3" x2="8" y2="13"/>
+                  <line x1="3" y1="8" x2="13" y2="8"/>
+                </svg>
+                <svg class="mmx-faq__icon-minus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none;">
+                  <line x1="3" y1="8" x2="13" y2="8"/>
+                </svg>
+              </span>
+            </button>
+            <div
+              class="mmx-faq__answer"
+              id="mmx-faq-answer-{{ forloop.index }}"
+              role="region"
+            >
+              <div class="mmx-faq__answer-inner">{{ block.settings.answer }}</div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </mmx-accordion>
+  </div>
+</section>
+
+<script>
+  (function() {
+    if (customElements.get('mmx-accordion')) return;
+
+    class MMXAccordion extends HTMLElement {
+      connectedCallback() {
+        this.querySelectorAll('.mmx-faq__question').forEach(btn => {
+          btn.addEventListener('click', () => this._toggle(btn));
+        });
+      }
+
+      _toggle(btn) {
+        const item = btn.closest('.mmx-faq__item');
+        const isOpen = item.classList.contains('mmx-faq__item--open');
+
+        // Close all
+        this.querySelectorAll('.mmx-faq__item').forEach(el => {
+          el.classList.remove('mmx-faq__item--open');
+          el.querySelector('.mmx-faq__question').setAttribute('aria-expanded', 'false');
+          el.querySelector('.mmx-faq__icon-plus').style.display = '';
+          el.querySelector('.mmx-faq__icon-minus').style.display = 'none';
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('mmx-faq__item--open');
+          btn.setAttribute('aria-expanded', 'true');
+          item.querySelector('.mmx-faq__icon-plus').style.display = 'none';
+          item.querySelector('.mmx-faq__icon-minus').style.display = '';
+        }
+      }
+    }
+
+    customElements.define('mmx-accordion', MMXAccordion);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "MMX FAQ",
+  "tag": "div",
+  "class": "mmx-section-faq",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF9F8"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Question Text Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Eyebrow Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "COMMON QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 96
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What makes this serum different from others?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Most serums use the same 10 ingredients. Amrutini® Luminosity Dewdrops use four undiscovered regional ingredients — sourced from the rarest corners of India, bio-engineered in New York City. No other Western skincare brand uses Liquefied Gold Muga Silk or Full-Moon Silver Tips Imperial Tea."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is $135 worth it for a serum?",
+            "answer": "Most serums use the same 10 ingredients. Amrutini® Luminosity Dewdrops use four undiscovered regional ingredients — sourced from the rarest corners of India, bio-engineered in New York City. No other Western skincare brand uses Liquefied Gold Muga Silk or Full-Moon Silver Tips Imperial Tea."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it suitable for sensitive skin?",
+            "answer": "Yes. The formula is free from parabens, sulfates, synthetic fragrances, and harsh chemicals. It's been dermatologist-tested and is suitable for all skin types including sensitive skin. The Hibiscus-derived AHAs are gentle precision exfoliants — not harsh chemical peels."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's different from other serums?",
+            "answer": "Most serums use the same 10 ingredients. Amrutini® Luminosity Dewdrops use four undiscovered regional ingredients — sourced from the rarest corners of India, bio-engineered in New York City. No other Western skincare brand uses Liquefied Gold Muga Silk or Full-Moon Silver Tips Imperial Tea."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How fast do results show?",
+            "answer": "In our 28-day clinical trial, 100% of participants saw improved skin radiance, and 94% reported visibly smoother skin. Most customers notice a dewy, glass-like glow within the first week. Full results — firmer, tighter, more luminous skin — appear at 4 weeks."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the Silk Cocoons?",
+            "answer": "The Silk Cocoons are precision micro-exfoliation tools made from real silk. Each cocoon is used wet to gently buff skin before applying the Dewdrops, allowing the serum to penetrate deeper. Each cocoon lasts 3–4 uses, and 4 cocoons are included free with every order — a $48 value."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I use these copper crusted silk cocoons and how often?",
+            "answer": "We recommend exfoliating with the cocoons 1-2 times per week. Each cocoon can be used up to 4 times, so a set of 4 cocoons will last approximately 3-4 months depending on your usage. Simply rinse and allow them to dry after each use to maximize their lifespan."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

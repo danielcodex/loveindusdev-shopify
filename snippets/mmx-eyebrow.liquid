@@ -1,0 +1,61 @@
+{% comment %}
+  Snippet: mmx-eyebrow
+  Description: Reusable eyebrow label component with optional decorative line
+
+  Usage:
+    {% render 'mmx-eyebrow',
+      text: 'THE GAP',
+      icon: '◇',
+      color: '#1B1F8A',
+      accent_color: '#2B2FD9',
+      show_line: true
+    %}
+
+  Parameters:
+    - text: String — eyebrow label text
+    - icon: String — decorative icon/character (default: '✦')
+    - color: String — text color (default: '#1B1F8A')
+    - accent_color: String — underline/line color (default: '#2B2FD9')
+    - show_line: Boolean — whether to show the decorative line below (default: false)
+{% endcomment %}
+
+{% assign eyebrow_icon = icon | default: '✦' %}
+{% assign eyebrow_color = color | default: '#1B1F8A' %}
+{% assign eyebrow_accent = accent_color | default: '#2B2FD9' %}
+
+<div
+  class="mmx-eyebrow"
+  style="color: {{ eyebrow_color }};"
+>
+  <span aria-hidden="true">{{ eyebrow_icon }}</span>
+  {{ text }}
+</div>
+
+{% if show_line %}
+  <span
+    class="mmx-eyebrow__line"
+    style="background-color: {{ eyebrow_accent }};"
+    aria-hidden="true"
+  ></span>
+{% endif %}
+
+<style>
+  .mmx-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .mmx-eyebrow__line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    margin: 6px auto 24px;
+  }
+</style>

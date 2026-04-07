@@ -1,0 +1,698 @@
+{% comment %}
+  Section: mmx-reasons
+  Description: Alternating reasons with image, headline, body, testimonial, and CTA
+{% endcomment %}
+
+<style>
+  .mmx-reasons {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  /* Full-width bg per block */
+  .mmx-reasons__block {
+    width: 100%;
+  }
+
+  .mmx-reasons__reason {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Image is first in DOM.
+     Default (image left): no reordering needed.
+     Image right: push image to column 2 */
+  .mmx-reasons__reason--image-right .mmx-reasons__image-wrap {
+    order: 2;
+  }
+  .mmx-reasons__reason--image-right .mmx-reasons__content {
+    order: 1;
+  }
+
+  /* ── Image ── */
+  .mmx-reasons__image-wrap {
+    position: relative;
+  }
+
+  .mmx-reasons__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    object-fit: cover;
+    aspect-ratio: 560 / 549;
+    box-shadow: 0px 16px 48px 0px rgba(0, 25, 159, 0.1), 0px 4px 12px 0px rgba(0, 0, 0, 0.06);
+  }
+
+  .mmx-reasons__image--placeholder {
+    background-color: rgba(0, 25, 159, 0.05);
+  }
+
+  .mmx-reasons__number-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    background-color: #00199F;
+    color: #ffffff;
+    font-family: var(--mmx-font-sans);
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0px 4px 16px 0px rgba(0, 25, 159, 0.4);
+    line-height: 1;
+  }
+
+  /* ── Eyebrow ── */
+  .mmx-reasons__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .mmx-reasons__eyebrow-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background-color: rgba(0, 25, 159, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mmx-reasons__eyebrow-icon-wrap svg {
+    width: 28px;
+    height: 28px;
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  .mmx-reasons__eyebrow-text {
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  /* ── Headline + Divider ── */
+  .mmx-reasons__headline {
+    font-family: var(--mmx-font-sans);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.6px;
+    color: {{ section.settings.headline_color }};
+    margin: 0 0 16px;
+  }
+
+  .mmx-reasons__divider {
+    width: 40px;
+    height: 2px;
+    background-color: {{ section.settings.accent_color }};
+    margin-bottom: 24px;
+  }
+
+  .mmx-reasons__block .mmx-reasons__divider{
+    display: block;
+  }
+
+  /* ── Body (richtext) ── */
+  .mmx-reasons__body {
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    line-height: 1.78;
+    color: {{ section.settings.body_color }};
+    margin-bottom: 24px;
+  }
+
+  .mmx-reasons__body p {
+    margin: 0 0 16px;
+  }
+
+  .mmx-reasons__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Testimonial ── */
+  .mmx-reasons__testimonial {
+    background-color: rgba(0, 25, 159, 0.04);
+    border-left: 3px solid {{ section.settings.accent_color }};
+    border-radius: 0 10px 10px 0;
+    padding: 20px 22px;
+    margin-bottom: 24px;
+  }
+
+  .mmx-reasons__testimonial-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 12px;
+  }
+
+  .mmx-reasons__testimonial-stars svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
+  .mmx-reasons__testimonial-quote {
+    font-family: var(--mmx-font-sans);
+    font-size: 16px;
+    line-height: 1.594;
+    color: {{ section.settings.headline_color }};
+    font-style: italic;
+    margin: 0 0 12px;
+  }
+
+  .mmx-reasons__testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mmx-reasons__author-initial {
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    background-color: rgba(0, 25, 159, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mmx-font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    color: {{ section.settings.headline_color }};
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  .mmx-reasons__author-name {
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.72px;
+    color: {{ section.settings.headline_color }};
+  }
+
+  /* ── CTA ── */
+  .mmx-reasons__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: {{ section.settings.headline_color }};
+    font-family: var(--mmx-font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 28px;
+    height: 49px;
+    border: 2px solid {{ section.settings.headline_color }};
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .mmx-reasons__cta svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: stroke 0.2s ease;
+  }
+
+  .mmx-reasons__cta:hover {
+    background-color: {{ section.settings.headline_color }};
+    color: #ffffff;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 900px) {
+    .mmx-reasons__reason {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 60px 20px;
+    }
+
+    /* Default mobile: image on top */
+    .mmx-reasons__image-wrap {
+      order: 1;
+    }
+    .mmx-reasons__content {
+      order: 2;
+    }
+
+    /* Image-right on desktop collapses same as default on mobile */
+    .mmx-reasons__reason--image-right .mmx-reasons__image-wrap {
+      order: 1;
+    }
+    .mmx-reasons__reason--image-right .mmx-reasons__content {
+      order: 2;
+    }
+
+    /* Content-first on mobile: content above image */
+    .mmx-reasons__reason--mobile-content-first .mmx-reasons__content {
+      order: 1;
+    }
+    .mmx-reasons__reason--mobile-content-first .mmx-reasons__image-wrap {
+      order: 2;
+    }
+
+    .mmx-reasons__image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .mmx-reasons__eyebrow-text {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-reasons__headline {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .mmx-reasons__body {
+      font-size: 14px;
+      line-height: 1.643;
+      color: {{ section.settings.body_color_mobile }};
+    }
+
+    .mmx-reasons__testimonial-quote {
+      font-size: 14px;
+      line-height: 1.643;
+      color: {{ section.settings.body_color_mobile }};
+    }
+
+    .mmx-reasons__author-name {
+      font-size: 12px;
+    }
+
+    .mmx-reasons__cta {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<section class="mmx-reasons" id="mmx-reasons">
+  {% assign reason_count = 0 %}
+  {% assign total_reasons = section.blocks | where: 'type', 'reason' | size %}
+  {% for block in section.blocks %}
+    {% if block.type == 'reason' %}
+      {% assign reason_count = reason_count | plus: 1 %}
+
+      {% comment %} Determine desktop image position {% endcomment %}
+      {% assign is_image_right = false %}
+      {% if block.settings.image_position == 'right' %}
+        {% assign is_image_right = true %}
+      {% elsif block.settings.image_position == 'left' %}
+        {% assign is_image_right = false %}
+      {% else %}
+        {% comment %} auto: odd blocks = image left, even blocks = image right {% endcomment %}
+        {% assign pos_mod = reason_count | modulo: 2 %}
+        {% if pos_mod == 0 %}
+          {% assign is_image_right = true %}
+        {% endif %}
+      {% endif %}
+
+      {% comment %} Determine mobile stack order {% endcomment %}
+      {% assign mobile_content_first = false %}
+      {% if block.settings.mobile_stack_order == 'content_first' %}
+        {% assign mobile_content_first = true %}
+      {% endif %}
+
+      {% comment %} Block background color {% endcomment %}
+      {% if block.settings.background_color != blank %}
+        {% assign block_bg = block.settings.background_color %}
+      {% else %}
+        {% assign block_bg = section.settings.background_color %}
+      {% endif %}
+
+      {% comment %} Author initial for avatar badge {% endcomment %}
+      {% assign author_initial = block.settings.testimonial_author | slice: 0 | upcase %}
+
+      <div class="mmx-reasons__block" style="background-color: {{ block_bg }};" {{ block.shopify_attributes }}>
+        <div class="mmx-reasons__reason{% if is_image_right %} mmx-reasons__reason--image-right{% endif %}{% if mobile_content_first %} mmx-reasons__reason--mobile-content-first{% endif %}">
+
+          <div class="mmx-reasons__image-wrap">
+            <div class="mmx-reasons__number-badge" aria-hidden="true">{{ reason_count }}</div>
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 700 }}"
+                srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
+                        {{ block.settings.image | image_url: width: 700 }} 700w"
+                sizes="(max-width: 900px) 100vw, 50vw"
+                alt="{{ block.settings.image_alt | default: block.settings.headline }}"
+                class="mmx-reasons__image"
+                loading="lazy"
+                width="560"
+                height="549"
+              >
+            {% else %}
+              <div class="mmx-reasons__image mmx-reasons__image--placeholder"></div>
+            {% endif %}
+          </div>
+
+          <div class="mmx-reasons__content">
+            <div class="mmx-reasons__eyebrow">
+              <div class="mmx-reasons__eyebrow-icon-wrap" aria-hidden="true">
+                {% case block.settings.icon %}
+                  {% when 'eye' %}
+                    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14 19.8333C19.1547 19.8333 23.3333 17.2217 23.3333 14C23.3333 10.7783 19.1547 8.16667 14 8.16667C8.84534 8.16667 4.66667 10.7783 4.66667 14C4.66667 17.2217 8.84534 19.8333 14 19.8333Z" stroke="currentColor" stroke-width="1.633" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path opacity="0.5" d="M4.66667 14C7.77778 10.8889 10.8889 10.8889 14 14C17.1111 17.1111 20.2222 17.1111 23.3333 14" stroke="currentColor" stroke-width="1.143" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path opacity="0.5" d="M4.66667 14C7.77778 17.1111 10.8889 17.1111 14 14C17.1111 10.8889 20.2222 10.8889 23.3333 14" stroke="currentColor" stroke-width="1.143" stroke-linecap="round" stroke-linejoin="round"/>
+                      <circle cx="14" cy="14" r="1.75" fill="currentColor"/>
+                    </svg>
+                  {% when 'moon' %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48147 23.6968C2.05855 23.7791 1.64814 23.5031 1.5648 23.0801C1.48251 22.6572 1.75855 22.2458 2.18147 22.1635C2.18147 22.1635 9.79397 20.6437 15.2138 12.0947C15.444 11.7312 15.9273 11.6228 16.2919 11.8541C16.6554 12.0843 16.7638 12.5676 16.5336 12.9322C10.7075 22.1208 2.48147 23.6968 2.48147 23.6968Z" fill="#00199F"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.96498 9.55529C10.1598 9.93966 10.0066 10.4105 9.62227 10.6063C9.2379 10.8011 8.76706 10.648 8.57123 10.2636C8.10769 9.35008 7.68269 8.38341 7.3181 7.36883C7.17227 6.96258 7.38373 6.5157 7.78998 6.36987C8.19519 6.22404 8.6431 6.4355 8.78894 6.8407C9.1306 7.79279 9.52956 8.69904 9.96498 9.55529Z" fill="#00199F"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M22.8785 3.98118C22.8785 3.98118 23.842 7.61763 23.266 11.677C22.8733 14.4458 21.766 17.3989 19.2181 19.576C16.5441 21.8614 12.2441 23.3187 5.38267 22.6666C5.00351 22.6301 4.70455 22.3249 4.67747 21.9447C4.67747 21.9447 4.07226 13.4208 10.1223 7.91138C12.7014 5.56138 16.491 3.74263 22.0754 3.39993C22.4473 3.37701 22.7837 3.62076 22.8785 3.98118ZM21.5066 5.0093C16.7368 5.41868 13.441 7.00201 11.1743 9.06659C6.64101 13.1947 6.22538 19.1885 6.22017 21.1697C12.0962 21.6156 15.8493 20.3999 18.2035 18.3885C20.4337 16.4822 21.3743 13.8822 21.7191 11.4572C22.1108 8.69784 21.7316 6.14993 21.5066 5.0093Z" fill="#00199F"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5296 6.30204C13.7952 6.64163 13.7358 7.13225 13.3973 7.39892C13.0577 7.66559 12.566 7.60621 12.3004 7.26663C10.9577 5.55621 8.88792 4.03225 5.76084 3.01663C5.44 3.76975 4.91917 5.176 4.67855 6.83746C4.33063 9.24371 4.56604 12.2135 7.02125 14.425C7.34209 14.7135 7.36709 15.2073 7.07855 15.5281C6.79 15.8489 6.29625 15.8739 5.97542 15.5854C3.06605 12.9645 2.72021 9.46663 3.13271 6.6135C3.53271 3.84371 4.64313 1.71038 4.64313 1.71038C4.81396 1.37913 5.19521 1.21559 5.55354 1.31975C9.43792 2.44371 11.9348 4.26975 13.5296 6.30204Z" fill="#00199F"/>
+                    </svg>
+                  {% when 'sparkle' %}
+                    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14 3.5l2.333 7 7 2.333-7 2.334L14 22.167l-2.333-7.333L4.667 12.833l7-2.333z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% when 'award' %}
+                    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="14" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M18.056 16.04L19.833 26l-5.833-3.5-5.833 3.5 1.777-9.96" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% when 'leaf' %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                      <path d="M12.8335 23.3335C10.7849 23.3397 8.80881 22.5757 7.29712 21.1931C5.78542 19.8106 4.84857 17.9103 4.67237 15.8693C4.49617 13.8283 5.09348 11.7956 6.34585 10.1744C7.59822 8.55314 9.41416 7.46181 11.4335 7.11683C18.0835 5.8335 19.8335 5.22683 22.1668 2.3335C23.3335 4.66683 24.5002 7.21016 24.5002 11.6668C24.5002 18.0835 18.9235 23.3335 12.8335 23.3335Z" stroke="#00199F" stroke-width="1.63333" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2.3335 24.5C2.3335 21 4.49183 18.2467 8.26016 17.5C11.0835 16.94 14.0002 15.1667 15.1668 14" stroke="#00199F" stroke-width="1.63333" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% when 'drop' %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <path d="M13.0622 0.278024C12.8093 -0.0926748 12.1884 -0.0926748 11.9372 0.278024C11.6141 0.757581 4.00879 12.0378 4.00879 16.509C4.00879 21.1897 7.81955 24.9997 12.4995 24.9997C17.1801 24.9997 20.9904 21.1894 20.9904 16.509C20.9909 12.0378 13.3851 0.756369 13.0622 0.278024ZM12.4997 23.6413C8.567 23.6413 5.3677 20.4439 5.3677 16.509C5.3677 13.4067 10.0859 5.5694 12.4997 1.88544C14.9142 5.5694 19.6322 13.404 19.6322 16.509C19.6322 20.4439 16.4319 23.6413 12.4997 23.6413ZM13.1788 21.6035C13.1788 21.9788 12.8736 22.2829 12.4997 22.2829C9.31519 22.2829 6.72636 19.6931 6.72636 16.5093C6.72636 16.1352 7.03208 15.8299 7.40569 15.8299C7.7793 15.8299 8.08478 16.1352 8.08478 16.5093C8.08478 18.9451 10.0653 20.9244 12.5 20.9244C12.8736 20.9242 13.1788 21.2268 13.1788 21.6035Z" fill="#00199F"/>
+                    </svg>
+                  {% else %}
+                    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="14" cy="14" r="10.5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                {% endcase %}
+              </div>
+              <span class="mmx-reasons__eyebrow-text">REASON {{ reason_count }} OF {{ total_reasons }}</span>
+            </div>
+
+            <h2 class="mmx-reasons__headline">{{ block.settings.headline }}</h2>
+            <div class="mmx-reasons__divider" aria-hidden="true"></div>
+
+            <div class="mmx-reasons__body">
+              {{ block.settings.body }}
+            </div>
+
+            {% if block.settings.testimonial_quote != blank %}
+              <div class="mmx-reasons__testimonial">
+                <div class="mmx-reasons__testimonial-stars" aria-label="5 out of 5 stars">
+                  {% for i in (1..5) %}
+                    <svg viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M6.5 1.21875L7.75531 3.76188L10.5625 4.16975L8.53125 6.14981L9.01063 8.94481L6.5 7.62531L3.98937 8.94481L4.46875 6.14981L2.4375 4.16975L5.24469 3.76188L6.5 1.21875Z" fill="#FFB503"/>
+                    </svg>
+                  {% endfor %}
+                </div>
+                <p class="mmx-reasons__testimonial-quote">"{{ block.settings.testimonial_quote }}"</p>
+                <div class="mmx-reasons__testimonial-author">
+                  <div class="mmx-reasons__author-initial" aria-hidden="true">{{ author_initial }}</div>
+                  <span class="mmx-reasons__author-name">{{ block.settings.testimonial_author }}</span>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.cta_text != blank %}
+              <a
+                href="{{ block.settings.cta_url | default: '#mmx-buy' }}"
+                class="mmx-reasons__cta"
+              >
+                {{ block.settings.cta_text }}
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M2.8 7H11.2M11.2 7L7.7 3.5M11.2 7L7.7 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "MMX Reasons",
+  "tag": "div",
+  "class": "mmx-section-reasons",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#F8F3EE"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Color (Desktop)",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "body_color_mobile",
+      "label": "Body Color (Mobile)",
+      "default": "#212326"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Block Background Color",
+          "info": "Leave blank to use the section background color."
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image Position (Desktop)",
+          "options": [
+            { "value": "auto", "label": "Auto (alternates left/right)" },
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "auto"
+        },
+        {
+          "type": "select",
+          "id": "mobile_stack_order",
+          "label": "Mobile Stack Order",
+          "options": [
+            { "value": "image_first", "label": "Image on top" },
+            { "value": "content_first", "label": "Content on top" }
+          ],
+          "default": "image_first"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Eyebrow Icon",
+          "options": [
+            { "value": "eye", "label": "Eye" },
+            { "value": "moon", "label": "Moon" },
+            { "value": "sparkle", "label": "Sparkle" },
+            { "value": "award", "label": "Award" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "drop", "label": "Water Drop" }
+          ],
+          "default": "eye"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline",
+          "default": "It Contains an Ingredient So Rare, Surgeons Use It"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body Text",
+          "default": "<p>Most serums hydrate. This one performs. The Dewdrops contain Liquefied Gold Muga Silk — a rarefied regenerative material used in surgical wound repair, sourced exclusively from Assam, India.</p><p>It drives skin cell regeneration at a cellular level. A precision-grade, bio-tech ingredient that luxury labs are only beginning to unlock.</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_quote",
+          "label": "Testimonial Quote"
+        },
+        {
+          "type": "text",
+          "id": "testimonial_author",
+          "label": "Testimonial Author",
+          "default": "Julie O. · Verified Buyer"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Button Text",
+          "default": "TRY THE SURGICAL-GRADE SERUM"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA URL (leave blank to link to buy section)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Reason Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Reasons",
+      "blocks": [
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "eye",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "headline": "It Contains an Ingredient So Rare, Surgeons Use It",
+            "body": "<p>Most serums hydrate. This one performs. The Dewdrops contain Liquefied Gold Muga Silk — a rarefied regenerative material used in surgical wound repair, sourced exclusively from Assam, India.</p><p>It drives skin cell regeneration at a cellular level. A precision-grade, bio-tech ingredient that luxury labs are only beginning to unlock.</p>",
+            "testimonial_quote": "Shocked at the difference in just a few days. My skin absorbs it instantly — super soft and glowy.",
+            "testimonial_author": "Julie O. · Verified Buyer",
+            "cta_text": "TRY THE SURGICAL-GRADE SERUM"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "moon",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "headline": "The Tea Inside Was Harvested Under a Full Moon",
+            "body": "<p>Silver Tips Imperial Tea from Darjeeling's Makaibari Estate. Plucked only on clear, full-moon nights at peak potency — one of the most expensive, undiscovered teas in the world.</p><p>Dense in polyphenols and bio-active compounds, it shields skin from environmental aggressors while delivering a glass-like, luminous complexion. Love, Indus is the only skincare brand using this ingredient.</p>",
+            "testimonial_quote": "My skin has never looked this radiant. I can actually see the difference every morning.",
+            "testimonial_author": "Sarah K. · Verified Buyer",
+            "cta_text": "EXPERIENCE FULL-MOON RADIANCE"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "sparkle",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "headline": "It Replaced Five Steps in My Routine",
+            "body": "<p>Hydrator. Illuminator. Barrier serum. Primer. Precision exfoliation. Five high-performance steps — one cutting-edge formula.</p><p>Dermatologists are moving toward fewer, more potent products. Four Silk Cocoons included free. Each lasts up to 4 uses — one set carries you 3–4 months.</p>",
+            "testimonial_quote": "My routine is completely transformed. The Silk Cocoons are unlike anything I've seen in high-performance skincare.",
+            "testimonial_author": "Rachael M. · Verified Buyer",
+            "cta_text": "SIMPLIFY TO ONE BOTTLE"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "award",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "headline": "Vogue Called It a Best Spring Product for a Reason",
+            "body": "<p>Vogue's 'Best Spring Product' evaluates innovation and ingredient integrity. The Dewdrops combine clinical-grade Niacinamide + Sodium Hyaluronate with rarefied regional ingredients never seen in Western skincare.</p><p>Emmy-winning makeup artist Alexandra French (Euphoria S2) uses them. When the artists behind the beauty looks you admire choose this product, that says more than any ad.</p>",
+            "testimonial_quote": "I've tried every luxury serum on the market. Nothing compares to this.",
+            "testimonial_author": "Priya D. · Verified Buyer",
+            "cta_text": "AWARD-WINNING FORMULA"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "leaf",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "headline": "Rare Regional Ingredients Your Dermatologist Has Never Heard Of",
+            "body": "<p>Ashwagandha Root Extract neutralizes cortisol-driven skin damage. Tremella Mushroom — a rare cloud fungus — holds 500x its weight in moisture, outperforming hyaluronic acid.</p><p>Hibiscus-derived precision AHAs resurface. Mulberry inhibits melanin overproduction for a visibly luminous, glass-like complexion. Undiscovered by Western skincare. Precision-validated by NYC bio-tech formulation science.</p>",
+            "testimonial_quote": "The ingredient list reads like a scientific breakthrough. My skin has never looked this luminous or glass-like.",
+            "testimonial_author": "Amara J. · Verified Buyer",
+            "cta_text": "DISCOVER THE RARE INGREDIENTS"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "icon": "drop",
+            "image_position": "auto",
+            "mobile_stack_order": "image_first",
+            "headline": "It Sold Out in 11 Minutes. Then 400 People Joined the Waitlist.",
+            "body": "<p>1,250 units on QVC. Gone in 11 minutes. 400+ on the waitlist — not because of a campaign, because the clinical results speak for themselves.</p><p>After four weeks: tighter, firmer, dewy, visibly more luminous skin. Fine lines recede. The Dewdrops are back in stock — but they won't last.</p>",
+            "testimonial_quote": "After 4 weeks, my skin is super smooth with a lovely glow. Fine lines less visible. Tighter, firmer, most luminous.",
+            "testimonial_author": "Betty B. · Verified Buyer",
+            "cta_text": "CLAIM YOUR BOTTLE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

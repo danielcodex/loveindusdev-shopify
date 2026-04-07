@@ -1,0 +1,217 @@
+{% comment %}
+  Section: mmx-announcement-bar
+  Description: Scrolling ticker announcement bar
+{% endcomment %}
+
+<style>
+  .mmx-announcement-bar {
+    background-color: {{ section.settings.background_color }};
+    overflow: hidden;
+    padding: 12px 0;
+    position: relative;
+    z-index: 100;
+  }
+
+  .mmx-announcement-bar__track {
+    display: flex;
+    width: max-content;
+    animation: mmx-marquee {{ section.settings.speed }}s linear infinite;
+  }
+
+  .mmx-announcement-bar__track:hover {
+    animation-play-state: paused;
+  }
+
+  .mmx-announcement-bar__items {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .mmx-announcement-bar__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 {{ section.settings.item_spacing }}px;
+    color: {{ section.settings.text_color }};
+    font-family: var(--mmx-font-sans);
+    font-size: 11.5px;
+    font-weight: 400;
+    letter-spacing: 0.805px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0.88;
+  }
+
+  .mmx-announcement-bar__icon {
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .mmx-announcement-bar__separator {
+    color: {{ section.settings.text_color }};
+    opacity: 0.25;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* Edge gradient fades */
+  .mmx-announcement-bar::before,
+  .mmx-announcement-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .mmx-announcement-bar::before {
+    left: 0;
+    background: linear-gradient(to right, {{ section.settings.background_color }}, transparent);
+  }
+
+  .mmx-announcement-bar::after {
+    right: 0;
+    background: linear-gradient(to left, {{ section.settings.background_color }}, transparent);
+  }
+
+  @keyframes mmx-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .mmx-announcement-bar__item {
+      font-size: 10.5px;
+      padding: 0 {{ section.settings.item_spacing | minus: 6 }}px;
+    }
+  }
+</style>
+
+<div class="mmx-announcement-bar" role="region" aria-label="Announcements">
+  <div class="mmx-announcement-bar__track">
+    <div class="mmx-announcement-bar__items">
+      {% for block in section.blocks %}
+        {% if block.type == 'announcement' %}
+          <div class="mmx-announcement-bar__item" {{ block.shopify_attributes }}>
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | image_url: width: 32 }}" alt="" class="mmx-announcement-bar__icon" loading="lazy" width="13" height="13">
+            {% endif %}
+            {{ block.settings.text }}
+          </div>
+          <span class="mmx-announcement-bar__separator" aria-hidden="true">✦</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {%- comment -%} Duplicate for seamless loop {%- endcomment -%}
+    <div class="mmx-announcement-bar__items" aria-hidden="true">
+      {% for block in section.blocks %}
+        {% if block.type == 'announcement' %}
+          <div class="mmx-announcement-bar__item">
+            {% if block.settings.icon != blank %}
+              <img src="{{ block.settings.icon | image_url: width: 32 }}" alt="" class="mmx-announcement-bar__icon" loading="lazy" width="13" height="13">
+            {% endif %}
+            {{ block.settings.text }}
+          </div>
+          <span class="mmx-announcement-bar__separator">✦</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MMX Announcement Bar",
+  "tag": "div",
+  "class": "mmx-section-announcement-bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll Speed (seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "label": "Item Spacing (px)",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Announcement Text",
+          "default": "Complimentary Silk Cocoons With Every Order"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Announcement Bar",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Complimentary Silk Cocoons With Every Order"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Free US Shipping on Orders $75+"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Sold Out in 11 Minutes on QVC"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Featured in Vogue, InStyle & Cosmopolitan"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

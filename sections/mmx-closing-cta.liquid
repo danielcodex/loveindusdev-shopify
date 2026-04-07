@@ -1,0 +1,548 @@
+{% comment %}
+  Section: mmx-closing-cta
+  Description: Final CTA section with guarantee badge, pricing, and trust indicators
+{% endcomment %}
+
+<style>
+  .mmx-final-cta {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    border-top: 1px solid rgba(210, 213, 217, 0.5);
+  }
+
+  .mmx-final-cta__inner {
+    max-width: 881px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  /* Header + Subtext group */
+  .mmx-final-cta__header-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .mmx-final-cta__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .mmx-final-cta__eyebrow-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .mmx-final-cta__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .mmx-final-cta__eyebrow-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mmx-final-cta__eyebrow-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mmx-final-cta__divider {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: {{ section.settings.accent_color }};
+  }
+
+  .mmx-final-cta__headline {
+    font-family: 'Arima', var(--mmx-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    color: {{ section.settings.accent_color }};
+    text-align: center;
+    letter-spacing: 0.6px;
+    line-height: 28.8px;
+    margin: 0;
+  }
+
+  /* Subtext area */
+  .mmx-final-cta__subtext-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    max-width: 522px;
+  }
+
+  .mmx-final-cta__subtext {
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 18px;
+    font-weight: 400;
+    color: {{ section.settings.accent_color }};
+    text-align: center;
+    line-height: 29.75px;
+    margin: 0;
+  }
+
+  .mmx-final-cta__urgency {
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: {{ section.settings.accent_color }};
+    text-align: center;
+    letter-spacing: 0.56px;
+    line-height: 21px;
+    margin: 0;
+  }
+
+  /* Price area */
+  .mmx-final-cta__price-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mmx-final-cta__price {
+    font-family: 'Arima', var(--mmx-font-serif);
+    font-size: 48px;
+    font-weight: 700;
+    color: {{ section.settings.accent_color }};
+    text-align: center;
+    line-height: 72px;
+  }
+
+  .mmx-final-cta__bonus {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    color: {{ section.settings.accent_color }};
+    line-height: 21px;
+  }
+
+  .mmx-final-cta__bonus-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mmx-final-cta__bonus-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* CTA Button */
+  .mmx-final-cta__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 6px 28px 0px rgba(0, 25, 159, 0.3);
+    transition: opacity 0.2s ease;
+    min-width: 359px;
+    height: 52px;
+    box-sizing: border-box;
+  }
+
+  .mmx-final-cta__cta-btn:hover {
+    opacity: 0.9;
+  }
+
+  .mmx-final-cta__cta-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mmx-final-cta__cta-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Trust items */
+  .mmx-final-cta__trust {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: 540px;
+    width: 100%;
+  }
+
+  .mmx-final-cta__trust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .mmx-final-cta__trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Quattrocento Sans', var(--mmx-font-sans);
+    font-size: 12px;
+    font-weight: 400;
+    color: {{ section.settings.accent_color }};
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+
+  .mmx-final-cta__trust-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.accent_color }};
+  }
+
+  .mmx-final-cta__trust-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .mmx-final-cta {
+      padding: {{ section.settings.mobile_padding_top }}px 0 {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .mmx-final-cta__inner {
+      padding: 0 24px;
+      gap: 20px;
+    }
+
+    .mmx-final-cta__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-final-cta__headline {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+      line-height: 24px;
+    }
+
+    .mmx-final-cta__subtext {
+      font-size: 16px;
+      color: #212326;
+    }
+
+    .mmx-final-cta__urgency {
+      font-size: 14px;
+    }
+
+    .mmx-final-cta__price {
+      color: #212326;
+    }
+
+    .mmx-final-cta__bonus {
+      font-size: 14px;
+    }
+
+    .mmx-final-cta__cta-btn {
+      min-width: unset;
+      width: 100%;
+      max-width: 334px;
+      height: 52px;
+      font-size: 13px;
+    }
+
+    .mmx-final-cta__trust-row {
+      gap: 20px 24px;
+    }
+
+    .mmx-final-cta__trust-item {
+      letter-spacing: 0.72px;
+    }
+  }
+</style>
+
+<section class="mmx-final-cta" id="mmx-final-cta">
+  <div class="mmx-final-cta__inner">
+    <!-- Header + Subtext group -->
+    <div class="mmx-final-cta__header-group">
+      <div class="mmx-final-cta__header">
+        <div class="mmx-final-cta__eyebrow-area">
+          <div class="mmx-final-cta__eyebrow">
+            <span class="mmx-final-cta__eyebrow-icon" aria-hidden="true">
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 16.5C9 16.5 15 13.5 15 9V3.75L9 1.5L3 3.75V9C3 13.5 9 16.5 9 16.5Z" stroke="currentColor" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.75 9L8.25 10.5L11.25 7.5" stroke="currentColor" stroke-width="1.2375" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            {{ section.settings.eyebrow_text }}
+          </div>
+          <span class="mmx-final-cta__divider" aria-hidden="true"></span>
+        </div>
+        <h2 class="mmx-final-cta__headline">{{ section.settings.headline }}</h2>
+      </div>
+
+      <div class="mmx-final-cta__subtext-area">
+        <p class="mmx-final-cta__subtext">{{ section.settings.subtext }}</p>
+        <p class="mmx-final-cta__urgency">{{ section.settings.urgency_text }}</p>
+      </div>
+    </div>
+
+    <!-- Price area -->
+    <div class="mmx-final-cta__price-area">
+      <div class="mmx-final-cta__price">{{ section.settings.price_text }}</div>
+      <div class="mmx-final-cta__bonus">
+        <span class="mmx-final-cta__bonus-icon" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 11.3337C10.9455 11.3337 13.3334 9.84127 13.3334 8.00033C13.3334 6.15938 10.9455 4.66699 8 4.66699C5.0545 4.66699 2.66669 6.15938 2.66669 8.00033C2.66669 9.84127 5.0545 11.3337 8 11.3337Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+            <path opacity="0.5" d="M2.66669 8.00033C4.44446 6.22255 6.22224 6.22255 8.00002 8.00033C9.7778 9.7781 11.5556 9.7781 13.3334 8.00033" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path opacity="0.5" d="M2.66669 8.00033C4.44446 9.7781 6.22224 9.7781 8.00002 8.00033C9.7778 6.22255 11.5556 6.22255 13.3334 8.00033" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="8" cy="8" r="1" fill="currentColor"/>
+          </svg>
+        </span>
+        {{ section.settings.bonus_text }}
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <a href="{{ section.settings.cta_url | default: '#mmx-buy' }}" class="mmx-final-cta__cta-btn">
+      <span class="mmx-final-cta__cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 2.25V3.75M9 14.25V15.75M2.25 9H3.75M14.25 9H15.75" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+          <path opacity="0.6" d="M4.22699 4.22656L5.28749 5.28706M12.7125 12.7121L13.773 13.7726M4.22699 13.7726L5.28749 12.7121M12.7125 5.28706L13.773 4.22656" stroke="currentColor" stroke-width="1.08" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="9" cy="9" r="3" stroke="currentColor" stroke-width="1.35" fill="none"/>
+        </svg>
+      </span>
+      {{ section.settings.cta_text }}
+      <span class="mmx-final-cta__cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.6 9H14.4M14.4 9L9.9 4.5M14.4 9L9.9 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+
+    <!-- Trust items -->
+    <div class="mmx-final-cta__trust">
+      <div class="mmx-final-cta__trust-row" role="list" aria-label="Guarantees">
+        {% for block in section.blocks %}
+          {% if block.type == 'trust_item' %}
+            <div class="mmx-final-cta__trust-item" role="listitem" {{ block.shopify_attributes }}>
+              <span class="mmx-final-cta__trust-icon" aria-hidden="true">
+                {% case block.settings.icon_type %}
+                  {% when 'shipping' %}
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.33333 11.3333H2C1.64638 11.3333 1.30724 11.1929 1.05719 10.9428C0.807142 10.6928 0.666666 10.3536 0.666666 10V3.33333C0.666666 2.97971 0.807142 2.64057 1.05719 2.39052C1.30724 2.14048 1.64638 2 2 2H9.33333V10H3.33333V11.3333Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9.33331 5.33301H12L14 7.99967V9.99967H9.33331V5.33301Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M5 13.3333C5.92047 13.3333 6.66667 12.5871 6.66667 11.6667C6.66667 10.7462 5.92047 10 5 10C4.07953 10 3.33333 10.7462 3.33333 11.6667C3.33333 12.5871 4.07953 13.3333 5 13.3333Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M11.6667 13.3333C12.5871 13.3333 13.3333 12.5871 13.3333 11.6667C13.3333 10.7462 12.5871 10 11.6667 10C10.7462 10 10 10.7462 10 11.6667C10 12.5871 10.7462 13.3333 11.6667 13.3333Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% when 'clinical' %}
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13.8933 3.07333C13.5528 2.73267 13.1485 2.46243 12.7036 2.27806C12.2586 2.09368 11.7817 1.99878 11.3 1.99878C10.8183 1.99878 10.3414 2.09368 9.89643 2.27806C9.45146 2.46243 9.04717 2.73267 8.70667 3.07333L8 3.78L7.29333 3.07333C6.60554 2.38554 5.67269 1.99914 4.7 1.99914C3.72731 1.99914 2.79446 2.38554 2.10667 3.07333C1.41887 3.76113 1.03247 4.69398 1.03247 5.66667C1.03247 6.63936 1.41887 7.57221 2.10667 8.26L2.81333 8.96667L8 14.1533L13.1867 8.96667L13.8933 8.26C14.234 7.9195 14.5042 7.51521 14.6886 7.07024C14.873 6.62526 14.9679 6.14832 14.9679 5.66667C14.9679 5.18501 14.873 4.70807 14.6886 4.2631C14.5042 3.81812 14.234 3.41384 13.8933 3.07333Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% when 'formulated' %}
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.2 8L6.8 11.6L12.8 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% when 'guarantee' %}
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 14.6663C8 14.6663 13.3333 11.9997 13.3333 7.99967V3.33301L8 1.33301L2.66666 3.33301V7.99967C2.66666 11.9997 8 14.6663 8 14.6663Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6 8.00033L7.33333 9.33366L10 6.66699" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                {% endcase %}
+              </span>
+              {{ block.settings.text }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MMX Closing CTA",
+  "tag": "div",
+  "class": "mmx-section-closing-cta",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F8F3EE"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Text Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "30-Day Radiance Guarantee"
+    },
+    {
+      "type": "textarea",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Women Who Read Ingredient Labels Don't Take Risks. Neither Do We."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "30 days. Smoother, more radiant skin or full refund. No questions."
+    },
+    {
+      "type": "text",
+      "id": "urgency_text",
+      "label": "Urgency Text",
+      "default": "1,250 units. 11 minutes. 400+ waitlist. Vogue's Best Spring Product."
+    },
+    {
+      "type": "text",
+      "id": "price_text",
+      "label": "Price",
+      "default": "$135"
+    },
+    {
+      "type": "text",
+      "id": "bonus_text",
+      "label": "Bonus Text",
+      "default": "4 Copper Crusted Silk Cocoons"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Discover Radical Radiance"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL (leave blank for buy section)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (Desktop)",
+      "min": 40,
+      "max": 200,
+      "step": 8,
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (Desktop)",
+      "min": 40,
+      "max": 200,
+      "step": 8,
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Padding Top (Mobile)",
+      "min": 24,
+      "max": 120,
+      "step": 8,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Padding Bottom (Mobile)",
+      "min": 24,
+      "max": 120,
+      "step": 8,
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon",
+          "options": [
+            { "value": "shipping", "label": "Shipping Truck" },
+            { "value": "clinical", "label": "Heart" },
+            { "value": "formulated", "label": "Checkmark" },
+            { "value": "guarantee", "label": "Shield" }
+          ],
+          "default": "guarantee"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "30-Day Radiance Guarantee"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Closing CTA",
+      "blocks": [
+        { "type": "trust_item", "settings": { "icon_type": "shipping", "text": "Free Shipping $75+" } },
+        { "type": "trust_item", "settings": { "icon_type": "clinical", "text": "Clinically Tested" } },
+        { "type": "trust_item", "settings": { "icon_type": "formulated", "text": "Precision-Formulated" } },
+        { "type": "trust_item", "settings": { "icon_type": "guarantee", "text": "30-Day Radiance Guarantee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

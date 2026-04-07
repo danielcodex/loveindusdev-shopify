@@ -1,0 +1,617 @@
+{% comment %}
+  Section: mmx-video
+  Description: Brand video section — inline autoplay with mute toggle
+{% endcomment %}
+
+<style>
+  .mmx-video {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .mmx-video__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .mmx-video__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .mmx-video__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+  }
+
+  .mmx-video__eyebrow svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .mmx-video__divider {
+    width: 40px;
+    height: 2px;
+    background-color: {{ section.settings.accent_color }};
+  }
+
+  .mmx-video__text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .mmx-video__headline {
+    font-family: var(--mmx-font-serif);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: {{ section.settings.headline_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .mmx-video__subtext {
+    font-family: var(--mmx-font-sans);
+    font-size: 18px;
+    color: #6B6E73;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  /* ── Video player ── */
+  .mmx-video__player {
+    position: relative;
+    max-width: 768px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #111;
+    box-shadow: 0px 40px 100px 0px rgba(0, 0, 0, 0.15);
+    display: block;
+  }
+
+  .mmx-video__player video,
+  .mmx-video__player iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 768 / 412;
+    object-fit: cover;
+    border: none;
+  }
+
+  /* Shopify hosted video overrides — remove default controls wrapper padding */
+  .mmx-video__player .video-section__media {
+    position: relative;
+  }
+
+  .mmx-video__thumbnail-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: none;
+  }
+
+  .mmx-video__thumbnail {
+    display: block;
+    width: 100%;
+    aspect-ratio: 768 / 412;
+    object-fit: cover;
+  }
+
+  .mmx-video__play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease;
+  }
+
+  .mmx-video__thumbnail-wrap:hover .mmx-video__play-overlay {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+
+  .mmx-video__play-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: transform 0.2s ease;
+  }
+
+  .mmx-video__thumbnail-wrap:hover .mmx-video__play-circle {
+    transform: scale(1.06);
+  }
+
+  .mmx-video__mute-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffffff;
+    z-index: 5;
+    padding: 0;
+    transition: background-color 0.2s ease;
+  }
+
+  .mmx-video__mute-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .mmx-video__mute-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mmx-video__caption {
+    font-family: var(--mmx-font-sans);
+    font-size: 15px;
+    color: rgba(3, 3, 3, 0.84);
+    text-align: center;
+    margin: 20px auto 0;
+    max-width: 768px;
+    line-height: 1.1;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .mmx-video {
+      padding: {{ section.settings.mobile_padding_top }}px 0 {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .mmx-video__inner {
+      padding: 0 20px;
+    }
+
+    .mmx-video__header {
+      margin-bottom: 28px;
+    }
+
+    .mmx-video__eyebrow {
+      font-size: 13px;
+      letter-spacing: 1.69px;
+    }
+
+    .mmx-video__headline {
+      font-size: 20px;
+      color: #212326;
+    }
+
+    .mmx-video__subtext {
+      font-size: 16px;
+    }
+
+    .mmx-video__player {
+      border-radius: 16px;
+    }
+
+    .mmx-video__caption {
+      font-size: 13px;
+      margin-top: 14px;
+    }
+  }
+</style>
+
+<section class="mmx-video" id="mmx-video">
+  <div class="mmx-video__inner">
+    <div class="mmx-video__header">
+      <div class="mmx-video__eyebrow">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M13.8936 3.07357C13.5531 2.73291 13.1488 2.46267 12.7038 2.2783C12.2588 2.09392 11.7819 1.99902 11.3002 1.99902C10.8186 1.99902 10.3416 2.09392 9.89667 2.2783C9.4517 2.46267 9.04741 2.73291 8.70691 3.07357L8.00024 3.78024L7.29358 3.07357C6.60578 2.38578 5.67293 1.99938 4.70024 1.99938C3.72755 1.99938 2.7947 2.38578 2.10691 3.07357C1.41911 3.76137 1.03271 4.69422 1.03271 5.66691C1.03271 6.6396 1.41911 7.57245 2.10691 8.26024L2.81358 8.96691L8.00024 14.1536L13.1869 8.96691L13.8936 8.26024C14.2342 7.91974 14.5045 7.51545 14.6889 7.07048C14.8732 6.6255 14.9681 6.14857 14.9681 5.66691C14.9681 5.18525 14.8732 4.70831 14.6889 4.26334C14.5045 3.81836 14.2342 3.41408 13.8936 3.07357Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ section.settings.eyebrow_text }}
+      </div>
+      <div class="mmx-video__divider" aria-hidden="true"></div>
+      <div class="mmx-video__text-group">
+        <h2 class="mmx-video__headline">{{ section.settings.headline }}</h2>
+        {% if section.settings.subtext != blank %}
+          <p class="mmx-video__subtext">{{ section.settings.subtext }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <mmx-video-player class="mmx-video__player" data-autoplay="{{ section.settings.autoplay }}" data-loop="{{ section.settings.loop }}">
+      {%- if section.settings.video != blank -%}
+        {%- comment -%} Shopify hosted video {%- endcomment -%}
+        {{ section.settings.video
+          | video_tag:
+            image_size: "1100x",
+            autoplay: section.settings.autoplay,
+            loop: section.settings.loop,
+            controls: false,
+            muted: true,
+            playsinline: true
+        }}
+        <div class="mmx-video__play-overlay" data-play-overlay aria-hidden="true">
+          <div class="mmx-video__play-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+          </div>
+        </div>
+      {%- elsif section.settings.video_url != blank -%}
+        {%- comment -%} External video (YouTube/Vimeo) — show thumbnail, play on click {%- endcomment -%}
+        <button class="mmx-video__thumbnail-wrap" data-video-url="{{ section.settings.video_url }}" data-video-type="{{ section.settings.video_url.type }}" data-video-id="{{ section.settings.video_url.id }}" aria-label="Play video">
+          {% if section.settings.thumbnail != blank %}
+            <img
+              src="{{ section.settings.thumbnail | image_url: width: 900 }}"
+              alt="{{ section.settings.headline }}"
+              class="mmx-video__thumbnail"
+              loading="lazy"
+              width="768"
+              height="412"
+            >
+          {% else %}
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397914943/XpGfLNCLhmFpctTt.jpg"
+              alt="{{ section.settings.headline }}"
+              class="mmx-video__thumbnail"
+              loading="lazy"
+              width="768"
+              height="412"
+            >
+          {% endif %}
+          <div class="mmx-video__play-overlay" aria-hidden="true">
+            <div class="mmx-video__play-circle">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </div>
+          </div>
+        </button>
+      {%- else -%}
+        {%- comment -%} Fallback placeholder {%- endcomment -%}
+        <button class="mmx-video__thumbnail-wrap" aria-label="Play video">
+          <img
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663397914943/XpGfLNCLhmFpctTt.jpg"
+            alt="{{ section.settings.headline }}"
+            class="mmx-video__thumbnail"
+            loading="lazy"
+            width="768"
+            height="412"
+          >
+          <div class="mmx-video__play-overlay" aria-hidden="true">
+            <div class="mmx-video__play-circle">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </div>
+          </div>
+        </button>
+      {%- endif -%}
+
+      <button class="mmx-video__mute-btn" data-mute-btn aria-label="Toggle mute">
+        <svg data-icon-muted viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+        <svg data-icon-unmuted style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+      </button>
+    </mmx-video-player>
+
+    {% if section.settings.caption != blank %}
+      <p class="mmx-video__caption">{{ section.settings.caption }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  (function() {
+    if (customElements.get('mmx-video-player')) return;
+
+    class MMXVideoPlayer extends HTMLElement {
+      connectedCallback() {
+        this._video = this.querySelector('video');
+        this._muteBtn = this.querySelector('[data-mute-btn]');
+        this._iconMuted = this.querySelector('[data-icon-muted]');
+        this._iconUnmuted = this.querySelector('[data-icon-unmuted]');
+        this._playOverlay = this.querySelector('[data-play-overlay]');
+        this._thumbBtn = this.querySelector('.mmx-video__thumbnail-wrap');
+        this._isMuted = true;
+        this._isPlaying = false;
+
+        if (this._muteBtn) {
+          this._muteBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this._toggleMute();
+          }.bind(this));
+        }
+
+        /* Shopify hosted video */
+        if (this._video) {
+          this._video.muted = true;
+          this._video.playsInline = true;
+          this._video.setAttribute('playsinline', '');
+          this._updateMuteIcons();
+
+          var self = this;
+          if (this.getAttribute('data-autoplay') === 'true') {
+            var playPromise = this._video.play();
+            if (playPromise) {
+              playPromise.then(function() {
+                self._setPlaying(true);
+              }).catch(function() {
+                self._setPlaying(false);
+              });
+            }
+          } else {
+            this._video.removeAttribute('autoplay');
+            this._video.pause();
+            this._setPlaying(false);
+          }
+
+          /* Click overlay to play */
+          if (this._playOverlay) {
+            this._playOverlay.addEventListener('click', function(e) {
+              e.stopPropagation();
+              self._togglePlay();
+            });
+          }
+
+          /* Click video to toggle play/pause */
+          this._video.addEventListener('click', function(e) {
+            e.stopPropagation();
+            self._togglePlay();
+          });
+        }
+
+        /* External video (YouTube/Vimeo): replace thumbnail with iframe on click */
+        if (this._thumbBtn) {
+          this._thumbBtn.addEventListener('click', this._loadExternalVideo.bind(this));
+          if (this._muteBtn) this._muteBtn.style.display = 'none';
+        }
+      }
+
+      _togglePlay() {
+        if (!this._video) return;
+        var self = this;
+        if (this._video.paused) {
+          var p = this._video.play();
+          if (p && p.then) {
+            p.then(function() {
+              self._setPlaying(true);
+            }).catch(function() {
+              self._setPlaying(false);
+            });
+          } else {
+            self._setPlaying(true);
+          }
+        } else {
+          this._video.pause();
+          this._setPlaying(false);
+        }
+      }
+
+      _setPlaying(playing) {
+        this._isPlaying = playing;
+        if (this._playOverlay) {
+          this._playOverlay.style.display = playing ? 'none' : '';
+        }
+        if (this._muteBtn) {
+          this._muteBtn.style.display = playing ? '' : 'none';
+        }
+        if (this._video) {
+          this._video.style.cursor = 'pointer';
+        }
+      }
+
+      _toggleMute() {
+        if (!this._video) return;
+        this._isMuted = !this._isMuted;
+        this._video.muted = this._isMuted;
+        this._updateMuteIcons();
+      }
+
+      _updateMuteIcons() {
+        if (this._iconMuted) this._iconMuted.style.display = this._isMuted ? '' : 'none';
+        if (this._iconUnmuted) this._iconUnmuted.style.display = this._isMuted ? 'none' : '';
+      }
+
+      _loadExternalVideo() {
+        var type = this._thumbBtn.getAttribute('data-video-type');
+        var id = this._thumbBtn.getAttribute('data-video-id');
+        if (!type || !id) return;
+
+        var iframe;
+        if (type === 'youtube') {
+          iframe = document.createElement('iframe');
+          iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&mute=0';
+          iframe.allow = 'autoplay; fullscreen; encrypted-media';
+          iframe.allowFullscreen = true;
+        } else if (type === 'vimeo') {
+          iframe = document.createElement('iframe');
+          iframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1';
+          iframe.allow = 'autoplay; fullscreen';
+          iframe.allowFullscreen = true;
+        }
+
+        if (iframe) {
+          this._thumbBtn.remove();
+          this.insertBefore(iframe, this._muteBtn);
+          /* External videos have their own controls; hide mute */
+          if (this._muteBtn) this._muteBtn.style.display = 'none';
+        }
+      }
+    }
+
+    customElements.define('mmx-video-player', MMXVideoPlayer);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "MMX Video",
+  "tag": "div",
+  "class": "mmx-section-video",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#EEF0F3"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Line Color",
+      "default": "#00199F"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "THE BRAND"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Amrutini\u00ae in Motion"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "A glimpse into the formula, the ritual, the result."
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify Hosted Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "label": "External Video URL",
+      "info": "YouTube or Vimeo URL. Used only when no Shopify hosted video is selected."
+    },
+    {
+      "type": "image_picker",
+      "id": "thumbnail",
+      "label": "Video Thumbnail",
+      "info": "Used as cover for external videos and as fallback."
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay (muted)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop Video",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Amrutini\u00ae Luminosity Dewdrops \u2014 Rare Regional Ingredients \u00b7 NYC Precision-Formulated"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 8,
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom (px)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "MMX Video"
+    }
+  ]
+}
+{% endschema %}
